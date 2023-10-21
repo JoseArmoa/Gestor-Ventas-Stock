@@ -4,12 +4,16 @@
 
 class clsVentas
 {
+    private:
+        int codVenta;
+        int dniCliente;
+        int idCelular
+        Fecha diaVenta;
+        float total;
+        bool estado;
     public:
         clsVentas();
-
-    protected:
-
-    private:
+        void setCodVenta(int c);
 };
 
 #endif // CLSVENTAS_H
