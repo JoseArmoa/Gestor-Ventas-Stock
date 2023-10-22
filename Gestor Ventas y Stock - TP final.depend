@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1694736203 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsfecha.cpp
+	"clsFecha.h"
+	<ctime>
+
+1697937345 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsfecha.h
+
+1697937327 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+	<cstring>
+	"clsFecha.h"
+	"clsVentas.h"
+
+1697937345 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
+

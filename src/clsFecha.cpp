@@ -1,5 +1,4 @@
 #include "clsFecha.h"
-#include <ctime>
 
 Fecha::Fecha(){
     time_t tiempo = time(nullptr);
@@ -29,8 +28,5 @@ Fecha::Fecha(int d, int m, int a)
 }
 
 void Fecha::Mostrar(){
-    /*cout<<"DIA: "<<dia<<endl;
-    cout<<"MES: "<<mes<<endl;
-    cout<<"ANIO: "<<anio<<endl<<endl;*/
     cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
 }

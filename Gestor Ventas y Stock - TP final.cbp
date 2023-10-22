@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/clsFecha.h" />
 		<Unit filename="include/clsVentas.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/clsFecha.cpp" />
 		<Unit filename="src/clsVentas.cpp" />
 		<Extensions />
 	</Project>
