@@ -1,4 +1,5 @@
-
+#ifndef CLSFECHA_H_INCLUDED
+#define CLSFECHA_H_INCLUDED
 class Fecha{
     private:
         int dia, mes, anio;
@@ -20,3 +21,4 @@ class Fecha{
 };
 
 
+#endif // CLSFECHA_H_INCLUDED

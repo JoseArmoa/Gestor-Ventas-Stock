@@ -25,9 +25,9 @@ void clsVentas::setEstado(bool e){
 }
 ///Metodos Get
 int clsVentas::getCodVenta(){return codVenta;}
-int clsVentas::getDniCliente(return dniCliente;)
-int clsVentas::getIdCelular(return idCelular;)
-int clsVentas::getFecha(){return diaVenta;}
+int clsVentas::getDniCliente(){return dniCliente;}
+int clsVentas::getIdCelular(){return idCelular;}
+Fecha clsVentas::getFecha(){return diaVenta;}
 float clsVentas::getTotal(){return total;}
 bool clsVentas::getEstado(){return estado;}
 ///Metodos Principales

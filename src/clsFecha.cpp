@@ -1,4 +1,7 @@
+#include <iostream>
+#include <ctime>
 #include "clsFecha.h"
+
 
 Fecha::Fecha(){
     time_t tiempo = time(nullptr);
@@ -19,14 +22,16 @@ Fecha::Fecha(int d, int m, int a)
     }
 
  void Fecha::Cargar(){
-    cout<<"DIA: ";
-    cin>>dia;
-    cout<<"MES: ";
-    cin>>mes;
-    cout<<"ANIO: ";
-    cin>>anio;
+    std::cout<<"DIA: ";
+    std::cin>>dia;
+    std::cout<<"MES: ";
+    std::cin>>mes;
+    std::cout<<"ANIO: ";
+    std::cin>>anio;
 }
 
 void Fecha::Mostrar(){
-    cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
+    std::cout<<dia<<"/"<<mes<<"/"<<anio<<std::endl;
 }
+
+

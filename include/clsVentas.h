@@ -1,4 +1,7 @@
+#ifndef CLSVENTAS_H_INCLUDED
+#define CLSVENTAS_H_INCLUDED
 
+#include "clsFecha.h"
 class clsVentas
 {
     private:
@@ -21,7 +24,7 @@ class clsVentas
         int getCodVenta();
         int getDniCliente();
         int getIdCelular();
-        int getFecha();
+        Fecha getFecha();
         float getTotal();
         bool getEstado();
     ///Metodos Principales
@@ -30,3 +33,4 @@ class clsVentas
 };
 
 
+#endif // CLSFVENTASH_INCLUDED
