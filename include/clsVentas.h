@@ -28,8 +28,19 @@ class clsVentas
         float getTotal();
         bool getEstado();
     ///Metodos Principales
-        bool Cargar(int num);
+        bool Cargar(int num=-1);
         void Mostrar();
+};
+
+class ArchivosVentas{
+private:
+    char nombreArchivo[30];
+public:
+    ArchivosVentas(const char *v);
+    bool Cargar(clsVentas r);
+    void Leer();
+    int contarRegistros();
+
 };
 
 

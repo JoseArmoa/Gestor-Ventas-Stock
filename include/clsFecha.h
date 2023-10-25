@@ -6,17 +6,17 @@ class Fecha{
     public:
         Fecha();
         Fecha(int d, int m, int a);
-        void Cargar();
+        bool Cargar();
         void Mostrar();
 
         ///sets
-        void setDia(int x){if(x>0 && x<32) dia=x;}
-        void setMes(int x){if(x>0 && x<13)mes=x;}
-        void setAnio(int x){anio=x;}
+        void setDia(int x,int m);
+        void setMes(int x);
+        void setAnio(int x);
         ///gets
-        int getDia(){return dia;}
-        int getMes(){return mes;}
-        int getAnio(){return anio;}
+        int getDia();
+        int getMes();
+        int getAnio();
 
 };
 
