@@ -6,7 +6,7 @@ using namespace std;
 #include "funcioneGlobales.h"
 #include "clsFecha.h"
 #include "clsVentas.h"
-
+#include "funcionesVentas.h"
 int main()
 {
     int op;
@@ -16,6 +16,7 @@ int main()
     system("cls");
         switch(op){
         case 1:
+            menuVentas();
             break;
         case 2:
             break;
@@ -24,7 +25,6 @@ int main()
         default:
             break;
         }
-        system("pause");
     }
     return 0;
 }

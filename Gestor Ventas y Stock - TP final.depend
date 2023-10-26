@@ -6,12 +6,14 @@
 
 1698187259 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsfecha.h
 
-1698272457 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
+1698321190 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
+	"funcioneGlobales.h"
 	"clsFecha.h"
 	"clsVentas.h"
+	"funcionesVentas.h"
 
 1698272004 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
 	"clsFecha.h"
@@ -25,5 +27,8 @@
 	"funcioneGlobales.h"
 
 1698273094 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcioneglobales.h
+	<iostream>
+
+1698321235 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.h
 	<iostream>
 
