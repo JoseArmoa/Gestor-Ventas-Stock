@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cstring>
 #include "clsVentas.h"
 
 clsVentas::clsVentas()
@@ -40,7 +38,7 @@ bool clsVentas::Cargar(int num){
     int d, id;
     float t;
     Fecha f;
-    if(num == -1 ){
+    if(num == 0 ){
         std::cout<<"COD VENTA: ";
         std::cin>>num;
         setCodVenta(num);
@@ -106,7 +104,7 @@ void ArchivosVentas::Leer(){
         p = fopen(nombreArchivo,"rb");
         if(p==NULL){
             std::cout<<"ERROR ARCHIVO"<<std::endl;
-            return -1;
+            return 0;
         }
         fseek(p,0,2);
         int cant = ftell(p);

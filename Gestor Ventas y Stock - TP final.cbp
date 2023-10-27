@@ -36,6 +36,8 @@
 		</Compiler>
 		<Unit filename="funcioneGlobales.h" />
 		<Unit filename="funcionesGlobales.cpp" />
+		<Unit filename="funcionesVentas.cpp" />
+		<Unit filename="funcionesVentas.h" />
 		<Unit filename="include/clsFecha.h" />
 		<Unit filename="include/clsVentas.h" />
 		<Unit filename="main.cpp" />

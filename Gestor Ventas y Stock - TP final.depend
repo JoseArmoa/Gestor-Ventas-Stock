@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1698187727 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsfecha.cpp
+1698365275 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsfecha.cpp
 	<iostream>
 	<ctime>
 	"clsFecha.h"
 
-1698187259 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsfecha.h
+1698365239 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsfecha.h
 
-1698321190 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
+1698321299 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -15,12 +15,12 @@
 	"clsVentas.h"
 	"funcionesVentas.h"
 
-1698272004 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
-	"clsFecha.h"
-
-1698272469 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsventas.cpp
+1698324499 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
 	<iostream>
 	<cstring>
+	"clsFecha.h"
+
+1698362647 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsventas.cpp
 	"clsVentas.h"
 
 1698273164 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesglobales.cpp
@@ -29,6 +29,10 @@
 1698273094 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcioneglobales.h
 	<iostream>
 
-1698321235 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.h
+1698362693 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.h
 	<iostream>
+	"clsVentas.h"
+
+1698363603 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
+	"funcionesVentas.h"
 

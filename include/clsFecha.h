@@ -10,7 +10,7 @@ class Fecha{
         void Mostrar();
 
         ///sets
-        void setDia(int x,int m);
+        void setDia(int x,int m,int a);
         void setMes(int x);
         void setAnio(int x);
         ///gets
