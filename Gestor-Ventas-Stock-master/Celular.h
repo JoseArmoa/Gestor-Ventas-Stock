@@ -65,13 +65,7 @@ class ArchivosCelular{
 private:
     char nombreArchivo[30];
 public:
-<<<<<<< HEAD
-    ArchivosCelular(const char *v){
-
-    }
-=======
     ArchivosCelular(const char *v);
->>>>>>> ce4aad20e762a2a6a6f43291923736bc0ef5ebf3
     bool Cargar(Celular r);
     void Leer();
     int contarRegistros();
@@ -79,8 +73,6 @@ public:
 };
 
 
-<<<<<<< HEAD
-=======
 bool ArchivosCelular::Cargar(Celular r){
     FILE p;
     p = fopen(nombreArchivo,"ab");
@@ -122,7 +114,6 @@ void ArchivosCelular::Leer(){
         return cant/sizeof(Celular);
     }
 
->>>>>>> ce4aad20e762a2a6a6f43291923736bc0ef5ebf3
 
 
 #endif // CELULAR_H_INCLUDED

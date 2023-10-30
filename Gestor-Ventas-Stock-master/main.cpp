@@ -7,9 +7,6 @@ using namespace std;
 #include "clsFecha.h"
 #include "clsVentas.h"
 #include "funcionesVentas.h"
-
-#include "funcionesCelulares.h"
-
 int main()
 {
     int op;
@@ -21,11 +18,7 @@ int main()
         case 1:
             menuVentas();
             break;
-
-        case 3:
-        	MenuCelulares();
         case 2:
-
             break;
         case 0:
             return 0;
