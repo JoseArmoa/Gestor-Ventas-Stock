@@ -78,3 +78,133 @@
 
 1698371990 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscliente.h
 
+1698371990 D
+
+1698620276 source:c:\users\user\downloads\gestor-ventas-stock-master\funcionesglobales.cpp
+	"funcioneGlobales.h"
+
+1698609902 c:\users\user\downloads\gestor-ventas-stock-master\funcioneglobales.h
+	<iostream>
+
+1698609902 source:c:\users\user\downloads\gestor-ventas-stock-master\funcionesventas.cpp
+	"funcionesVentas.h"
+
+1698609902 c:\users\user\downloads\gestor-ventas-stock-master\funcionesventas.h
+	<iostream>
+	"clsVentas.h"
+
+1698609902 c:\users\user\downloads\gestor-ventas-stock-master\include\clsventas.h
+	<iostream>
+	<cstring>
+	"clsFecha.h"
+
+1698609902 c:\users\user\downloads\gestor-ventas-stock-master\include\clsfecha.h
+
+1698620267 source:c:\users\user\downloads\gestor-ventas-stock-master\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	"clsVentas.h"
+	"funcionesVentas.h"
+	"funcionesCelulares.h"
+
+1698609902 source:c:\users\user\downloads\gestor-ventas-stock-master\src\clscliente.cpp
+	"clsCliente.h"
+
+1698609902 c:\users\user\downloads\gestor-ventas-stock-master\include\clscliente.h
+
+1698609902 source:c:\users\user\downloads\gestor-ventas-stock-master\src\clsfecha.cpp
+	<iostream>
+	<ctime>
+	"clsFecha.h"
+
+1698609902 source:c:\users\user\downloads\gestor-ventas-stock-master\src\clsventas.cpp
+	"clsVentas.h"
+
+1698620017 source:c:\users\user\downloads\gestor-ventas-stock-master\src\funcionescelulares.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesCelulares.h"
+	"clsCelular.h"
+
+1698611722 c:\users\user\downloads\gestor-ventas-stock-master\include\funcionescelulares.h
+
+1698619967 source:c:\users\user\downloads\gestor-ventas-stock-master\src\clscelular.cpp
+	<iostream>
+	<cstdlib>
+	"clsCelular.h"
+
+1698619357 c:\users\user\downloads\gestor-ventas-stock-master\include\clscelular.h
+	"clsFecha.h"
+	"cstring"
+
+1698619357 
+
+1698619357 aad20e762a2a6a6f43291923736bc0ef5ebf3
+
+1698609902 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\funcionesventas.cpp
+	"funcionesVentas.h"
+
+1698609902 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\funcionesventas.h
+	<iostream>
+	"clsVentas.h"
+
+1698609902 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\include\clsventas.h
+	<iostream>
+	<cstring>
+	"clsFecha.h"
+
+1698609902 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\include\clsfecha.h
+
+1698619967 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\src\clscelular.cpp
+	<iostream>
+	<cstdlib>
+	"clsCelular.h"
+
+1698619357 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\include\clscelular.h
+	"clsFecha.h"
+	"cstring"
+
+1698609902 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\src\clsfecha.cpp
+	<iostream>
+	<ctime>
+	"clsFecha.h"
+
+1698609902 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\src\clsventas.cpp
+	"clsVentas.h"
+
+1698620366 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\src\funcionescelulares.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesCelulares.h"
+	"clsCelular.h"
+
+1698611722 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\include\funcionescelulares.h
+
+1698625392 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	"clsVentas.h"
+	"funcionesVentas.h"
+	"funcionesCelulares.h"
+
+1698609902 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\funcioneglobales.h
+	<iostream>
+
+1698625519 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\src\clscliente.cpp
+	"clsCliente.h"
+
+1698625519 c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\include\clscliente.h
+	<iostream>
+	<cstdio>
+	<cstring>
+	"clsFecha.h"
+
+1698625533 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\funcionesglobales.cpp
+	"funcioneGlobales.h"
+

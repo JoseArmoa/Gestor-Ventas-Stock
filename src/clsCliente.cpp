@@ -1,7 +1,6 @@
 #include "clsCliente.h"
 
-clsCliente::clsCliente()
-{
+clsCliente::clsCliente(){
     dni = 0;
     strcpy(nombre,"vacio");
     strcpy(apellido,"vacio");
@@ -71,3 +70,4 @@ void ArchivoCliente::Leer(){
         fclose(p);
         return cant/sizeof(clsCliente);
     }
+

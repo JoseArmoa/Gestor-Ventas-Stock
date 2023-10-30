@@ -38,19 +38,6 @@
 		<Unit filename="funcionesGlobales.cpp" />
 		<Unit filename="funcionesVentas.cpp" />
 		<Unit filename="funcionesVentas.h" />
-<<<<<<< HEAD
-		<Unit filename="include/clsCelular.h" />
-		<Unit filename="include/clsCliente.h" />
-		<Unit filename="include/clsFecha.h" />
-		<Unit filename="include/clsVentas.h" />
-		<Unit filename="include/funcionesCelulares.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/clsCelular.cpp" />
-		<Unit filename="src/clsCliente.cpp" />
-		<Unit filename="src/clsFecha.cpp" />
-		<Unit filename="src/clsVentas.cpp" />
-		<Unit filename="src/funcionesCelulares.cpp" />
-=======
 		<Unit filename="include/clsCliente.h" />
 		<Unit filename="include/clsFecha.h" />
 		<Unit filename="include/clsVentas.h" />
@@ -58,7 +45,6 @@
 		<Unit filename="src/clsCliente.cpp" />
 		<Unit filename="src/clsFecha.cpp" />
 		<Unit filename="src/clsVentas.cpp" />
->>>>>>> ce4aad20e762a2a6a6f43291923736bc0ef5ebf3
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

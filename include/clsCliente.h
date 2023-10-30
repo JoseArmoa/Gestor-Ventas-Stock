@@ -1,5 +1,6 @@
 #ifndef CLSCLIENTE_H
 #define CLSCLIENTE_H
+
 #include <iostream>
 #include <cstdio>
 #include <cstring>
@@ -15,7 +16,7 @@ private:
     bool estado;
 public:
     clsCliente();
-        ///Metodos Set
+	///Metodos Set
     void setDNI(int c);
     void setNombre(const char *n);
     void setApellido(const char *n);
