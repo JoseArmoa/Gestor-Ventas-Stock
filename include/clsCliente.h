@@ -31,8 +31,9 @@ public:
     Fecha getFecha();
     bool getEstado();
     ///Metodos Principales
-    bool Cargar();
+    void Cargar();
     void Mostrar();
+    void bajaLogica(int dni);
 };
 
 class ArchivoCliente{
@@ -41,7 +42,7 @@ private:
 public:
     ArchivoCliente(const char *n);
     bool Cargar(clsCliente r);
-    void Leer();
+    void leer();
     int contarRegistros();
 };
 #endif // CLSCLIENTE_H
