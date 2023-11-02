@@ -1,0 +1,6 @@
+#IGNORAMOS CARPETAS Y ARCHIVOS DE COMPILACION
+obj
+bin
+*.depend
+*.layout
+*.dat

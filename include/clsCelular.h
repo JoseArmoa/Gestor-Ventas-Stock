@@ -12,9 +12,11 @@ private:
     Fecha anioLanzamiento;
     float precio;
     int stock;
-    bool estado;
+    bool estado = false;
 
 public:
+    //CONSTRUCTOR
+    //clsCelular();
     //SETTERS
     void setModelo(char* cadena);
     void setNombre(char* cadena);
@@ -32,8 +34,9 @@ public:
     int getStock(){return stock;}
     bool getEstado(){return estado;}
 	//MOSTRAR CARGAR
-	void cargar();
+	void cargar(const char*);
 	void mostrar();
+	void mostrarMenos();//Este metodo solo muestra las propiedades modelo, nombre, y precio.
 };
 
 class ArchivosCelular{
@@ -56,11 +59,24 @@ public:
         return reg;
     }
     int contarRegistros();
-	bool buscarCelular(const char*,const char*,int&,clsCelular&);
+	int buscarCelular(const char* _modelo);
 	bool modificar_registro(int, clsCelular&);
 };
-
-
+///clase para crear vector dinamico de celulares para clase venta
+class vectorDinamicoCelular{
+private:
+    clsCelular *vectorCelular;
+    int tam;
+    int inicio;
+public:
+    vectorDinamicoCelular(int t);
+    ~vectorDinamicoCelular();
+    bool agregar(clsCelular r);
+    void aumentar(int t);
+    void eliminar(const char *n);
+    void mostrar();
+    clsCelular & operator=(vectorDinamicoCelular );
+};
 
 
 #endif // CLSCELULAR_H

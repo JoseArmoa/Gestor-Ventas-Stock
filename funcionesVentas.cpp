@@ -9,9 +9,9 @@ void menuVentas(){
         switch(op){
         case 1:
             if(cargarVentas()){
-                std::cout<<"VENTA EXITOSA";
+                std::cout<<"VENTA EXITOSA"<<std::endl;
             }else{
-                std::cout<<"VENTA CANCELADA";
+                std::cout<<"VENTA CANCELADA"<<std::endl;
             }
             break;
         case 2:
@@ -23,20 +23,87 @@ void menuVentas(){
             break;
         }
         system("pause");
+        system("cls");
     }
 }
 bool cargarVentas(){
-    clsVentas r;
-    ArchivosVentas archi("ventas.dat");
-    int tam = archi.contarRegistros();
-    r.Cargar(tam +1);
-    int op;
-    std::cout<<"Presione 1 para confirmar... ";
-    std::cin>>op;
-    if(op == 1){
-        archi.Cargar(r);
-        return true;
-    }else return false;
+    clsVentas rVentas;
+    clsCelular rCelular;
+    ArchivosCelular archiCelular("celulares.dat");
+    ArchivosVentas archiVentas("ventas.dat");
+    char mod[30];
+    int tam = 1, pos;
+    float total = 0;
+    bool bandera=true;
+    vectorDinamicoCelular v(tam);
+    char op = 'a';
+    while(true){
+            switch(op){
+            case 'A':case 'a':
+                if(bandera){
+                  std::cout<<"MODELO: ";
+                  std::cin.ignore();
+                  std::cin.getline(mod,30);
+                  pos = archiCelular.buscarCelular(mod);
+                  if(pos != -1){
+                    rCelular = archiCelular.Leer(pos);
+                    total += rCelular.getPrecio();
+                    v.agregar(rCelular);
+                    bandera = false;
+                  }else{
+                    std::cout<<"MODELO INCORRECTO"<<std::endl;
+                  }
+                }else{
+                    std::cout<<"MODELO: ";
+                    std::cin.ignore();
+                    std::cin.getline(mod,30);
+                    int pos = archiCelular.buscarCelular(mod);
+                    if(pos != -1){
+                      rCelular = archiCelular.Leer(pos);
+                      total += rCelular.getPrecio();
+                      tam++;
+                      v.aumentar(tam);
+                      v.agregar(rCelular);
+                    }else{
+                    std::cout<<"MODELO INCORRECTO"<<std::endl;
+                    }
+            }
+                break;
+            case 'y': case 'Y':
+                rVentas.setCodVenta(1);
+                rVentas.setDniCliente(1111);
+                rVentas.setCantidad(tam);
+                rVentas.setVectorCelulares(&v,tam);
+                rVentas.setTotal(total);
+                archiVentas.Cargar(rVentas);
+                return true;
+                break;
+            case 'e': case 'E':
+                std::cout<<"MODELO: ";
+                std::cin.ignore();
+                std::cin.getline(mod,30);
+                pos = archiCelular.buscarCelular(mod);
+                if(pos != -1){
+                rCelular = archiCelular.Leer(pos);
+                total -= rCelular.getPrecio();
+                v.eliminar(mod);
+                tam--;
+                }
+                break;
+            case 'q': case 'Q':
+                return false;
+                break;
+        }
+        system("pause");
+        system("cls");
+        v.mostrar();
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"TOTAL: $"<<total<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"Y:CONFIRMAR VENTA  A:AGREGAR PRODUCTO  E:ELIMINAR PRODUCTO Q:CANCELAR VENTA"<<std::endl;
+        std::cin>>op;
+    }
 }
 void listarVentas(){
     ArchivosVentas archi("ventas.dat");

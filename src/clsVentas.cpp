@@ -1,11 +1,12 @@
 #include "clsVentas.h"
 
 clsVentas::clsVentas()
-{
+{   Fecha hoy;
     setCodVenta(0);
     setDniCliente(0);
-    setIdCelular(0);
     setTotal(0);
+    setFecha(hoy);
+    estado = true;
 }
 ///Metodos Set
 void clsVentas::setCodVenta(int c){
@@ -14,8 +15,11 @@ void clsVentas::setCodVenta(int c){
 void clsVentas::setDniCliente(int d){
     dniCliente = d;
 }
-void clsVentas::setIdCelular(int id){
-    idCelular = id;
+void clsVentas::setCantidad(int d){
+    cant = d;
+}
+void clsVentas::setVectorCelulares(vectorDinamicoCelular *v,int tam){
+
 }
 void clsVentas::setFecha(Fecha f){
     diaVenta = f;
@@ -29,7 +33,6 @@ void clsVentas::setEstado(bool e){
 ///Metodos Get
 int clsVentas::getCodVenta(){return codVenta;}
 int clsVentas::getDniCliente(){return dniCliente;}
-int clsVentas::getIdCelular(){return idCelular;}
 Fecha clsVentas::getFecha(){return diaVenta;}
 float clsVentas::getTotal(){return total;}
 bool clsVentas::getEstado(){return estado;}
@@ -46,9 +49,6 @@ bool clsVentas::Cargar(int num){
     std::cout<<"DNI CLIENTE: ";
     std::cin>>d;
     setDniCliente(d);
-    std::cout<<"ID CELULAR: ";
-    std::cin>>id;
-    setIdCelular(id);
     std::cout<<"FECHA: ";
     f.Cargar();
     setFecha(f);
@@ -57,12 +57,21 @@ bool clsVentas::Cargar(int num){
     setTotal(t);
     return true;
 }
+/*bool clsVentas::Cargar(int num,int d,clsCelular *v float t, Fecha f){
+    setCodVenta(num);
+    setDniCliente(d);
+    vectorCelulares = v;
+    setTotal(t);
+    setFecha(f);
+    setEstado(true);
+}*/
 void clsVentas::Mostrar(){
     std::cout<<"COD VENTA: "<<codVenta<<std::endl;
     std::cout<<"DNI CLIENTE: "<<dniCliente<<std::endl;
-    std::cout<<"ID CELULAR: "<<idCelular<<std::endl;
+    std::cout<<"CANTIDAD ARTICULOS: "<<cant<<std::endl;
     std::cout<<"FECHA: ";
     diaVenta.Mostrar();
+    std::cout<<"ARTICULOS: ";
     std::cout<<"TOTAL: "<<total<<std::endl<<std::endl;
 }
 
