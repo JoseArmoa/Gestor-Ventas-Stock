@@ -173,30 +173,40 @@ using namespace std;
             delete aux;
         }
     }
-    void vectorDinamicoCelular::eliminar(const char *n){//elimina registro del vector dado por el usuario,(esto tambien achica al vector).
-        clsCelular *aux;
-        aux = new clsCelular[tam];
+    bool vectorDinamicoCelular::eliminar(const char *n){//elimina registro del vector dado por el usuario,(esto tambien achica al vector).
+        bool encontro=false;
         for(int i=0;i<tam;i++){
-            aux[i] = vectorCelular[i];
-        }
-        delete vectorCelular;
-        for(int i=0;i<tam;i++){
-            if(strcmp(aux[i].getModelo(),n)==0){
-                aux[i].setEstado(false);
+            if(strcmp(vectorCelular[i].getModelo(),n)==0){
+                vectorCelular[i].setEstado(false);
                 i=tam;
+                encontro=true;
             }
         }
-        tam = tam-1;
-        vectorCelular = new clsCelular[tam];
-        int cont = 0;
-        for(int i=0;i<tam+1;i++){
-            if(aux[i].getEstado()){
-                vectorCelular[cont] = aux[i];
-                cont++;
+        if(encontro){
+            clsCelular *aux;
+            aux = new clsCelular[tam];
+            if(aux==NULL)return false;
+            for(int i=0;i<tam;i++){
+                aux[i] = vectorCelular[i];
             }
+            delete vectorCelular;
+            tam = tam-1;
+            vectorCelular = new clsCelular[tam];
+            if(vectorCelular==NULL)return false;
+            int cont = 0;
+            for(int i=0;i<tam+1;i++){
+                if(aux[i].getEstado()){
+                    vectorCelular[cont] = aux[i];
+                    cont++;
+                }
+            }
+            delete aux;
+            inicio--;
+            return true;
+        }else{
+            cout<<"MODELO INCORRECTO"<<endl;
+            return false;
         }
-        delete aux;
-        inicio--;
     }
 
     void vectorDinamicoCelular::mostrar(){
@@ -205,3 +215,80 @@ using namespace std;
             cout<<endl;
         }
     }
+    int vectorDinamicoCelular::getTam(){
+        if(tam>0){
+            return tam;
+        }
+    }
+    clsCelular vectorDinamicoCelular::getElemento(int pos){
+        return vectorCelular[pos];
+    }
+    const clsCelular& vectorDinamicoCelular::operator[](int i){
+        if(i>=0 && i<tam){
+            return vectorCelular[i];
+        }
+    }
+
+///FUNCIONES CLASE CELULARES VENDIDOS
+void celularVendido::cargar(int c,clsCelular &r){
+    codVenta=c;
+    strcpy(this->modelo,r.getModelo());
+    strcpy(this->nombre,r.getNombre());
+    precio=r.getPrecio();
+    estado=true;
+}
+void celularVendido::setCodVenta(int p){
+    codVenta=p;
+}
+int celularVendido::getCodVenta(){
+    return codVenta;
+}
+void celularVendido::mostrar(){
+    clsCelular::mostrarMenos();
+    }
+
+
+
+///FUNCIONES ARCHIVO CELULARES VENDIDOS
+ArchivoCelularVendido::ArchivoCelularVendido(const char *n){
+    strcpy(nombreArchivo,n);
+}
+bool ArchivoCelularVendido::cargar(celularVendido r){
+    FILE *p=fopen(nombreArchivo,"ab");
+    if(p==NULL){
+        return false;
+    }
+    if(fwrite(&r,sizeof(celularVendido),1,p)==1){
+        fclose(p);
+        return true;
+    }
+    fclose(p);
+    return false;
+}
+
+bool ArchivoCelularVendido::mostrar(){
+    celularVendido r;
+    FILE *p=fopen(nombreArchivo,"rb");
+    if(p==NULL){
+        return false;
+    }
+    while(fread(&r,sizeof(celularVendido),1,p)){
+        r.mostrar();
+    }
+    fclose(p);
+    return false;
+}
+bool ArchivoCelularVendido::LeerVenta(int c){
+    celularVendido r;
+    FILE *p=fopen(nombreArchivo,"rb");
+    if(p==NULL){
+        return false;
+    }
+    while(fread(&r,sizeof(celularVendido),1,p)){
+        if(r.getCodVenta()==c){
+            r.mostrar();
+        }
+    }
+    fclose(p);
+    return false;
+}

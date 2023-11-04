@@ -5,7 +5,7 @@
 #include "cstring"
 
 class clsCelular{
-private:
+protected:
     char modelo[30];
     char nombre[30];
     int marca;
@@ -73,10 +73,35 @@ public:
     ~vectorDinamicoCelular();
     bool agregar(clsCelular r);
     void aumentar(int t);
-    void eliminar(const char *n);
+    bool eliminar(const char *n);
     void mostrar();
-    clsCelular & operator=(vectorDinamicoCelular );
+    int getTam();
+    clsCelular getElemento(int);
+    const clsCelular& operator[](int);
+    vectorDinamicoCelular& operator=(const clsCelular& );
 };
 
+///CLASE PARA GUARDAR EN UN ARCHIVO LOS CELULARES VENDIDOS INDIVIDUALMENTE CON SU CODIGO DE VENTA
+class celularVendido:clsCelular{
+private:
+    int codVenta;
+public:
+    void cargar(int,clsCelular &);
+    void setCodVenta(int);
+    int getCodVenta();
+    void mostrar();
+    celularVendido& operator=(const vectorDinamicoCelular &r);
+};
+
+class ArchivoCelularVendido{
+private:
+    char nombreArchivo[30];
+public:
+    ArchivoCelularVendido(const char *);
+    bool cargar(celularVendido);
+    bool mostrar();
+    void modificar(int);
+    bool LeerVenta(int);
+};
 
 #endif // CLSCELULAR_H

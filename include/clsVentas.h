@@ -9,18 +9,19 @@ class clsVentas
     private:
         int codVenta;
         int dniCliente;
-        clsCelular *vectorCelulares;
         int cant;
+        //clsCelular *vectorCelulares;
         Fecha diaVenta;
         float total;
         bool estado;
     public:
         clsVentas();
+        //~clsVentas();
     ///Metodos Set
         void setCodVenta(int c);
         void setDniCliente(int d);
         void setCantidad(int d);
-        void setVectorCelulares(vectorDinamicoCelular *,int tam);
+        //void setVectorCelulares(vectorDinamicoCelular &, int);
         void setFecha(Fecha f);
         void setTotal(float t);
         void setEstado(bool e);
@@ -35,6 +36,8 @@ class clsVentas
         bool Cargar(int);
         void Mostrar();
 };
+
+
 
 class ArchivosVentas{
 private:

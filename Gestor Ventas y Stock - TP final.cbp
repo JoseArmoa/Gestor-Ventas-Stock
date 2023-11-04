@@ -34,7 +34,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename=".gitignore" />
 		<Unit filename="funcioneGlobales.h" />
 		<Unit filename="funcionesGlobales.cpp" />
 		<Unit filename="funcionesVentas.cpp" />

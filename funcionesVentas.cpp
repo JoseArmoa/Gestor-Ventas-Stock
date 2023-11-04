@@ -29,26 +29,28 @@ void menuVentas(){
 bool cargarVentas(){
     clsVentas rVentas;
     clsCelular rCelular;
+    ArchivoCelularVendido archiCelularVendido("vendidos.dat");
     ArchivosCelular archiCelular("celulares.dat");
     ArchivosVentas archiVentas("ventas.dat");
     char mod[30];
-    int tam = 1, pos;
-    float total = 0;
-    bool bandera=true;
-    vectorDinamicoCelular v(tam);
-    char op = 'a';
+    int tam = 1, pos,cantRegistros;
+    float total = 0;//acumulador que ira sumando o restando el importe a medida que añadan o eliminen articulos a la venta.
+    bool bandera=true;//bandera para saber si es el primer producto a agregar.
+
+    vectorDinamicoCelular v(tam);//Inicializamos vector dinamico que contiene los productos de la venta empezando el valor en 1.
+    char op = 'a';//cuando se ingrese a la funcion ventas se inicializa la opcion para automaticamente añadir un producto a la venta.
     while(true){
             switch(op){
-            case 'A':case 'a':
+            case 'A':case 'a':///CASO A PARA AGREGA PRODUCTO A LA VENTA
                 if(bandera){
                   std::cout<<"MODELO: ";
                   std::cin.ignore();
                   std::cin.getline(mod,30);
                   pos = archiCelular.buscarCelular(mod);
-                  if(pos != -1){
-                    rCelular = archiCelular.Leer(pos);
-                    total += rCelular.getPrecio();
-                    v.agregar(rCelular);
+                  if(pos != -1){//verifica que el modelo exista en el archivo
+                    rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
+                    total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
+                    v.agregar(rCelular);//agregamos el registro al vector dinamico.
                     bandera = false;
                   }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
@@ -61,22 +63,33 @@ bool cargarVentas(){
                     if(pos != -1){
                       rCelular = archiCelular.Leer(pos);
                       total += rCelular.getPrecio();
-                      tam++;
-                      v.aumentar(tam);
-                      v.agregar(rCelular);
+                      tam++;//incrementamos la variable que contiene la cantidad de registros.
+                      v.aumentar(tam);//incrementamos el vector dinamico
+                      v.agregar(rCelular);//agregamos el nuevo registro(la funcion siempre va a carga en la ultima posicion disponible)
                     }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
                     }
             }
                 break;
             case 'y': case 'Y':
-                rVentas.setCodVenta(1);
-                rVentas.setDniCliente(1111);
-                rVentas.setCantidad(tam);
-                rVentas.setVectorCelulares(&v,tam);
-                rVentas.setTotal(total);
-                archiVentas.Cargar(rVentas);
-                return true;
+                cantRegistros= archiVentas.contarRegistros();
+                if(cantRegistros == -1){
+                    rVentas.setCodVenta(1);
+                    rVentas.setDniCliente(1111);
+                    rVentas.setCantidad(tam);
+                    rVentas.setTotal(total);
+                    guardarVectorArchivo(v,tam,cantRegistros);
+                    archiVentas.Cargar(rVentas);
+                    return true;
+                }else{
+                    rVentas.setCodVenta(cantRegistros+1);
+                    rVentas.setDniCliente(1111);
+                    rVentas.setCantidad(tam);
+                    rVentas.setTotal(total);
+                    guardarVectorArchivo(v,tam,cantRegistros);
+                    archiVentas.Cargar(rVentas);
+                    return true;
+                }
                 break;
             case 'e': case 'E':
                 std::cout<<"MODELO: ";
@@ -85,9 +98,10 @@ bool cargarVentas(){
                 pos = archiCelular.buscarCelular(mod);
                 if(pos != -1){
                 rCelular = archiCelular.Leer(pos);
-                total -= rCelular.getPrecio();
-                v.eliminar(mod);
-                tam--;
+                    if(v.eliminar(mod)){//La funcion eliminar busca dentro del vector dinamico el modelo pasado como parametro, si lo encuentra lo elimina y modifica su tamaño, si no no hace nada.
+                        total -= rCelular.getPrecio();//descuenta el precio del registro eliminado.
+                        tam--;
+                    }
                 }
                 break;
             case 'q': case 'Q':
@@ -109,8 +123,26 @@ void listarVentas(){
     ArchivosVentas archi("ventas.dat");
     archi.Leer();
 }
+void guardarVectorArchivo(vectorDinamicoCelular &v,int tam, int c){
+    ArchivoCelularVendido archi("vendidos.dat");
 
-
+    clsCelular rCelular;
+    celularVendido r;
+    for(int i=0;i<tam;i++){
+        rCelular = v[i];
+        descontarStock(rCelular);
+        r.cargar(c,rCelular);
+        archi.cargar(r);
+    }
+}
+void descontarStock(clsCelular &r){
+    ArchivosCelular archiCelular("celulares.dat");
+    int pos = archiCelular.buscarCelular(r.getModelo());
+    r.setStock(r.getStock()-1);
+    r.mostrar();
+    system("pause");
+    archiCelular.modificar_registro(pos, r);
+}
 void mostrarMenuVentas(){
     std::cout<<"MENU VENTAS"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
