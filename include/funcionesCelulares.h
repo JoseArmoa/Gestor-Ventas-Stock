@@ -3,9 +3,10 @@
 
 void MenuCelulares();
 
-void Agregar_celular();
+bool Agregar_celular();
 void Reponer_Stock();
 void Modificar_precio();
 void Baja_celular();
+void Listar_celular();
 
 #endif // FUNCIONESCELULARES_H

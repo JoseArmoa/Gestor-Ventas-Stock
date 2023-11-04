@@ -6,7 +6,7 @@
 
 1698365239 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsfecha.h
 
-1698321299 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
+1698675208 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\main.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -14,26 +14,30 @@
 	"clsFecha.h"
 	"clsVentas.h"
 	"funcionesVentas.h"
+	"funcionesCelulares.h"
 
-1698324499 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
+1699057723 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clsventas.h
 	<iostream>
 	<cstring>
 	"clsFecha.h"
+	"clsCelular.h"
 
-1698362647 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsventas.cpp
+1699057716 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsventas.cpp
 	"clsVentas.h"
 
-1698273164 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesglobales.cpp
+1698715511 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesglobales.cpp
 	"funcioneGlobales.h"
 
-1698273094 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcioneglobales.h
+1698715511 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcioneglobales.h
 	<iostream>
+	"clsCelular.h"
 
-1698362693 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.h
+1699057023 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.h
 	<iostream>
+	"clsCelular.h"
 	"clsVentas.h"
 
-1698363603 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
+1699057062 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
 	"funcionesVentas.h"
 
 1698712825 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesglobales.cpp
@@ -213,18 +217,41 @@
 1698625533 source:c:\users\user\documents\laboratorio 2\gestor-ventas-stock-master\funcionesglobales.cpp
 	"funcioneGlobales.h"
 
+<<<<<<< HEAD
 1698712825 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\funcionescelulares.h
 
 1698712825 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clscelular.cpp
+=======
+1698798707 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\funcionescelulares.h
+
+1699056100 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscelular.cpp
+>>>>>>> cccfd932218ee14deaa19f592f62625985d05310
 	<iostream>
 	<cstdlib>
 	"clsCelular.h"
 
+<<<<<<< HEAD
 1698712825 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscelular.h
 	"clsFecha.h"
 	"cstring"
 
 1698712825 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\funcionescelulares.cpp
+=======
+1699056100 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clscelular.h
+	"clsFecha.h"
+	"cstring"
+
+1698674872 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscliente.cpp
+	"clsCliente.h"
+
+1698674872 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clscliente.h
+	<iostream>
+	<cstdio>
+	<cstring>
+	"clsFecha.h"
+
+1698799697 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\funcionescelulares.cpp
+>>>>>>> cccfd932218ee14deaa19f592f62625985d05310
 	<iostream>
 	<cstdlib>
 	"funcionesCelulares.h"

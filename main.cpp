@@ -7,7 +7,6 @@ using namespace std;
 #include "clsFecha.h"
 #include "clsVentas.h"
 #include "funcionesVentas.h"
-
 #include "funcionesCelulares.h"
 
 int main()

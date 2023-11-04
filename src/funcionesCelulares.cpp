@@ -7,19 +7,24 @@ using namespace std;
 void MenuCelulares(){
 	int op;
     while(true){
-		system("cls");
         cout << "Menú de Celulares:" << endl;
 		cout << "1. Agregar Celular" << endl;
 		cout << "2. Reponer Stock" << endl;
 		cout << "3. Modificar Precio" << endl;
 		cout << "4. Baja de Celular" << endl;
+		cout << "5. Listar" << endl;
 		cout << "0. Salir del Menú de Celulares" << endl;
 		cout << "Elija una opción: ";
-		system("cls");
 		cin>>op;
+		system("cls");
         switch(op){
         case 1:
-            Agregar_celular();
+            if(Agregar_celular()){
+                cout<<"CELULAR CARGADO"<<endl;
+            }else{
+                cout<<"ERROR AL CARGAR CELULAR"<<endl;
+            }
+            break;
         case 2:
             Reponer_Stock();
             break;
@@ -28,24 +33,34 @@ void MenuCelulares(){
 			break;
 		case 4:
 			Baja_celular();
+			break;
+        case 5:
+            Listar_celular();
+            break;
         case 0:
             return;
         default:
             break;
         }
         system("pause");
+        system("cls");
     }
 }
-void Agregar_celular(){
+bool Agregar_celular(){
 	ArchivosCelular archi("Celulares.dat");
 	clsCelular reg;
-	reg.cargar();
-	if(archi.Cargar(reg)){
-		cout<<"El archivo fue guardado con exito."<<endl;
-	} else {
-		cout<<"Error, el archivo no fue guardado."<<endl;
+	char mod[30];
+	cout<<"MODELO: ";
+	cin.ignore();
+	cin.getline(mod,30);
+	if(archi.buscarCelular(mod) < 0 ){
+        reg.cargar(mod);
+        archi.Cargar(reg);
+        return true;
+	}else{
+        cout<<"EL MODELO YA EXISTE"<<endl;
+        return false;
 	}
-	system("pause");
 }
 void Reponer_Stock(){
 	ArchivosCelular archi("Celulares.dat");
@@ -57,7 +72,7 @@ void Reponer_Stock(){
 	cin.getline(nombre, 30);
 	int pos;
 	clsCelular reg;
-	if (archi.buscarCelular(modelo, nombre, pos, reg)) {
+	if (archi.buscarCelular(modelo)) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
@@ -83,7 +98,7 @@ void Modificar_precio(){
 	cin.getline(nombre, 30);
 	int pos;
 	clsCelular reg;
-	if (archi.buscarCelular(modelo, nombre, pos, reg)) {
+	if (archi.buscarCelular(modelo)) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
@@ -108,7 +123,7 @@ void Baja_celular(){
 	cin.getline(nombre, 30);
 	int pos;
 	clsCelular reg;
-	if (archi.buscarCelular(modelo, nombre, pos, reg)) {
+	if (archi.buscarCelular(modelo)) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
@@ -119,4 +134,14 @@ void Baja_celular(){
 		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
 	}
 	system("pause");
+}
+void Listar_celular(){
+    clsCelular r;
+    ArchivosCelular archi("Celulares.dat");
+    int tam = archi.contarRegistros();
+    for(int i=0;i<tam;i++){
+        r = archi.Leer(i);
+        r.mostrar();
+        cout<<endl;
+    }
 }

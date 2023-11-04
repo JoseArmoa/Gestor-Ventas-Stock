@@ -5,16 +5,18 @@
 #include "cstring"
 
 class clsCelular{
-private:
+protected:
     char modelo[30];
     char nombre[30];
     int marca;
     Fecha anioLanzamiento;
     float precio;
     int stock;
-    bool estado;
+    bool estado = false;
 
 public:
+    //CONSTRUCTOR
+    //clsCelular();
     //SETTERS
     void setModelo(char* cadena);
     void setNombre(char* cadena);
@@ -32,8 +34,9 @@ public:
     int getStock(){return stock;}
     bool getEstado(){return estado;}
 	//MOSTRAR CARGAR
-	void cargar();
+	void cargar(const char*);
 	void mostrar();
+	void mostrarMenos();//Este metodo solo muestra las propiedades modelo, nombre, y precio.
 };
 
 class ArchivosCelular{
@@ -56,11 +59,49 @@ public:
         return reg;
     }
     int contarRegistros();
-	bool buscarCelular(const char*,const char*,int&,clsCelular&);
+	int buscarCelular(const char* _modelo);
 	bool modificar_registro(int, clsCelular&);
 };
+///clase para crear vector dinamico de celulares para clase venta
+class vectorDinamicoCelular{
+private:
+    clsCelular *vectorCelular;
+    int tam;
+    int inicio;
+public:
+    vectorDinamicoCelular(int t);
+    ~vectorDinamicoCelular();
+    bool agregar(clsCelular r);
+    void aumentar(int t);
+    bool eliminar(const char *n);
+    void mostrar();
+    int getTam();
+    clsCelular getElemento(int);
+    const clsCelular& operator[](int);
+    vectorDinamicoCelular& operator=(const clsCelular& );
+};
 
+///CLASE PARA GUARDAR EN UN ARCHIVO LOS CELULARES VENDIDOS INDIVIDUALMENTE CON SU CODIGO DE VENTA
+class celularVendido:clsCelular{
+private:
+    int codVenta;
+public:
+    void cargar(int,clsCelular &);
+    void setCodVenta(int);
+    int getCodVenta();
+    void mostrar();
+    celularVendido& operator=(const vectorDinamicoCelular &r);
+};
 
-
+class ArchivoCelularVendido{
+private:
+    char nombreArchivo[30];
+public:
+    ArchivoCelularVendido(const char *);
+    bool cargar(celularVendido);
+    bool mostrar();
+    void modificar(int);
+    bool LeerVenta(int);
+};
 
 #endif // CLSCELULAR_H
