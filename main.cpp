@@ -8,6 +8,8 @@ using namespace std;
 #include "clsVentas.h"
 #include "funcionesVentas.h"
 #include "funcionesCelulares.h"
+#include "Reportes.h"
+#include "Configuración.h"
 
 int main()
 {
@@ -20,17 +22,22 @@ int main()
         case 1:
             menuVentas();
             break;
-
-        case 3:
-        	MenuCelulares();
-        case 2:
+		case 2:
 
             break;
+        case 3:
+        	MenuCelulares();
+        	break;
+		case 4:
+        	menuReporte();
+        	break;
+		case 5:
+			menuConfiguracion();
+			break;
         case 0:
             return 0;
         default:
             break;
         }
     }
-    return 0;
 }

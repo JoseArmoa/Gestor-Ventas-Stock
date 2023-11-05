@@ -38,12 +38,16 @@
 		<Unit filename="funcionesGlobales.cpp" />
 		<Unit filename="funcionesVentas.cpp" />
 		<Unit filename="funcionesVentas.h" />
+		<Unit filename="include/Configuración.h" />
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/clsCelular.h" />
 		<Unit filename="include/clsCliente.h" />
 		<Unit filename="include/clsFecha.h" />
 		<Unit filename="include/clsVentas.h" />
 		<Unit filename="include/funcionesCelulares.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Configuración.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/clsCelular.cpp" />
 		<Unit filename="src/clsCliente.cpp" />
 		<Unit filename="src/clsFecha.cpp" />

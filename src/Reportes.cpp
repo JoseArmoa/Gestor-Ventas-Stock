@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+#include "Reportes.h";
+
+void menuReporte() {
+    int opcion;
+    do {
+        cout << "Menú de Reportes" << endl;
+        cout << "----------------------------"<<endl;
+        cout << "1. Reporte 1" << endl;
+        cout << "2. Reporte 2" << endl;
+        cout << "3. Reporte 3" << endl;
+        cout << "4. Reporte 4" << endl;
+        cout << "5. Reporte 5" << endl;
+        cout << "6. Reporte 6" << endl;
+        cout << "0. Salir" << endl;
+        cout << "----------------------------"<<endl;
+        cout << "Selecciona una opción: ";
+
+        cin >> opcion;
+        switch (opcion) {
+            case 0:
+                cout << "Saliendo del programa." << endl;
+                return;
+            case 1:
+
+                break;
+            case 2:
+                cout << "Generando Reporte 2..." << endl;
+
+                break;
+            case 3:
+                cout << "Generando Reporte 3..." << endl;
+
+                break;
+            case 4:
+                cout << "Generando Reporte 4..." << endl;
+
+                break;
+            case 5:
+                cout << "Generando Reporte 5..." << endl;
+
+                break;
+            case 6:
+                cout << "Generando Reporte 6..." << endl;
+
+                break;
+        }
+    } while (true);
+}
+
