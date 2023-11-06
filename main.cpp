@@ -9,7 +9,7 @@ using namespace std;
 #include "funcionesVentas.h"
 #include "funcionesCelulares.h"
 #include "Reportes.h"
-#include "Configuración.h"
+#include "Configuracion.h"
 #include "funcionesClientes.h"
 
 int main()

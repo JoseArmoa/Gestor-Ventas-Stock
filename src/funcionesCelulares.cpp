@@ -8,12 +8,14 @@ void MenuCelulares(){
 	int op;
     while(true){
         cout << "Menú de Celulares:" << endl;
+        cout << "-------------------------------"<<endl;
 		cout << "1. Agregar Celular" << endl;
 		cout << "2. Reponer Stock" << endl;
 		cout << "3. Modificar Precio" << endl;
 		cout << "4. Baja de Celular" << endl;
 		cout << "5. Listar" << endl;
 		cout << "0. Salir del Menú de Celulares" << endl;
+		cout << "-------------------------------"<<endl;
 		cout << "Elija una opción: ";
 		cin>>op;
 		system("cls");
