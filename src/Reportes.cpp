@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-#include "Reportes.h";
+#include "Reportes.h"
 
 void menuReporte() {
     int opcion;

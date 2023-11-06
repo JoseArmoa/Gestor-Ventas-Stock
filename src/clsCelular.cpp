@@ -137,6 +137,16 @@ using namespace std;
         fclose(p);
 		return -1;
     }
+    bool ArchivosCelular::borrar(){
+        FILE* p = fopen("Celulares.dat", "wb");
+		if (p == NULL) {
+			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
+			return false;
+		}
+		fclose(p);
+		return true;
+    }
+
 
 	///Funciones para manejar un vector dinamico con registros tipo clsCelular.
     vectorDinamicoCelular::vectorDinamicoCelular(int t = 0){//constructor del vector dinamico
@@ -292,3 +302,12 @@ bool ArchivoCelularVendido::LeerVenta(int c){
     fclose(p);
     return false;
 }
+bool ArchivoCelularVendido::borrar(){
+        FILE* p = fopen("vendidos.dat", "wb");
+		if (p == NULL) {
+			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
+			return false;
+		}
+		fclose(p);
+		return true;
+    }

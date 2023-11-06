@@ -3,8 +3,6 @@
 #include <iostream>
 #include "clsCelular.h"
 #include "clsVentas.h"
-#include "clsCliente.h"
-#include "funcionesClientes.h"
 void menuVentas();
 bool cargarVentas();
 void listarVentas();

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-#include "Configuración.h"
+#include "Configuracion.h"
 
 void Guardar() {
     int resultado_1 = system("copy celulares.dat celulares.bkp");
@@ -30,6 +30,16 @@ void Restaurar() {
     }
     system("pause");
 }
+bool borrarTodo(){
+    ArchivoCelularVendido archiVendido("vendidos.dat");
+    ArchivoCliente archiCliente("clientes.dat");
+    ArchivosCelular archiCelular("celulares.dat");
+    ArchivosVentas archiVentas("ventas.dat");
+    if(archiVendido.borrar() && archiCliente.borrar() && archiCelular.borrar() && archiVentas.borrar()){
+        return true;
+    }
+    return false;
+}
 void menuConfiguracion() {
     int opcion;
     do {
@@ -40,6 +50,7 @@ void menuConfiguracion() {
         cout << "1. Guardar archivos" << endl;
         cout << "2. Restaurar archivos" << endl;
         cout << "3. Restaurar valores de inicio" << endl;
+        cout << "4. Borrar todo" << endl;
         cout << "---------------------------------"<<endl;
         cout << "Ingrese su opcion: ";
         cin >> opcion;
@@ -53,8 +64,12 @@ void menuConfiguracion() {
             case 2:
 				Restaurar();
                 break;
-            case 3:
+            case 4:
+                if(borrarTodo()){
 
+                }else{
+
+                }
                 break;
         }
     } while (true);

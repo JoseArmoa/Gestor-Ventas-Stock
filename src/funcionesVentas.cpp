@@ -29,38 +29,16 @@ void menuVentas(){
 bool cargarVentas(){
     clsVentas rVentas;
     clsCelular rCelular;
-    clsCliente rCliente;
-    ArchivoCliente archiCLiente("cliente.dat");
     ArchivoCelularVendido archiCelularVendido("vendidos.dat");
     ArchivosCelular archiCelular("celulares.dat");
     ArchivosVentas archiVentas("ventas.dat");
     char mod[30];
-    int tam = 1, pos,cantRegistros,dni,encontro;
+    int tam = 1, pos,cantRegistros;
     float total = 0;//acumulador que ira sumando o restando el importe a medida que añadan o eliminen articulos a la venta.
     bool bandera=true;//bandera para saber si es el primer producto a agregar.
 
     vectorDinamicoCelular v(tam);//Inicializamos vector dinamico que contiene los productos de la venta empezando el valor en 1.
-    char op;//cuando se ingrese a la funcion ventas se inicializa la opcion para automaticamente añadir un producto a la venta.
-    std::cout<<"DNI: ";
-    std::cin>>dni;
-    encontro = archiCLiente.leerDni(dni);
-    if(encontro >-1){
-        rCliente = archiCLiente.leer(encontro);
-    }else{
-        std::cout<<"CLIENTE NO EXISTE"<<std::endl;
-        std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
-        std::cout<<"A: AGREGAR   Q: CANCELAR";
-        std::cin>>op;
-        if(op=='A' || op == 'a'){
-            if(agregarCliente()){
-                 std::cout<<"CLIENTE AGREGADO"<<std::endl;
-                 system("cls");
-            }else{
-                std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
-                op = 'q';
-            }
-        }
-    }
+    char op = 'a';//cuando se ingrese a la funcion ventas se inicializa la opcion para automaticamente añadir un producto a la venta.
     while(true){
             switch(op){
             case 'A':case 'a':///CASO A PARA AGREGA PRODUCTO A LA VENTA
@@ -97,7 +75,7 @@ bool cargarVentas(){
                 cantRegistros= archiVentas.contarRegistros();
                 if(cantRegistros == -1){
                     rVentas.setCodVenta(1);
-                    rVentas.setDniCliente(rCliente.getDNI());
+                    rVentas.setDniCliente(1111);
                     rVentas.setCantidad(tam);
                     rVentas.setTotal(total);
                     guardarVectorArchivo(v,tam,1);
@@ -105,10 +83,10 @@ bool cargarVentas(){
                     return true;
                 }else{
                     rVentas.setCodVenta(cantRegistros+1);
-                    rVentas.setDniCliente(rCliente.getDNI());
+                    rVentas.setDniCliente(1111);
                     rVentas.setCantidad(tam);
                     rVentas.setTotal(total);
-                    guardarVectorArchivo(v,tam,cantRegistros);
+                    guardarVectorArchivo(v,tam,cantRegistros+1);
                     archiVentas.Cargar(rVentas);
                     return true;
                 }
@@ -132,8 +110,6 @@ bool cargarVentas(){
         }
         system("pause");
         system("cls");
-        rCliente.mostrarMenos();
-        std::cout<<std::endl;
         v.mostrar();
         std::cout<<std::endl;
         std::cout<<std::endl;

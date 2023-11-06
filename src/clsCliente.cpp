@@ -73,7 +73,10 @@ void clsCliente::Mostrar(){
         cout<<"------------"<<endl;
         //cout<<estado;
 }
-
+void clsCliente::mostrarMenos(){
+    cout<<"DNI: "<<dni<<" NOMBRE: "<<nombre<<endl;
+    cout<<"    APELLIDO: "<<apellido<<" TELEFONO: "<<telefono;
+}
 
 ArchivoCliente::ArchivoCliente(const char *n){
     strcpy(nombreArchivo,n);
@@ -170,4 +173,13 @@ bool ArchivoCliente::modificarRegistro(int pos, const clsCliente &r){
     fclose(p);
     return false;
 }
+bool ArchivoCliente::borrar(){
+        FILE* p = fopen("cliente.dat", "wb");
+		if (p == NULL) {
+			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
+			return false;
+		}
+		fclose(p);
+		return true;
+    }
 

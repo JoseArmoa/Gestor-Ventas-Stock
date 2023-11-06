@@ -61,6 +61,7 @@ public:
     int contarRegistros();
 	int buscarCelular(const char* _modelo);
 	bool modificar_registro(int, clsCelular&);
+	bool borrar();
 };
 ///clase para crear vector dinamico de celulares para clase venta
 class vectorDinamicoCelular{
@@ -102,6 +103,7 @@ public:
     bool mostrar();
     void modificar(int);
     bool LeerVenta(int);
+    bool borrar();
 };
 
 #endif // CLSCELULAR_H

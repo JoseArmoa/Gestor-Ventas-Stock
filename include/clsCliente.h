@@ -33,6 +33,7 @@ public:
     ///Metodos Principales
     void Cargar(int);
     void Mostrar();
+    void mostrarMenos();
 };
 
 class ArchivoCliente{
@@ -45,5 +46,6 @@ public:
     int contarRegistros();
     int leerDni(int dni);
     bool modificarRegistro(int pos, const clsCliente &r);
+    bool borrar();
 };
 #endif // CLSCLIENTE_H

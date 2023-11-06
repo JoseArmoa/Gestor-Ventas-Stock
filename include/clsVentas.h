@@ -47,7 +47,7 @@ public:
     bool Cargar(clsVentas r);
     void Leer();
     int contarRegistros();
-
+    bool borrar();
 };
 
 
