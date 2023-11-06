@@ -1,8 +1,9 @@
 #ifndef FUNCIONESCLIENTES_H_INCLUDED
 #define FUNCIONESCLIENTES_H_INCLUDED
 
+
 void menuClientes();
-bool AgregarCliente();
+bool agregarCliente();
 void listarClientes();
 bool bajaCliente();
 

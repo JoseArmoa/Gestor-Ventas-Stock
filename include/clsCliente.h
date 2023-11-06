@@ -31,7 +31,7 @@ public:
     Fecha getFecha();
     bool getEstado();
     ///Metodos Principales
-    void Cargar();
+    void Cargar(int);
     void Mostrar();
 };
 

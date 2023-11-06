@@ -35,10 +35,17 @@ Fecha clsCliente::getFecha(){return fechaNacimiento;}
 bool clsCliente::getEstado(){return estado;}
 
 ///Metodos Principales
-void clsCliente::Cargar(){
+void clsCliente::Cargar(int d=-1){
 
         cout<<"------AGREGAR CLIENTE------"<<endl;
-        cout<<"DNI: "<<dni<<endl;
+        if(d==-1){
+
+        cout<<"DNI: "<<endl;
+        cin>>dni;
+        }
+        else {
+            dni=d;
+        }
         cout<<"Nombre: ";
         cin.ignore();
         cin.getline(nombre, 30);

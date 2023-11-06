@@ -63,7 +63,7 @@
 
 1698714533 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clsfecha.h
 
-1699233819 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\main.cpp
+1699238669 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\main.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -74,6 +74,7 @@
 	"funcionesCelulares.h"
 	"Reportes.h"
 	"Configuración.h"
+	"funcionesClientes.h"
 
 1698714533 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clsfecha.cpp
 	<iostream>
@@ -86,7 +87,7 @@
 1699237098 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clscliente.cpp
 	"clsCliente.h"
 
-1699237098 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscliente.h
+1699239612 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscliente.h
 	<iostream>
 	<cstdio>
 	<cstring>
@@ -363,4 +364,10 @@
 	<iostream>
 	<cstdlib>
 	"Reportes.h"
+
+1699238867 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesclientes.h
+
+1699239588 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesclientes.cpp
+	<iostream>
+	"clsCliente.h"
 

@@ -10,6 +10,7 @@ using namespace std;
 #include "funcionesCelulares.h"
 #include "Reportes.h"
 #include "Configuración.h"
+#include "funcionesClientes.h"
 
 int main()
 {
