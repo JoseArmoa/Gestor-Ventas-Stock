@@ -33,7 +33,6 @@ public:
     ///Metodos Principales
     void Cargar();
     void Mostrar();
-    void bajaLogica(int dni);
 };
 
 class ArchivoCliente{
@@ -42,7 +41,9 @@ private:
 public:
     ArchivoCliente(const char *n);
     bool Cargar(clsCliente r);
-    void leer();
+    clsCliente leer(int pos);
     int contarRegistros();
+    int leerDni(int dni);
+    bool modificarRegistro(int pos, const clsCliente &r);
 };
 #endif // CLSCLIENTE_H

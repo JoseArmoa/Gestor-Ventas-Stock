@@ -87,19 +87,25 @@ bool ArchivoCliente::Cargar(clsCliente r){
     return false;
 }
 
-void ArchivoCliente::leer(){
+clsCliente ArchivoCliente::leer(int pos){
     clsCliente r;
+    r.setEstado(false);
     FILE *p;
-    p = fopen(nombreArchivo,"rb");
+    p=fopen(nombreArchivo, "rb");
     if(p==NULL){
-        std::cout<<"ERROR ARCHIVO"<<std::endl;
-    }
-    while(fread(&r,sizeof(clsCliente),1,p)==1){
-        //r.Mostrar();
-        //manu: comente el r.mostrar() porque en mi opinion no va ahi. Fijense y me dicen. En algunos metodos la funcion leer se usa en bucles y mostraria en todo ese bucle todo lo q lee.
+        cout<<"ERROR DE ARCHIVO"<<endl;
+        return r;
     }
 
+    fseek(p, (sizeof(clsCliente)*pos), 0);
+    if(fread(&r, sizeof(clsCliente), 1, p)==1){
+        fclose(p);
+        return r;
+    }
+
+    r.setEstado(false);
     fclose(p);
+    return r;
 
     }
 
@@ -116,5 +122,45 @@ void ArchivoCliente::leer(){
         return cant/sizeof(clsCliente);
     }
 
+int ArchivoCliente::leerDni(int dni){
 
+    clsCliente r;
+    FILE *p;
+    p=fopen(nombreArchivo, "rb");
+    if(p==NULL){
+        cout<<"ERROR DE ARCHIVO"<<endl;
+        return -2;
+    }
+    int posicion=0;
+    while(fread(&r, sizeof(clsCliente),1,p)==1){
+        if(r.getDNI()== dni){
+           fclose(p);
+           return 0;
+        }
+        posicion++;
+    }
+
+    fclose(p);
+    return -1;
+
+}
+
+bool ArchivoCliente::modificarRegistro(int pos, const clsCliente &r){
+
+    FILE *p;
+    p=fopen(nombreArchivo, "rb+");
+    if(p==NULL){
+        cout<<"ERROR DE ARCHIVO"<<endl;
+        return false;
+    }
+
+    fseek(p, (sizeof(clsCliente)*pos), 0);
+
+    if(fwrite(&r, sizeof(clsCliente), 1, p)== 1){
+        fclose(p);
+        return true;
+    }
+    fclose(p);
+    return false;
+}
 
