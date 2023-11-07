@@ -55,29 +55,45 @@ bool Agregar_celular(){
 	cout<<"MODELO: ";
 	cin.ignore();
 	cin.getline(mod,30);
-	if(archi.buscarCelular(mod) < 0 ){
+	int pos = archi.buscarCelular(mod);
+	reg = archi.Leer(pos);
+	if( pos < 0){
         reg.cargar(mod);
         archi.Cargar(reg);
         return true;
 	}else{
-        cout<<"EL MODELO YA EXISTE"<<endl;
-        return false;
+        if(reg.getEstado()){
+            cout<<"MODELO EXISTENTE"<<endl;
+            return false;
+        }else{
+            cout<<"MODELO CORRESPONDE A REGISTRO DADO DE BAJA"<<endl;
+            cout<<"PRESIONE Y PARA VOLVER A DAR DE ALTA   CUALQUIER OTRA PARA CANCELAR"<<endl;
+            char op;
+            cin>>op;
+            if(op == 'y' || op =='Y'){
+                reg.setEstado(true);
+                archi.modificar_registro(pos,reg);
+                return true;
+            }else{
+                return false;
+            }
+        }
 	}
 }
 void Reponer_Stock(){
 	ArchivosCelular archi("Celulares.dat");
-	char modelo[30], nombre[30];
+	char modelo[30];
 	cout << "Ingrese el modelo (hasta 30 caracteres): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
-	cout << "Ingrese el nombre (hasta 30 caracteres): ";
-	cin.getline(nombre, 30);
 	int pos;
 	clsCelular reg;
-	if (archi.buscarCelular(modelo)) {
+	pos = archi.buscarCelular(modelo);
+	if (pos < 0) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
+	reg = archi.Leer(pos);
 	int stock_nuevo;
 	cout<<"Ingrese el nuevo stock a reponer: ";
 	cin>>stock_nuevo;
@@ -88,7 +104,6 @@ void Reponer_Stock(){
 	} else{
 		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
 	}
-	system("pause");
 }
 void Modificar_precio(){
 	ArchivosCelular archi("Celulares.dat");
@@ -96,14 +111,13 @@ void Modificar_precio(){
 	cout << "Ingrese el modelo (hasta 30 caracteres): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
-	cout << "Ingrese el nombre (hasta 30 caracteres): ";
-	cin.getline(nombre, 30);
-	int pos;
+	int pos = archi.buscarCelular(modelo);
 	clsCelular reg;
-	if (archi.buscarCelular(modelo)) {
+	if (pos < 0) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
+	reg = archi.Leer(pos);
 	float _precio;
 	cout<<"Ingrese el nuevo precio: "<<endl;
 	cin>>_precio;
@@ -113,29 +127,26 @@ void Modificar_precio(){
 	} else{
 		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
 	}
-	system("pause");
 }
 void Baja_celular(){
 	ArchivosCelular archi("Celulares.dat");
-	char modelo[30], nombre[30];
+	char modelo[30];
 	cout << "Ingrese el modelo (hasta 30 caracteres): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
-	cout << "Ingrese el nombre (hasta 30 caracteres): ";
-	cin.getline(nombre, 30);
-	int pos;
+	int pos=archi.buscarCelular(modelo);
 	clsCelular reg;
-	if (archi.buscarCelular(modelo)) {
+	if (pos < 0) {
 		cout << "El celular no existe" << endl;
 		return;
 	}
+	reg = archi.Leer(pos);
 	reg.setEstado(false);
 	if(archi.modificar_registro(pos,reg)){
 		cout<<"El archivo fue modificado con exito"<<endl;
 	} else{
 		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
 	}
-	system("pause");
 }
 void Listar_celular(){
     clsCelular r;

@@ -30,7 +30,7 @@ bool cargarVentas(){
     clsVentas rVentas;
     clsCelular rCelular;
     clsCliente rCliente;
-    ArchivoCliente archiCLiente("cliente.dat");
+    ArchivoCliente archiCLiente("clientes.dat");
     ArchivoCelularVendido archiCelularVendido("vendidos.dat");
     ArchivosCelular archiCelular("celulares.dat");
     ArchivosVentas archiVentas("ventas.dat");
@@ -44,7 +44,7 @@ bool cargarVentas(){
     std::cout<<"DNI: ";
     std::cin>>dni;
     encontro = archiCLiente.leerDni(dni);
-    if(encontro >-1){
+    if(encontro > -1){
         rCliente = archiCLiente.leer(encontro);
     }else{
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
@@ -54,6 +54,7 @@ bool cargarVentas(){
         if(op=='A' || op == 'a'){
             if(agregarCliente()){
                  std::cout<<"CLIENTE AGREGADO"<<std::endl;
+                 system("pause");
                  system("cls");
             }else{
                 std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
@@ -71,9 +72,13 @@ bool cargarVentas(){
                   pos = archiCelular.buscarCelular(mod);
                   if(pos != -1){//verifica que el modelo exista en el archivo
                     rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
-                    total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
-                    v.agregar(rCelular);//agregamos el registro al vector dinamico.
-                    bandera = false;
+                    if(rCelular.getDisponibilidad()){
+                        total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
+                        v.agregar(rCelular);//agregamos el registro al vector dinamico.
+                        bandera = false;
+                    }else{
+                        std::cout<<"PRODUCTO SIN STOCK O NO DISPONIBLE"<<std::endl;
+                    }
                   }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
                   }
@@ -84,10 +89,14 @@ bool cargarVentas(){
                     int pos = archiCelular.buscarCelular(mod);
                     if(pos != -1){
                       rCelular = archiCelular.Leer(pos);
-                      total += rCelular.getPrecio();
-                      tam++;//incrementamos la variable que contiene la cantidad de registros.
-                      v.aumentar(tam);//incrementamos el vector dinamico
-                      v.agregar(rCelular);//agregamos el nuevo registro(la funcion siempre va a carga en la ultima posicion disponible)
+                      if(rCelular.getDisponibilidad()){
+                        total += rCelular.getPrecio();
+                        tam++;//incrementamos la variable que contiene la cantidad de registros.
+                        v.aumentar(tam);//incrementamos el vector dinamico
+                        v.agregar(rCelular);//agregamos el nuevo registro(la funcion siempre va a carga en la ultima posicion disponible)
+                      }else{
+                        std::cout<<"PRODUCTO SIN STOCK O NO DISPONIBLE"<<std::endl;
+                      }
                     }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
                     }
@@ -163,7 +172,12 @@ void descontarStock(clsCelular &r){
     ArchivosCelular archiCelular("celulares.dat");
     int pos = archiCelular.buscarCelular(r.getModelo());
     r.setStock(r.getStock()-1);
-    archiCelular.modificar_registro(pos, r);
+    if(r.getStock()==0){
+        r.setDisponibilidad(false);
+        archiCelular.modificar_registro(pos,r);
+    }else{
+        archiCelular.modificar_registro(pos,r);
+    }
 }
 void mostrarMenuVentas(){
     std::cout<<"MENU VENTAS"<<std::endl;

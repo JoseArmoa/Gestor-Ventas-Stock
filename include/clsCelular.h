@@ -12,6 +12,7 @@ protected:
     Fecha anioLanzamiento;
     float precio;
     int stock;
+    bool Disponibilidad;
     bool estado = false;
 
 public:
@@ -25,6 +26,7 @@ public:
     void setPrecio(float p);
     void setStock(int s);
     void setEstado(bool e);
+    void setDisponibilidad(bool);
     //GETTERS
     char* getModelo(){return modelo;}
     char* getNombre(){return nombre;}
@@ -33,6 +35,7 @@ public:
     float getPrecio(){return precio;}
     int getStock(){return stock;}
     bool getEstado(){return estado;}
+    bool getDisponibilidad(){return Disponibilidad;}
 	//MOSTRAR CARGAR
 	void cargar(const char*);
 	void mostrar();

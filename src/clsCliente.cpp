@@ -50,10 +50,8 @@ void clsCliente::Cargar(int d=-1){
         cin.ignore();
         cin.getline(nombre, 30);
         cout<<"Apellido: ";
-        cin.ignore();
         cin.getline(apellido, 30);
         cout<<"Telefono: ";
-        cin.ignore();
         cin.getline(telefono, 30);
         cout<<"Fecha: "<<endl;
         fechaNacimiento.Cargar();
@@ -145,7 +143,7 @@ int ArchivoCliente::leerDni(int dni){
     while(fread(&r, sizeof(clsCliente),1,p)==1){
         if(r.getDNI()== dni){
            fclose(p);
-           return 0;
+           return posicion;
         }
         posicion++;
     }
@@ -174,7 +172,7 @@ bool ArchivoCliente::modificarRegistro(int pos, const clsCliente &r){
     return false;
 }
 bool ArchivoCliente::borrar(){
-        FILE* p = fopen("cliente.dat", "wb");
+        FILE* p = fopen(nombreArchivo, "wb");
 		if (p == NULL) {
 			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
 			return false;

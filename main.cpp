@@ -24,7 +24,7 @@ int main()
             menuVentas();
             break;
 		case 2:
-
+            menuClientes();
             break;
         case 3:
         	MenuCelulares();

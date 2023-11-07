@@ -31,6 +31,9 @@ using namespace std;
     void clsCelular::setEstado(bool e){
 		estado=e;
     }
+    void clsCelular::setDisponibilidad(bool e){
+		Disponibilidad=e;
+    }
 	void clsCelular::cargar(const char *n){
 		if(n==nullptr){
             cout << "Ingrese el modelo (hasta 30 caracteres): ";
@@ -52,10 +55,13 @@ using namespace std;
 
 		cout << "Ingrese el precio: ";
 		cin >> precio;
-
+        int s;
 		cout << "Ingrese la cantidad en stock: ";
-		cin >> stock;
-
+		cin >> s;
+		setStock(s);
+        if(s > 0){
+            setDisponibilidad(true);
+        }else setDisponibilidad(false);
 		setEstado(true);
 	}
 	void clsCelular::mostrar() {
@@ -121,7 +127,7 @@ using namespace std;
 
 	int ArchivosCelular::buscarCelular(const char* _modelo) {
 		clsCelular reg;
-		FILE* p = fopen("Celulares.dat", "rb");
+		FILE* p = fopen(nombreArchivo, "rb");
 		if (p == NULL) {
 			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
 			return -2;

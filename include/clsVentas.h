@@ -10,7 +10,6 @@ class clsVentas
         int codVenta;
         int dniCliente;
         int cant;
-        //clsCelular *vectorCelulares;
         Fecha diaVenta;
         float total;
         bool estado;
@@ -21,7 +20,6 @@ class clsVentas
         void setCodVenta(int c);
         void setDniCliente(int d);
         void setCantidad(int d);
-        //void setVectorCelulares(vectorDinamicoCelular &, int);
         void setFecha(Fecha f);
         void setTotal(float t);
         void setEstado(bool e);

@@ -35,25 +35,18 @@ void listarClientes(){
 		cout << "\n";
 	}
 }
-void bajaCliente(){
+bool bajaCliente(){
+	clsCliente r;
 	ArchivoCliente archi ("clientes.dat");
 	int dni;
-	bool estado=false;
 	cout << "Introduzca el numero de documento: ";
 	cin >> dni;
-	int cant=archi.contarRegistros();
-	for(int i=0;i<cant;i++){
-		clsCliente reg=archi.leer(i);
-		if (reg.getDNI()==dni){
-			reg.setEstado(false);
-			estado=archi.modificarRegistro(i,reg);
-		}
+	int pos = archi.leerDni(dni);
+	if(pos > -1){
+        r = archi.leer(pos);
 	}
-	if (estado){
-		cout << "La baja fue exitosa"<<endl;
-	} else {
-		cout << "Error, la baja no se pudo hacer"<<endl;
-	}
+	r.setEstado(false);
+	return archi.modificarRegistro(pos,r);
 }
 void menuClientes(){
 	int op;
@@ -80,7 +73,11 @@ void menuClientes(){
         	listarClientes();
             break;
 		case 3:
-			bajaCliente();
+			if(bajaCliente()){
+                cout<<"BAJA EXITOSA"<<endl;
+			}else{
+                cout<<"ERROR AL DAE BAJA"<<endl;
+			}
 			break;
         case 0:
             return;

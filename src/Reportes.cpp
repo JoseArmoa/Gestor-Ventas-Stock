@@ -24,17 +24,22 @@ void menuReporte() {
                 cout << "Saliendo del programa." << endl;
                 return;
             case 1:
-
+            //DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERE
                 break;
             case 2:
                 cout << "Generando Reporte 2..." << endl;
-
+            //DADA DOS FECHAS, DEVOLVER EL TOTAL FACTURADO EN ESE RANGO DE TIEMPO
                 break;
             case 3:
                 cout << "Generando Reporte 3..." << endl;
 
                 break;
             case 4:
+
+            /*char  n[30];
+            strcpy(n,r.getNombre());
+            strcat(n,".dat");
+            ArchivoCliente archi(n);*/
                 cout << "Generando Reporte 4..." << endl;
 
                 break;
