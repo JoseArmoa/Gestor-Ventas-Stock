@@ -108,27 +108,34 @@ void punto_5(){
     celularVendido r;
     ArchivoCelularVendido archiCelVendido("vendidos.dat");
 
-    FILE *p;
+    int *vecContador;
 
-    /*p=fopen("vendidos.dat", "rb");
+    vecContador = new int[r1.contarRegistros()];
+    vecContador = {};
 
-    if(p==NULL){
-        cout<<"ERROR DE ARCHIVO."<<endl;
-        fclose(p);
-        return;
-    }*/
-
-    int cantModelos=r1.contarRegistros();
-
-    int* arr = new int[cantModelos];
-
-    for(int i=0; i<cantModelos; i++){
-        arr[i]=0;
+    int pos;
+    for(int i=0; i<archiCelVendido.contarRegistros(); i++){
+        r = archiCelVendido.Leer(i);
+        pos=r1.buscarCelular(r.getModelo());
+        vecContador[pos]++;
     }
+
+    int mayor=0; //guarda la cantidad de veces q se vendio un celular
+    int posMayor=0; //guarda en q posicion del array se encuentra el modelo mas vendido
 
     for(int i=0; i<archiCelVendido.contarRegistros(); i++){
-        //archiCelVendido.Leer().getModelo();
+        if(vecContador[i]>mayor){
+            posMayor=i;
+        }
     }
+
+    r=archiCelVendido.Leer(posMayor);
+    cout<<"EL MODELO MAS VENDIDO ES EL "<<r.getModelo()<<endl;
+
+
+
+    delete [] vecContador;
+    vecContador=NULL;
     //tendria q hacer una enumerador con los modelos y q un numero represente a cada modelo o agregarle a la clase celular un codigo para cada modelo
 
 
@@ -195,8 +202,7 @@ void menuReporte() {
 
                 break;
             case 5:
-                cout << "Generando Reporte 5..." << endl;
-
+                punto_5();
                 break;
             case 6:
                 punto_6();

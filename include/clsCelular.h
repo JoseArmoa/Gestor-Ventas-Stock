@@ -19,6 +19,7 @@ protected:
 public:
     //CONSTRUCTOR
     clsCelular(const char* _modelo, const char* _nombre, const char* _marca, const Fecha& _anioLanzamiento, float _precio, int _stock) {
+        //strncpy y strcpy funcionan las dos?
         strncpy(modelo, _modelo, sizeof(modelo) - 1);
         strncpy(nombre, _nombre, sizeof(nombre) - 1);
         strcpy(Marca_celu,_marca);

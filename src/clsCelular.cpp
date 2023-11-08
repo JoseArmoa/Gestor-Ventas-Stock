@@ -268,6 +268,8 @@ void celularVendido::setEstado(bool e){
 int celularVendido::getCodVenta(){
     return codVenta;
 }
+
+
 void celularVendido::mostrar(){
     clsCelular::mostrarMenos();
     }
@@ -303,6 +305,8 @@ bool ArchivoCelularVendido::mostrar(){
     fclose(p);
     return false;
 }
+
+//pos no se usaba en el metodo. No lo probe pero sin el pos se supone que siempre leia el primer registro
 celularVendido ArchivoCelularVendido::Leer(int pos){
     celularVendido r;
     r.setEstado(false);
@@ -310,7 +314,7 @@ celularVendido ArchivoCelularVendido::Leer(int pos){
     if(p==NULL){
         return r;
     }
-    fseek(p,sizeof(celularVendido),0);
+    fseek(p,sizeof(celularVendido)*pos,0);
     if(fread(&r,sizeof(celularVendido),1,p)==1){
         fclose(p);
         return r;

@@ -53,7 +53,7 @@
 	<iostream>
 	"clsCelular.h"
 
-1699412152 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesventas.cpp
+1699482027 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesventas.cpp
 	"funcionesVentas.h"
 
 1699322103 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesventas.h
@@ -63,7 +63,7 @@
 	"clsCliente.h"
 	"funcionesClientes.h"
 
-1699412152 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clsventas.h
+1699482027 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clsventas.h
 	<iostream>
 	<cstring>
 	"clsFecha.h"
@@ -85,12 +85,12 @@
 	"Configuracion.h"
 	"funcionesClientes.h"
 
-1699412152 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clsfecha.cpp
+1699482027 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clsfecha.cpp
 	<iostream>
 	<ctime>
 	"clsFecha.h"
 
-1699412152 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clsventas.cpp
+1699482027 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clsventas.cpp
 	"clsVentas.h"
 
 1699412152 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clscliente.cpp
@@ -234,7 +234,7 @@
 
 1699412152 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\funcionescelulares.h
 
-1699415528 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clscelular.cpp
+1699484682 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\src\clscelular.cpp
 	<iostream>
 	<cstdlib>
 	"clsCelular.h"
@@ -255,7 +255,7 @@
 	"funcionesCelulares.h"
 	"clsCelular.h"
 
-1699415375 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscelular.h
+1699484682 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\clscelular.h
 	"clsFecha.h"
 	<cstring>
 	"clsMarca.h"
@@ -378,7 +378,7 @@
 	<cstdlib>
 	"Configuración.h"
 
-1699414796 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\reportes.h
+1699482027 e:\cbp\gestor de stock de celulares\gestor-ventas-stock\include\reportes.h
 	<cstring>
 	"clsCelular.h"
 	"clsVentas.h"
