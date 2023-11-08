@@ -43,7 +43,7 @@ private:
 public:
     ArchivosVentas(const char *v);
     bool Cargar(clsVentas r);
-    void Leer();
+    clsVentas Leer(int);
     int contarRegistros();
     bool borrar();
 };

@@ -53,7 +53,21 @@ void punto_1() {
 void punto_3(){
 	ArchivosVentas archi_venta("ventas.dat");
 	ArchivoCliente archi_cliente("clientes.dat");
-
+	int pos_reg=archi_venta.contarRegistros();
+	int dni;
+	bool estado=false;
+	cout<<"Ingrese el dni del cliente";
+	cin >> dni;
+	for (int i=0;i<pos_reg;i++){
+		clsVentas reg = archi_venta.Leer(i);
+		if (reg.getDniCliente()==dni){
+			estado=true;
+			reg.Mostrar();
+		}
+	}
+	if (!estado){
+		cout <<"No hay archivos"<<endl;
+	}
 }
 void punto_2(){
     Fecha desde, hasta;
@@ -89,7 +103,6 @@ void punto_5(){
         arr[i]=0;
     }
 
-
     for(int i=0; i<archiCelVendido.contarRegistros(); i++){
         //archiCelVendido.Leer().getModelo();
     }
@@ -105,8 +118,7 @@ void menuReporte() {
         cout << "----------------------------"<<endl;
         cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
-        cout << "3. CREAR ARCHIVO CLIENTE CON LOS CELULARES QUE COMPRO" << endl;
-        cout << "4. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
+        cout << "3. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "5. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
         cout << "6. Reporte 6" << endl;
         cout << "0. Salir" << endl;
@@ -126,11 +138,8 @@ void menuReporte() {
             //DADA DOS FECHAS, DEVOLVER EL TOTAL FACTURADO EN ESE RANGO DE TIEMPO
                 break;
             case 3:
-                cout << "Generando Reporte 3..." << endl;
-
-                break;
-            case 4:
-
+            	punto_3();
+				break;
             /*char  n[30];
             strcpy(n,r.getNombre());
             strcat(n,".dat");

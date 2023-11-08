@@ -85,17 +85,15 @@ bool ArchivosVentas::Cargar(clsVentas r){
     return false;
 }
 
-void ArchivosVentas::Leer(){
-    clsVentas r;
-    FILE *p;
-    p = fopen(nombreArchivo,"rb");
-    if(p==NULL){
-        std::cout<<"ERROR ARCHIVO"<<std::endl;
-    }
-    while(fread(&r,sizeof(clsVentas),1,p)){
-        r.Mostrar();
-    }
-    fclose(p);
+clsVentas ArchivosVentas::Leer(int pos){
+        clsVentas reg;
+        FILE *p;
+        p=fopen(nombreArchivo, "rb");
+        if(p==NULL) return reg;
+        fseek(p, sizeof (reg)* pos,0);
+        fread(&reg, sizeof reg,1, p);
+        fclose(p);
+        return reg;
     }
 
     int ArchivosVentas::contarRegistros(){

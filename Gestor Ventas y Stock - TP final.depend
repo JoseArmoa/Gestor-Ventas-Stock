@@ -481,3 +481,112 @@
 	<cstdlib>
 	"Configuracion.h"
 
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcionesclientes.cpp
+	<iostream>
+	"clsCliente.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\clscliente.h
+	<iostream>
+	<cstdio>
+	<cstring>
+	"clsFecha.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\clsfecha.h
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcionesglobales.cpp
+	"funcioneGlobales.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcioneglobales.h
+	<iostream>
+	"clsCelular.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\clscelular.h
+	"clsFecha.h"
+	<cstring>
+	"clsMarca.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\clsmarca.h
+	<cstring>
+
+1699466601 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcionesventas.cpp
+	"funcionesVentas.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcionesventas.h
+	<iostream>
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+	"funcionesClientes.h"
+
+1699466534 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\clsventas.h
+	<iostream>
+	<cstring>
+	"clsFecha.h"
+	"clsCelular.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\funcionesclientes.h
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<vector>
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	"clsVentas.h"
+	"funcionesVentas.h"
+	"funcionesCelulares.h"
+	"Reportes.h"
+	"Configuracion.h"
+	"funcionesClientes.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\funcionescelulares.h
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\reportes.h
+	<cstring>
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+
+1699457628 c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\include\configuracion.h
+	"clsCelular.h"
+	"clsCliente.h"
+	"clsVentas.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\clscelular.cpp
+	<iostream>
+	<cstdlib>
+	"clsCelular.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\clscliente.cpp
+	"clsCliente.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\clsfecha.cpp
+	<iostream>
+	<ctime>
+	"clsFecha.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\clsmarca.cpp
+	<iostream>
+	<cstdlib>
+	"clsMarca.h"
+
+1699466452 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\clsventas.cpp
+	"clsVentas.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\configuracion.cpp
+	<iostream>
+	<cstdlib>
+	"Configuracion.h"
+
+1699457628 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\funcionescelulares.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesCelulares.h"
+	"clsCelular.h"
+
+1699466564 source:c:\users\user\documents\archivos modelo parcial 1\gestor-ventas-stock\src\reportes.cpp
+	<iostream>
+	<cstdlib>
+	"Reportes.h"
+

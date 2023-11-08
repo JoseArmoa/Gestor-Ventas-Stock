@@ -154,7 +154,11 @@ bool cargarVentas(){
 }
 void listarVentas(){
     ArchivosVentas archi("ventas.dat");
-    archi.Leer();
+    int tam= archi.contarRegistros();
+    for(int i=0;i<tam;i++){
+		clsVentas reg = archi.Leer(i);
+		reg.Mostrar();
+    }
 }
 void guardarVectorArchivo(vectorDinamicoCelular &v,int tam, int c){
     ArchivoCelularVendido archi("vendidos.dat");
