@@ -111,7 +111,7 @@ void ArchivosVentas::Leer(){
         return cant/sizeof(clsVentas);
     }
     bool ArchivosVentas::borrar(){
-        FILE* p = fopen("ventas.dat", "wb");
+        FILE* p = fopen(nombreArchivo, "wb");
 		if (p == NULL) {
 			std::cout << "ERROR AL ABRIR EL ARCHIVO" << std::endl;
 			return false;

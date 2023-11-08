@@ -8,8 +8,9 @@ void Guardar() {
     int resultado_2 = system("copy clientes.dat clientes.bkp");
     int resultado_3 = system("copy ventas.dat ventas.bkp");
     int resultado_4 = system("copy vendidos.dat vendidos.bkp");
+    int resultado_5 = system("copy marcas.dat marcas.bkp");
 
-    if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0) {
+    if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0 && resultado_5 == 0) {
         cout << "Archivos copiados exitosamente." << endl;
     } else {
         cout << "Error al copiar los archivos." << endl;
@@ -22,8 +23,9 @@ void Restaurar() {
     int resultado_2 = system("copy clientes.bkp clientes.dat");
     int resultado_3 = system("copy ventas.bkp ventas.dat");
     int resultado_4 = system("copy vendidos.bkp vendidos.dat");
+    int resultado_5 = system("copy marcas.bkp marcas.dat");
 
-    if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0) {
+    if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0 && resultado_5 == 0) {
         cout << "Archivos restaurados exitosamente." << endl;
     } else {
         cout << "Error al restaurar los archivos." << endl;
@@ -35,10 +37,21 @@ bool borrarTodo(){
     ArchivoCliente archiCliente("clientes.dat");
     ArchivosCelular archiCelular("celulares.dat");
     ArchivosVentas archiVentas("ventas.dat");
-    if(archiVendido.borrar() && archiCliente.borrar() && archiCelular.borrar() && archiVentas.borrar()){
+    ArchivoMarca archiMarca("marcas.dat");
+    if(archiVendido.borrar() && archiCliente.borrar() && archiCelular.borrar() && archiVentas.borrar() && archiMarca.borrar()){
         return true;
     }
     return false;
+}
+void ValoresInicio(){
+	int resultado_1 = system("copy marcasValoresInicio.dat marcas.dat");
+	int resultado_2 = system("copy clientesValoresInicio.dat clientes.dat");
+	int resultado_3 = system("copy celularesValoresInicio.dat celulares.dat");
+	if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 ) {
+        cout << "Archivos restaurados exitosamente." << endl;
+    } else {
+        cout << "Error al restaurar los archivos." << endl;
+    }
 }
 void menuConfiguracion() {
     int opcion;
@@ -49,7 +62,7 @@ void menuConfiguracion() {
 		cout << "---------------------------------"<<endl;
         cout << "1. Guardar archivos" << endl;
         cout << "2. Restaurar archivos" << endl;
-        cout << "3. Restaurar valores de inicio" << endl;
+        cout << "3. Valores de inicio" << endl;
         cout << "4. Borrar todo" << endl;
         cout << "---------------------------------"<<endl;
         cout << "Ingrese su opcion: ";
@@ -64,14 +77,17 @@ void menuConfiguracion() {
             case 2:
 				Restaurar();
                 break;
-            case 4:
-                if(borrarTodo()){
-
-                }else{
-
+			case 3:ValoresInicio();
+				break;
+			case 4:
+                if (borrarTodo()) {
+                    cout << "Archivos eliminados exitosamente." << endl;
+                } else {
+                    cout << "Error al eliminar archivos." << endl;
                 }
                 break;
         }
+        system("pause");
     } while (true);
 }
 

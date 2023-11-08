@@ -13,11 +13,11 @@ Fecha::Fecha(){
 
 }
 
-Fecha::Fecha(int d, int m, int a)
-    :dia(0),mes(0),anio(0)
-    {
-
-    }
+Fecha::Fecha(int d, int m, int a){
+	dia=d;
+	mes=m;
+	anio=a;
+}
 
  bool Fecha::Cargar(){
      int d,m,a;

@@ -3,12 +3,13 @@
 
 #include "clsFecha.h"
 #include "cstring"
+#include "clsMarca.h"
 
 class clsCelular{
 protected:
     char modelo[30];
     char nombre[30];
-    int marca;
+    clsMarca* Marca_celu;
     Fecha anioLanzamiento;
     float precio;
     int stock;
@@ -17,11 +18,33 @@ protected:
 
 public:
     //CONSTRUCTOR
+    clsCelular(const char* _modelo, const char* _nombre, clsMarca* _marca, const Fecha& _anioLanzamiento, float _precio, int _stock) {
+        strncpy(modelo, _modelo, sizeof(modelo) - 1);
+        strncpy(nombre, _nombre, sizeof(nombre) - 1);
+        Marca_celu = _marca;
+        anioLanzamiento = _anioLanzamiento;
+        precio = _precio;
+        stock = _stock;
+        if ( stock>0){
+			Disponibilidad=true;
+		} else {Disponibilidad=true; }
+        estado=true;
+    }
+    clsCelular() {
+
+        modelo[0] = '\0';
+        nombre[0] = '\0';
+        Marca_celu = nullptr;
+        precio = 0.0;
+        stock = 0;
+        Disponibilidad = false;
+        estado = false;
+    }
     //clsCelular();
     //SETTERS
     void setModelo(char* cadena);
     void setNombre(char* cadena);
-    void setMarca(int m);
+    void setMarca(clsMarca* marca);
     void setAnioLanzamiento(Fecha f);
     void setPrecio(float p);
     void setStock(int s);
@@ -30,14 +53,14 @@ public:
     //GETTERS
     char* getModelo(){return modelo;}
     char* getNombre(){return nombre;}
-    int getMarca(){return marca;}
+    clsMarca* getMarca(){return Marca_celu;}
     Fecha getAnioLanzamiento(){return anioLanzamiento;}
     float getPrecio(){return precio;}
     int getStock(){return stock;}
     bool getEstado(){return estado;}
     bool getDisponibilidad(){return Disponibilidad;}
 	//MOSTRAR CARGAR
-	void cargar(const char*);
+	void cargar(const char *,const char *);
 	void mostrar();
 	void mostrarMenos();//Este metodo solo muestra las propiedades modelo, nombre, y precio.
 };

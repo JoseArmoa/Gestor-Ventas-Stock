@@ -3,15 +3,69 @@
 using namespace std;
 #include "Reportes.h"
 
+
+	void celular_cliente::setModelo(char* cadena){
+        strcpy(modelo, cadena);
+    }
+
+    void celular_cliente::setNombre(char* cadena){
+        strcpy(nombre, cadena);
+    }
+    void celular_cliente::setMarca(int m){
+        marca=m;
+    }
+    void celular_cliente::setFecha_compra(Fecha f){
+        Fecha_compra=f;
+    }
+    void celular_cliente::setPrecio(float p){
+        precio=p;
+    }
+    void celular_cliente::setEstado(bool e){
+		estado=e;
+    }
+	void celular_cliente::mostrar() {
+		if (getEstado()){
+			cout << "Modelo: " << modelo << endl;
+			cout << "Nombre: " << nombre << endl;
+			cout << "Marca: " << marca << endl;
+			Fecha_compra.Mostrar();
+			cout << "Precio: " << precio << endl;
+		}
+	}
+void punto_1() {
+    ArchivosCelular Archi("celulares.dat");
+    int tam = Archi.contarRegistros();
+    int num;
+    cout << "Ingrese el número entero: ";
+    cin >> num;
+    bool estado=false;
+    for (int i = 0; i < tam; i++) {
+        clsCelular reg = Archi.Leer(i);
+        if (reg.getStock() <= num) {
+            estado = true;
+            reg.mostrar();
+        }
+    }
+    if (!estado) {
+        cout << "No hay registros bajo ese stock" << endl;
+    }
+}
+void punto_3(){
+	ArchivosVentas archi_venta("ventas.dat");
+	ArchivoCliente archi_cliente("clientes.dat");
+
+}
+
+
 void menuReporte() {
     int opcion;
     do {
         cout << "Menú de Reportes" << endl;
         cout << "----------------------------"<<endl;
-        cout << "1. Reporte 1" << endl;
+        cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
         cout << "2. Reporte 2" << endl;
-        cout << "3. Reporte 3" << endl;
-        cout << "4. Reporte 4" << endl;
+        cout << "3. CREAR ARCHIVO CLIENTE CON LOS CELULARES QUE COMPRO" << endl;
+        cout << "4. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "5. Reporte 5" << endl;
         cout << "6. Reporte 6" << endl;
         cout << "0. Salir" << endl;
@@ -24,7 +78,7 @@ void menuReporte() {
                 cout << "Saliendo del programa." << endl;
                 return;
             case 1:
-            //DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERE
+				punto_1();
                 break;
             case 2:
                 cout << "Generando Reporte 2..." << endl;

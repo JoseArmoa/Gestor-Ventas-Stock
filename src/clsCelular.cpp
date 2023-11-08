@@ -3,8 +3,6 @@
 using namespace std;
 #include "clsCelular.h"
 
-
-
 	void clsCelular::setModelo(char* cadena){
         strcpy(modelo, cadena);
     }
@@ -13,9 +11,9 @@ using namespace std;
         strcpy(nombre, cadena);
     }
 
-    void clsCelular::setMarca(int m){
-        marca=m;
-    }
+    void clsCelular::setMarca(clsMarca* marca) {
+		Marca_celu = marca;
+	}
 
     void clsCelular::setAnioLanzamiento(Fecha f){
         anioLanzamiento=f;
@@ -34,7 +32,7 @@ using namespace std;
     void clsCelular::setDisponibilidad(bool e){
 		Disponibilidad=e;
     }
-	void clsCelular::cargar(const char *n){
+	void clsCelular::cargar(const char *n,const char *m){
 		if(n==nullptr){
             cout << "Ingrese el modelo (hasta 30 caracteres): ";
             cin.ignore(); // Limpia el buffer de entrada.
@@ -46,8 +44,12 @@ using namespace std;
 		cout << "Ingrese el nombre (hasta 30 caracteres): ";
 		cin.getline(nombre, 30);
 
-		cout << "Ingrese la marca (un número entero): ";
-		cin >> marca;
+		if(n==nullptr){
+            Marca_celu->cargar();
+		}else{
+            Marca_celu->setEstado(true);
+            Marca_celu->setMarca(m);
+		}
 
 
 		cout<<"FECHA LANZAMIENTO: "<<endl;
@@ -65,15 +67,17 @@ using namespace std;
 		setEstado(true);
 	}
 	void clsCelular::mostrar() {
-		if (getEstado()){
+		if (getEstado()) {
 			cout << "Modelo: " << modelo << endl;
 			cout << "Nombre: " << nombre << endl;
-			cout << "Marca: " << marca << endl;
+			cout << "Fecha de lanzamiento: ";
 			anioLanzamiento.Mostrar();
+			Marca_celu->mostrar();
 			cout << "Precio: " << precio << endl;
 			cout << "Stock: " << stock << endl;
 		}
 	}
+
 	void clsCelular::mostrarMenos() {
 		if (getEstado()){
 			cout << "Modelo: " << modelo << endl;
@@ -144,7 +148,7 @@ using namespace std;
 		return -1;
     }
     bool ArchivosCelular::borrar(){
-        FILE* p = fopen("Celulares.dat", "wb");
+        FILE* p = fopen(nombreArchivo, "wb");
 		if (p == NULL) {
 			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
 			return false;
