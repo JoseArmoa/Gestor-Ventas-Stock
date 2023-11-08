@@ -73,7 +73,7 @@ void menuReporte() {
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. CREAR ARCHIVO CLIENTE CON LOS CELULARES QUE COMPRO" << endl;
         cout << "4. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
-        cout << "5. Reporte 5" << endl;
+        cout << "5. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
         cout << "6. Reporte 6" << endl;
         cout << "0. Salir" << endl;
         cout << "----------------------------"<<endl;

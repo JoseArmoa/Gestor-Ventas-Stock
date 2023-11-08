@@ -299,6 +299,21 @@ bool ArchivoCelularVendido::mostrar(){
     fclose(p);
     return false;
 }
+celularVendido ArchivoCelularVendido::Leer(int pos){
+    celularVendido r;
+    r.setEstado(false);
+    FILE *p=fopen(nombreArchivo,"rb");
+    if(p==NULL){
+        return r;
+    }
+    fseek(p,sizeof(celularVendido),0);
+    if(fread(&r,sizeof(celularVendido),1,p)==1){
+        fclose(p);
+        return r;
+    }
+    fclose(p);
+    return r;
+}
 bool ArchivoCelularVendido::LeerVenta(int c){
     celularVendido r;
     FILE *p=fopen(nombreArchivo,"rb");
