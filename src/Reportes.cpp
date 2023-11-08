@@ -70,12 +70,35 @@ void punto_3(){
 	}
 }
 void punto_2(){
-    Fecha desde, hasta;
+    Fecha desde, hasta,hoy;
     clsVentas rVentas;
+    float totalFacturado = 0;
     ArchivosVentas archiVentas("ventas.dat");
     int tam = archiVentas.contarRegistros();
+    bool desdeB, hastaB;
     cout<<"INGRESE DESDE: "<<endl;
     desde.Cargar();
+    cout<<"INGRESE HASTA: "<<endl;
+    hasta.Cargar();
+    if(desdeB && hastaB){//Verifico que no se carguen fechas incoherentes
+        if(desde < hasta && hasta <= hoy){//Verifico que la fecha este cargada en orden y no sea mayor al dia actual.
+            for(int i=0;i<tam;i++){
+                rVentas = archiVentas.Leer(i);
+                if(rVentas.getFecha()>= desde && rVentas.getFecha() <= hasta){
+                    totalFacturado += rVentas.getTotal();
+                }
+            }
+            if(totalFacturado > 0){
+                cout<<"TOTAL FACTURA EN EL PERIODO INGRESADO: $"<<totalFacturado<<endl;
+            }else{
+                cout<<"NO SE REGISTRA FACTURACION"<<totalFacturado<<endl;
+            }
+        }else{
+            cout<<"EL PERIODO DE TIEMPO ES INCORRECTO"<<endl;
+        }
+    }else{
+        cout<<"FECHAS INVALIDAS"<<endl;
+    }
 }
 
 //MOSTRAR MODELO CELULAR MAYOR SE VENDE. mostrar modelo de celulasr mas vendido
@@ -110,7 +133,31 @@ void punto_5(){
 
 
 }
-
+void punto_6(){//Dada una fecha, mostrar el total facturado ese dia, informar si no se facturo nada.
+    Fecha dia,hoy;
+    clsVentas rVentas;
+    float totalFacturado = 0;
+    ArchivosVentas archiVentas("ventas.dat");
+    int tam = archiVentas.contarRegistros();
+    cout<<"INGRESE DIA: "<<endl;
+    if(dia.Cargar()){
+        if(dia <= hoy){
+            for(int i=0;i<tam;i++){
+                rVentas = archiVentas.Leer(i);
+                if(rVentas.getFecha() == dia){
+                    totalFacturado += rVentas.getTotal();
+                }
+            }
+            if(totalFacturado>0){
+                cout<<"TOTAL FACTURA: $"<<totalFacturado<<endl;
+            }else{
+                cout<<"NO SE REGISTRA FACTURACION"<<endl;
+            }
+        }
+    }else{
+        cout<<"FECHA INVALIDA"<<endl;
+    }
+}
 void menuReporte() {
     int opcion;
     do {
@@ -120,7 +167,7 @@ void menuReporte() {
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "5. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
-        cout << "6. Reporte 6" << endl;
+        cout << "6. FACTURADO POR DIA" << endl;
         cout << "0. Salir" << endl;
         cout << "----------------------------"<<endl;
         cout << "Selecciona una opción: ";
@@ -152,10 +199,13 @@ void menuReporte() {
 
                 break;
             case 6:
+                punto_6();
                 cout << "Generando Reporte 6..." << endl;
 
                 break;
         }
+        system("pause");
+        system("cls");
     } while (true);
 }
 

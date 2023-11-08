@@ -30,7 +30,7 @@ Fecha::Fecha(int d, int m, int a)
     std::cin>>a;
     setAnio(a);
     setDia(d,m,a);
-    if(dia==-1 || anio == -1 || mes == -1)return false;
+    if(this->dia==-1 || this->anio == -1 || this->mes == -1)return false;
     return true;
 }
 
