@@ -117,7 +117,7 @@ bool cargarVentas(){
                     rVentas.setDniCliente(rCliente.getDNI());
                     rVentas.setCantidad(tam);
                     rVentas.setTotal(total);
-                    guardarVectorArchivo(v,tam,cantRegistros);
+                    guardarVectorArchivo(v,tam,cantRegistros+1);
                     archiVentas.Cargar(rVentas);
                     return true;
                 }

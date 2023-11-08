@@ -11,8 +11,8 @@ using namespace std;
         strcpy(nombre, cadena);
     }
 
-    void clsCelular::setMarca(clsMarca* marca) {
-		Marca_celu = marca;
+    void clsCelular::setMarca(const char *marca) {
+		strcpy(Marca_celu,marca);
 	}
 
     void clsCelular::setAnioLanzamiento(Fecha f){
@@ -45,10 +45,11 @@ using namespace std;
 		cin.getline(nombre, 30);
 
 		if(n==nullptr){
-            Marca_celu->cargar();
+            cout << "Ingrese el modelo (hasta 30 caracteres): ";
+            cin.ignore(); // Limpia el buffer de entrada.
+            cin.getline(Marca_celu, 30);
 		}else{
-            Marca_celu->setEstado(true);
-            Marca_celu->setMarca(m);
+            strcpy(Marca_celu,m);
 		}
 
 
@@ -72,7 +73,7 @@ using namespace std;
 			cout << "Nombre: " << nombre << endl;
 			cout << "Fecha de lanzamiento: ";
 			anioLanzamiento.Mostrar();
-			Marca_celu->mostrar();
+			cout << "Marca: " << Marca_celu << endl;
 			cout << "Precio: " << precio << endl;
 			cout << "Stock: " << stock << endl;
 		}
@@ -80,9 +81,9 @@ using namespace std;
 
 	void clsCelular::mostrarMenos() {
 		if (getEstado()){
-			cout << "Modelo: " << modelo << endl;
-			cout << "Nombre: " << nombre << endl;
-			cout << "Precio: " << precio << endl;
+			cout << modelo <<"     " << nombre << "    $" << precio << endl;
+
+
 		}
 	}
 

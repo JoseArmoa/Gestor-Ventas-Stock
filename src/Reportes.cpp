@@ -55,7 +55,14 @@ void punto_3(){
 	ArchivoCliente archi_cliente("clientes.dat");
 
 }
-
+void punto_2(){
+    Fecha desde, hasta;
+    clsVentas rVentas;
+    ArchivosVentas archiVentas("ventas.dat");
+    int tam = archiVentas.contarRegistros();
+    cout<<"INGRESE DESDE: "<<endl;
+    desde.Cargar();
+}
 
 void menuReporte() {
     int opcion;
@@ -63,7 +70,7 @@ void menuReporte() {
         cout << "Menú de Reportes" << endl;
         cout << "----------------------------"<<endl;
         cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
-        cout << "2. Reporte 2" << endl;
+        cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. CREAR ARCHIVO CLIENTE CON LOS CELULARES QUE COMPRO" << endl;
         cout << "4. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "5. Reporte 5" << endl;
@@ -81,7 +88,7 @@ void menuReporte() {
 				punto_1();
                 break;
             case 2:
-                cout << "Generando Reporte 2..." << endl;
+                punto_2();
             //DADA DOS FECHAS, DEVOLVER EL TOTAL FACTURADO EN ESE RANGO DE TIEMPO
                 break;
             case 3:

@@ -91,7 +91,6 @@ bool Agregar_celular() {
     }
 
     cout << "MARCA: ";
-    cin.ignore();
     cin.getline(marca, 30);
     int pos_m = archi_marca.buscarMarca(marca);
     if (pos_m < 0) {
@@ -112,7 +111,7 @@ bool Agregar_celular() {
             return false;
         }
     }
-
+    cin.ignore();
     reg.cargar(mod, marca);
     archi.Cargar(reg);
     return true;
