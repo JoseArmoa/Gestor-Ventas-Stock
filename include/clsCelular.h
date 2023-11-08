@@ -115,6 +115,7 @@ private:
 public:
     void cargar(int,clsCelular &);
     void setCodVenta(int);
+    void setEstado(bool);
     int getCodVenta();
     void mostrar();
     celularVendido& operator=(const vectorDinamicoCelular &r);
@@ -130,6 +131,7 @@ public:
     void modificar(int);
     bool LeerVenta(int);
     bool borrar();
+    celularVendido Leer(int pos);
 };
 
 #endif // CLSCELULAR_H

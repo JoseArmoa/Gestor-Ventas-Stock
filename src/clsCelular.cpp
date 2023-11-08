@@ -261,6 +261,9 @@ void celularVendido::cargar(int c,clsCelular &r){
 void celularVendido::setCodVenta(int p){
     codVenta=p;
 }
+void celularVendido::setEstado(bool e){
+    estado = e;
+}
 int celularVendido::getCodVenta(){
     return codVenta;
 }

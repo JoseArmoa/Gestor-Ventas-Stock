@@ -43,7 +43,7 @@
 	"clsCliente.h"
 	"funcionesClientes.h"
 
-1699410312 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
+1699411931 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
 	"funcionesVentas.h"
 
 1699061387 source:e:\cbp\gestor de stock de celulares\gestor-ventas-stock\funcionesglobales.cpp
@@ -262,7 +262,7 @@
 	"funcionesCelulares.h"
 	"clsCelular.h"
 
-1699411054 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clscelular.h
+1699413777 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clscelular.h
 	"clsFecha.h"
 	<cstring>
 	"clsMarca.h"
@@ -434,7 +434,7 @@
 
 1699290773 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\configuración.h
 
-1699411097 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\reportes.cpp
+1699413374 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\reportes.cpp
 	<iostream>
 	<cstdlib>
 	"Reportes.h"
