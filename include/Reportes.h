@@ -33,5 +33,6 @@ public:
 void menuReporte();
 void punto_1();
 void punto_3();
+void punto_5();
 
 #endif // REPORTES_H

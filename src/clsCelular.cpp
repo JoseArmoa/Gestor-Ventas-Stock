@@ -258,6 +258,7 @@ void celularVendido::cargar(int c,clsCelular &r){
     precio=r.getPrecio();
     estado=true;
 }
+
 void celularVendido::setCodVenta(int p){
     codVenta=p;
 }
@@ -323,14 +324,30 @@ bool ArchivoCelularVendido::LeerVenta(int c){
     if(p==NULL){
         return false;
     }
+    //REVISAR. al while le falta la condicion que seria si el fread == 1 pero creo que funciona igual. lo anoto por si acaso nomas
     while(fread(&r,sizeof(celularVendido),1,p)){
         if(r.getCodVenta()==c){
-            r.mostrar();
+            //r.mostrar();
+            //!!!!!!!!!comente el r.mostrar porque cada vez que quiero leer el archivo en otro metodo muestra todos los registros cuando no hace falta mostrarlos
         }
     }
     fclose(p);
     return false;
 }
+
+int ArchivoCelularVendido::contarRegistros(){
+        FILE *p;
+        p = fopen(nombreArchivo,"rb");
+        if(p==NULL){
+            std::cout<<"ERROR ARCHIVO"<<std::endl;
+            return 0;
+        }
+        fseek(p,0,2);
+        int cant = ftell(p);
+        fclose(p);
+        return cant/sizeof(celularVendido);
+    }
+
 bool ArchivoCelularVendido::borrar(){
         FILE* p = fopen("vendidos.dat", "wb");
 		if (p == NULL) {

@@ -64,6 +64,40 @@ void punto_2(){
     desde.Cargar();
 }
 
+//MOSTRAR MODELO CELULAR MAYOR SE VENDE. mostrar modelo de celulasr mas vendido
+void punto_5(){
+
+    ArchivosCelular r1("Celulares.dat");
+    celularVendido r;
+    ArchivoCelularVendido archiCelVendido("vendidos.dat");
+
+    FILE *p;
+
+    /*p=fopen("vendidos.dat", "rb");
+
+    if(p==NULL){
+        cout<<"ERROR DE ARCHIVO."<<endl;
+        fclose(p);
+        return;
+    }*/
+
+    int cantModelos=r1.contarRegistros();
+
+    int* arr = new int[cantModelos];
+
+    for(int i=0; i<cantModelos; i++){
+        arr[i]=0;
+    }
+
+
+    for(int i=0; i<archiCelVendido.contarRegistros(); i++){
+        //archiCelVendido.Leer().getModelo();
+    }
+    //tendria q hacer una enumerador con los modelos y q un numero represente a cada modelo o agregarle a la clase celular un codigo para cada modelo
+
+
+}
+
 void menuReporte() {
     int opcion;
     do {

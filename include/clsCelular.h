@@ -130,6 +130,7 @@ public:
     bool mostrar();
     void modificar(int);
     bool LeerVenta(int);
+    int contarRegistros();
     bool borrar();
     celularVendido Leer(int pos);
 };
