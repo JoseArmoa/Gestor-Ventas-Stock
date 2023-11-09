@@ -48,6 +48,7 @@
 		<Unit filename="include/clsMarca.h" />
 		<Unit filename="include/clsVentas.h" />
 		<Unit filename="include/funcionesCelulares.h" />
+		<Unit filename="include/rlutil.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Configuracion.cpp" />
 		<Unit filename="src/Reportes.cpp" />

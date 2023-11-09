@@ -1,13 +1,15 @@
 #include "funcionesVentas.h"
+#include "rlutil.h"
 
 void menuVentas(){
     int op;
     while(true){
     mostrarMenuVentas();
-    std::cin>>op;
+    op=rlutil::getkey();
     system("cls");
+
         switch(op){
-        case 1:
+    case 49: //si se apreta 1
             if(cargarVentas()){
                 system("cls");
                 std::cout<<"VENTA EXITOSA"<<std::endl;
@@ -15,24 +17,29 @@ void menuVentas(){
                 std::cout<<"VENTA CANCELADA"<<std::endl;
             }
             break;
-        case 2:
+    case 50://si se apreta 2
             listarVentas();
             break;
-        case 3:
+    case 51://si se apreta 3
             if(eliminarVenta()){
                 std::cout<<"VENTA ELIMINADA"<<std::endl;
             }else{
                 std::cout<<"NO SE ELIMINO VENTAS"<<std::endl;
             }
+        	break;
+
+    case 48://si se apreta 0
+        return;
+    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
             break;
-        case 4:
+        case 52:
             if(modificarFecha()){
                 std::cout<<"FECHA MODIFICADA"<<std::endl;
             }else{
                 std::cout<<"NO SE MODIFICO FECHA"<<std::endl;
             }
             break;
-        case 5:
+        case 53:
             if(devolucion()){
                 std::cout<<"DEVOLUCION EXITOSA"<<std::endl;
             }else{
@@ -41,8 +48,6 @@ void menuVentas(){
             break;
         case 0:
             return;
-        default: std::cout<<"OPCION INVALIDA. "<<std::endl;
-            break;
         }
         system("pause");
         system("cls");

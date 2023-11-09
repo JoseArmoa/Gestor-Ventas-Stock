@@ -5,8 +5,8 @@
 void menuClientes();
 bool agregarCliente(int);
 void listarClientes();
-bool bajaCliente();
 void Modificar_cliente();
+bool bajaCliente();
 
 
 #endif // FUNCIONESCLIENTES_H_INCLUDED
