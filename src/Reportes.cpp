@@ -198,14 +198,14 @@ void menuReporte() {
             case 3:
             	punto_3();
 				break;
-
-
                 break;
             case 4:
                 punto_4();
                 break;
             case 5:
                 punto_5();
+                break;
+            default: cout<<"OPCION INVALIDA. "<<endl;
                 break;
         }
         system("pause");

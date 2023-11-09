@@ -38,7 +38,7 @@ int main(){
 			break;
         case 0:
             return 0;
-        default:
+        default: cout<<"OPCION INVALIDA. "<<endl;
             break;
         }
     }

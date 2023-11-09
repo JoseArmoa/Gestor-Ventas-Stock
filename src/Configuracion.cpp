@@ -86,6 +86,8 @@ void menuConfiguracion() {
                     cout << "ERROR AL ELIMINAR ARCHIVOS." << endl;
                 }
                 break;
+            default: cout<<"OPCION INVALIDA. "<<endl;
+                break;
         }
         system("pause");
     } while (true);

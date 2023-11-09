@@ -14,7 +14,7 @@ void MenuCelulares(){
 		cout << "3. MODIFICAR PRECIO" << endl;
 		cout << "4. BAJA CELULAR" << endl;
 		cout << "5. LISTAR CELULARES" << endl;
-		cout << "6. AEGREGAR MARCAS" << endl;
+		cout << "6. AGREGAR MARCAS" << endl;
 		cout << "7. LISTAR MARCAS" << endl;
 		cout << "8. DAR BAJA MARCA" << endl;
 		cout << "0. VOLVER" << endl;
@@ -53,7 +53,7 @@ void MenuCelulares(){
             break;
         case 0:
             return;
-        default:
+        default: cout<<"OPCION INVALIDA. "<<endl;
             break;
         }
         system("pause");
@@ -143,7 +143,7 @@ void Reponer_Stock(){
 }
 void Modificar_precio(){
 	ArchivosCelular archi("celulares.dat");
-	char modelo[30], nombre[30];
+	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cin.ignore();
 	cin.getline(modelo, 30);

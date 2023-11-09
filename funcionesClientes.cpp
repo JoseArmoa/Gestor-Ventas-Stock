@@ -63,7 +63,7 @@ void menuClientes(){
 		cout << "3. BAJAR CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "Elija una opción: ";
+		cout << "ELIJA UNA OPCIóN: ";
 		cin>>op;
 		system("cls");
         switch(op){
@@ -86,7 +86,7 @@ void menuClientes(){
 			break;
         case 0:
             return;
-        default:
+        default: cout<<"OPCION INVALIDA. "<<endl;
             break;
         }
         system("pause");
