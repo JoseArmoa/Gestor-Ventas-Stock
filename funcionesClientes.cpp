@@ -2,6 +2,7 @@
 
 using namespace std;
 #include "clsCliente.h"
+#include "rlutil.h"
 
 
 
@@ -40,6 +41,71 @@ void listarClientes(){
 		cout << "\n";
 	}
 }
+
+/*int ArchivosCliente::buscarCliente(int dni) {
+		clsCliente reg;
+		FILE* p = fopen(nombreArchivo, "rb");
+		if (p == NULL) {
+			cout << "ERROR AL ABRIR EL ARCHIVO" << endl;
+			return -2;
+		}
+		int pos = 0;
+		while(fread(&reg,sizeof(clsCliente),1,p)){
+				if(reg.getDNI(),== dni){
+                    fclose(p);
+                    return pos;
+				}
+				pos++;
+			}
+        fclose(p);
+		return -1;
+    }*/
+
+void Modificar_cliente(){
+	ArchivoCliente archi("clientes.dat");
+	int dni;
+	cout << "INGRESE EL DNI DEL CLIENTE: ";
+	cin>>dni;
+	cout<<endl;
+	int pos = archi.leerDni(dni);
+	clsCliente reg;
+	if (pos < 0) {
+		cout << "EL CLIENTE NO EXISTE" << endl;
+		return;
+	}
+
+	reg = archi.leer(pos);
+
+	cout<<"NOMBRE COMPLETO: "<<reg.getNombre()<<" "<<reg.getApellido()<<endl;
+	cout<<"EL TELEFONO ACTUAL ES: "<<reg.getTelefono()<<endl;
+	cout<<"-----------------"<<endl;
+	cout<<"DESEA CAMBIAR EL TELEFONO?..."<<endl;
+	cout<<"Y. ACEPTAR                          Q. VOLVER"<<endl;
+	char c;
+	cin>>c;
+	if(c=='y' || c=='Y'){
+
+        char telefono[30];
+        cout << "INGRESE EL TELEFONO NUEVO: ";
+        cin.ignore();
+        cin.getline(telefono, 30);
+        cout<<endl;
+        reg.setTelefono(telefono);
+        if(archi.modificarRegistro(pos,reg)){
+		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+        } else{
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+        }
+	}
+    else if(c=='q' || c=='Q'){
+        return;
+    }
+    else{
+        cout<<"OPCION NO VALIDA. "<<endl;
+    }
+}
+
+
 bool bajaCliente(){
 	clsCliente r;
 	ArchivoCliente archi ("clientes.dat");
@@ -61,12 +127,13 @@ void menuClientes(){
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
 		cout << "3. BAJAR CLIENTE" << endl;
+		cout << "4. MODIFICAR TELEFONO DE CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCIóN: ";
-		cin>>op;
+		op=rlutil::getkey();
 		system("cls");
-        switch(op){
+        /*switch(op){
         case 1:
             if(agregarCliente()){
                 cout<<"CLIENTE CARGADO"<<endl;
@@ -84,11 +151,42 @@ void menuClientes(){
                 cout<<"ERROR AL DAE BAJA"<<endl;
 			}
 			break;
+        case 4: Modificar_cliente();
+            break;
         case 0:
             return;
         default: cout<<"OPCION INVALIDA. "<<endl;
             break;
+        }*/
+        switch(op){
+    case 49: //si se apreta 1
+            if(agregarCliente()){
+                cout<<"CLIENTE CARGADO"<<endl;
+            }else{
+                cout<<"ERROR AL CARGAR CLIENTE"<<endl;
+            }
+            break;
+    case 50://si se apreta 2
+            listarClientes();
+            break;
+    case 51://si se apreta 3
+            if(bajaCliente()){
+                cout<<"BAJA EXITOSA"<<endl;
+			}else{
+                cout<<"ERROR AL DAE BAJA"<<endl;
+			}
+        	break;
+    case 52://si se apreta 4
+            Modificar_cliente();
+        	break;
+
+    case 48://si se apreta 0
+        return;
+    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+            break;
+
         }
+
         system("pause");
         system("cls");
     }

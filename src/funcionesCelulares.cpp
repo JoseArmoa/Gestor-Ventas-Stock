@@ -3,6 +3,7 @@
 using namespace std;
 #include "funcionesCelulares.h"
 #include "clsCelular.h"
+#include "rlutil.h"
 
 void MenuCelulares(){
 	int op;
@@ -20,9 +21,9 @@ void MenuCelulares(){
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
-		cin>>op;
+		op=rlutil::getkey();
 		system("cls");
-        switch(op){
+        /*switch(op){
         case 1:
             if(Agregar_celular()){
                 cout<<"CELULAR CARGADO"<<endl;
@@ -55,6 +56,41 @@ void MenuCelulares(){
             return;
         default: cout<<"OPCION INVALIDA. "<<endl;
             break;
+        }*/
+        switch(op){
+    case 49: //si se apreta 1
+            if(Agregar_celular()){
+                cout<<"CELULAR CARGADO"<<endl;
+            }else{
+                cout<<"ERROR AL CARGAR CELULAR"<<endl;
+            }
+            break;
+    case 50://si se apreta 2
+            Reponer_Stock();
+            break;
+    case 51://si se apreta 3
+            Modificar_precio();
+        	break;
+    case 52://si se apreta 4
+            Baja_celular();
+        	break;
+    case 53://si se apreta 5
+            Listar_celular();
+		break;
+    case 54://6
+            Agregar_marca();
+            break;
+    case 55://7
+            Listar_marca();
+            break;
+    case 56: //8
+            bajar_marca();
+            break;
+    case 48://si se apreta 0
+        return;
+    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+            break;
+
         }
         system("pause");
         system("cls");

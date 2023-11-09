@@ -2,6 +2,7 @@
 #include <cstdlib>
 using namespace std;
 #include "Reportes.h"
+#include "rlutil.h"
 
 
 	void celular_cliente::setModelo(char* cadena){
@@ -183,8 +184,8 @@ void menuReporte() {
         cout << "----------------------------"<<endl;
         cout << "Selecciona una opción: ";
 
-        cin >> opcion;
-        switch (opcion) {
+        opcion=rlutil::getkey();
+        /*switch (opcion) {
             case 0:
                 system("cls");
                 return;
@@ -207,6 +208,28 @@ void menuReporte() {
                 break;
             default: cout<<"OPCION INVALIDA. "<<endl;
                 break;
+        }*/
+        switch(opcion){
+    case 49: //si se apreta 1
+            punto_1();
+            break;
+    case 50://si se apreta 2
+            punto_2();
+            break;
+    case 51://si se apreta 3
+            punto_3();
+        	break;
+    case 52://si se apreta 4
+             punto_4();
+        	break;
+    case 53://si se apreta 5
+            punto_5();
+		break;
+    case 48://si se apreta 0
+        return;
+    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+            break;
+
         }
         system("pause");
         system("cls");

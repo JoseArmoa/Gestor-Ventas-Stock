@@ -5,6 +5,7 @@
 void menuClientes();
 bool agregarCliente(int);
 void listarClientes();
+void Modificar_cliente();
 bool bajaCliente();
 
 

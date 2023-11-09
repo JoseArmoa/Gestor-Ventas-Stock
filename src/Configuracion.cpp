@@ -2,6 +2,7 @@
 #include <cstdlib>
 using namespace std;
 #include "Configuracion.h"
+#include "rlutil.h"
 
 void Guardar() {
     int resultado_1 = system("copy celulares.dat celulares.bkp");
@@ -66,9 +67,9 @@ void menuConfiguracion() {
         cout << "---------------------------------"<<endl;
         cout << "0. SALIR" << endl;
         cout << "Ingrese su opcion: ";
-        cin >> opcion;
+        opcion=rlutil::getkey();
 		system("cls");
-        switch (opcion) {
+        /*switch (opcion) {
 			case 0:
 				return;
             case 1:
@@ -88,6 +89,29 @@ void menuConfiguracion() {
                 break;
             default: cout<<"OPCION INVALIDA. "<<endl;
                 break;
+        }*/
+        switch(opcion){
+            case 49: //si se apreta 1
+                    Guardar();
+            break;
+            case 50://si se apreta 2
+                    Restaurar();
+            break;
+            case 51://si se apreta 3
+                    ValoresInicio();
+        	break;
+            case 52://si se apreta 4
+                    if (borrarTodo()) {
+                    cout << "ARCHIVOS ELIMINADOS EXITOSAMENTE." << endl;
+                } else {
+                    cout << "ERROR AL ELIMINAR ARCHIVOS." << endl;
+                }
+                break;
+            case 48://si se apreta 0
+        return;
+            default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+            break;
+
         }
         system("pause");
     } while (true);
