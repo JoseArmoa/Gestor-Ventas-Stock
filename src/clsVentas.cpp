@@ -30,6 +30,7 @@ void clsVentas::setEstado(bool e){
 ///Metodos Get
 int clsVentas::getCodVenta(){return codVenta;}
 int clsVentas::getDniCliente(){return dniCliente;}
+int clsVentas::getCantidad(){return cant;}
 Fecha clsVentas::getFecha(){return diaVenta;}
 float clsVentas::getTotal(){return total;}
 bool clsVentas::getEstado(){return estado;}

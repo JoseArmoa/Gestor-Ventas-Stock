@@ -265,11 +265,17 @@ void celularVendido::setCodVenta(int p){
 void celularVendido::setEstado(bool e){
     estado = e;
 }
+bool celularVendido::getEstado(){
+    return estado;
+}
 int celularVendido::getCodVenta(){
     return codVenta;
 }
 const char* celularVendido::getModelo(){
     return modelo;
+}
+float celularVendido::getPrecio(){
+    return precio;
 }
 
 void celularVendido::mostrar(){
@@ -338,6 +344,28 @@ bool ArchivoCelularVendido::LeerVenta(int c){
     fclose(p);
     return false;
 }
+celularVendido ArchivoCelularVendido::LeerIndividual(int cod,const char *m, int &pos){
+    celularVendido r;
+    r.setEstado(false);
+    FILE *p=fopen(nombreArchivo,"rb");
+    if(p==NULL){
+        return r;
+    }
+    fseek(p,sizeof(celularVendido),2);
+    int tam = ftell(p)/sizeof(celularVendido);
+    fseek(p,0,0);
+    for(int i=0;i<tam;i++){
+        if(fread(&r,sizeof(celularVendido),1,p)){
+            if(r.getCodVenta() == cod && strcmp(r.getModelo(),m)==0){
+                fclose(p);
+                pos=i;
+                return r;
+            }
+        }
+    }
+    fclose(p);
+    return r;
+}
 
 int ArchivoCelularVendido::contarRegistros(){
         FILE *p;
@@ -360,4 +388,17 @@ bool ArchivoCelularVendido::borrar(){
 		}
 		fclose(p);
 		return true;
+    }
+bool ArchivoCelularVendido::modificar(int pos, celularVendido r){
+        FILE* p = fopen(nombreArchivo, "rb+");
+		if (p == NULL) {
+			cout << "ERROR DE ARCHIVO" << endl;
+			return false;
+		}
+
+		fseek(p, sizeof(celularVendido) * pos, 0);
+		int escritos = fwrite(&r, sizeof(celularVendido), 1, p);
+		fclose(p);
+
+		return escritos;
     }

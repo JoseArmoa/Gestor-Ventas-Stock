@@ -25,6 +25,20 @@ void menuVentas(){
                 std::cout<<"NO SE ELIMINO VENTAS"<<std::endl;
             }
             break;
+        case 4:
+            if(modificarFecha()){
+                std::cout<<"FECHA MODIFICADA"<<std::endl;
+            }else{
+                std::cout<<"NO SE MODIFICO FECHA"<<std::endl;
+            }
+            break;
+        case 5:
+            if(devolucion()){
+                std::cout<<"DEVOLUCION EXITOSA"<<std::endl;
+            }else{
+                std::cout<<"NO PUDO CARGARSE DEVOLUCION"<<std::endl;
+            }
+            break;
         case 0:
             return;
         default: std::cout<<"OPCION INVALIDA. "<<std::endl;
@@ -198,20 +212,109 @@ bool eliminarVenta(){
     clsVentas rVentas;
     ArchivosVentas aVentas("ventas.dat");
     int cod;
+    int tam = aVentas.contarRegistros();
     std::cout<<"INGRESE CODIGO DE VENTA: ";
     std::cin>>cod;
-    rVentas = aVentas.Leer(cod-1);
-    rVentas.Mostrar();
-    char op;
-    std::cout<<std::endl;
-    std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
-    std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-    std::cin>>op;
-    system("cls");
-    if(op == 'y' || op == 'Y'){
-        rVentas.setEstado(false);
-        if(aVentas.Modificar(cod-1,rVentas)) return true;
+    if(cod <= tam){
+        rVentas = aVentas.Leer(cod-1);
+        rVentas.Mostrar();
+        char op;
+        std::cout<<std::endl;
+        std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+        std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+        std::cin>>op;
+        system("cls");
+        if(op == 'y' || op == 'Y'){
+            rVentas.setEstado(false);
+            if(aVentas.Modificar(cod-1,rVentas)) return true;
+            return false;
+        }
         return false;
+        }
+    std::cout<<"CODIGO VENTA INCORRECTO"<<std::endl;
+    return false;
+    system("cls");
+}
+bool modificarFecha(){
+    Fecha nueva;
+    ArchivosVentas aVentas("ventas.dat");
+    clsVentas rVentas;
+    int tam = aVentas.contarRegistros();
+    int cod;
+    std::cout<<"INGRESE CODIGO DE VENTA: ";
+    std::cin>>cod;
+    if(cod <= tam){
+        rVentas = aVentas.Leer(cod-1);
+        rVentas.Mostrar();
+        char op;
+        std::cout<<std::endl;
+        std::cout<<"DESEA MODIFICAR FECHA?"<<std::endl;
+        std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+        std::cin>>op;
+        system("cls");
+        if(op == 'y' || op == 'Y'){
+            std::cout<<"INGRESE FECHA NUEVA: "<<std::endl;
+            nueva.Cargar();
+            rVentas.setFecha(nueva);
+            if(aVentas.Modificar(cod-1,rVentas)) return true;
+            return false;
+        }
+        return false;
+        }
+
+    std::cout<<"CODIGO VENTA INCORRECTO"<<std::endl;
+    return false;
+}
+bool devolucion(){
+    ArchivosVentas aVentas("ventas.dat");
+    clsVentas rVentas;
+    char mod[30];
+    int tam = aVentas.contarRegistros();
+    int cod;
+    std::cout<<"INGRESE CODIGO DE VENTA ";
+    std::cin>>cod;
+    if(cod > 0 && cod <= tam){
+        rVentas = aVentas.Leer(cod-1);
+        if(rVentas.getCantidad()==1){
+            rVentas.Mostrar();
+            std::cout<<std::endl;
+            std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+            std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+            char op;
+            std::cin>>op;
+            system("cls");
+            if(op == 'y' || op == 'Y'){
+                rVentas.setEstado(false);
+                aVentas.Modificar(cod-1,rVentas);
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            rVentas.Mostrar();
+            std::cout<<std::endl;
+            std::cout<<"INGRESE MODELO A ELIMINAR ";
+            std::cin.ignore();
+            std::cin.getline(mod,30);
+            ArchivoCelularVendido aCelularVendido("vendidos.dat");
+            int pos;
+            celularVendido rCelularVendido;
+            rCelularVendido = aCelularVendido.LeerIndividual(cod,mod,pos);
+            rCelularVendido.setEstado(false);
+            aCelularVendido.modificar(pos,rCelularVendido);
+            rVentas.setCantidad(rVentas.getCantidad()-1);
+            if(rVentas.getCantidad()== 0){
+                rVentas.setEstado(false);
+                aVentas.Modificar(cod-1,rVentas);
+                return true;
+            }else{
+                rVentas.setTotal(rVentas.getTotal()-rCelularVendido.getPrecio());
+                aVentas.Modificar(cod-1,rVentas);
+                return true;
+            }
+        }
+    }else{
+        std::cout<<"CODIGO INCORRECTO"<<std::endl;
     }
     return false;
 }
@@ -221,6 +324,8 @@ void mostrarMenuVentas(){
     std::cout<<"1.VENTA NUEVA"<<std::endl;
     std::cout<<"2.LISTAR VENTAS"<<std::endl;
     std::cout<<"3.ELIMINAR VENTA"<<std::endl;
+    std::cout<<"4.MODIFICAR FECHA VENTAS"<<std::endl;
+    std::cout<<"5.DEVOLVER TELEFONO"<<std::endl;
     std::cout<<"0.VOLVER"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
     std::cout<<"Ingrese una opcion."<<std::endl;

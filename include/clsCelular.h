@@ -117,6 +117,8 @@ public:
     void setCodVenta(int);
     void setEstado(bool);
     int getCodVenta();
+    float getPrecio();
+    bool getEstado();
     void mostrar();
     const char* getModelo();
     celularVendido& operator=(const vectorDinamicoCelular &r);
@@ -127,9 +129,10 @@ private:
     char nombreArchivo[30];
 public:
     ArchivoCelularVendido(const char *);
+    celularVendido LeerIndividual(int ,const char *,int &);
     bool cargar(celularVendido);
     bool mostrar();
-    void modificar(int);
+    bool modificar(int, celularVendido);
     bool LeerVenta(int);
     int contarRegistros();
     bool borrar();

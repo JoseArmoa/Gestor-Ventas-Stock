@@ -28,6 +28,7 @@ class clsVentas
         int getDniCliente();
         int getIdCelular();
         Fecha getFecha();
+        int getCantidad();
         float getTotal();
         bool getEstado();
     ///Metodos Principales

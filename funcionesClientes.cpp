@@ -53,6 +53,49 @@ bool bajaCliente(){
 	r.setEstado(false);
 	return archi.modificarRegistro(pos,r);
 }
+void Modificar_cliente(){
+    ArchivoCliente archi("clientes.dat");
+    int dni;
+    cout << "INGRESE EL DNI DEL CLIENTE: ";
+    cin>>dni;
+    cout<<endl;
+    int pos = archi.leerDni(dni);
+    clsCliente reg;
+    if (pos < 0) {
+        cout << "EL CLIENTE NO EXISTE" << endl;
+        return;
+    }
+
+    reg = archi.leer(pos);
+
+    cout<<"NOMBRE COMPLETO: "<<reg.getNombre()<<" "<<reg.getApellido()<<endl;
+    cout<<"EL TELEFONO ACTUAL ES: "<<reg.getTelefono()<<endl;
+    cout<<"-----------------"<<endl;
+    cout<<"DESEA CAMBIAR EL TELEFONO?..."<<endl;
+    cout<<"Y. ACEPTAR                          Q. VOLVER"<<endl;
+    char c;
+    cin>>c;
+    if(c=='y' || c=='Y'){
+
+        char telefono[30];
+        cout << "INGRESE EL TELEFONO NUEVO: ";
+        cin.ignore();
+        cin.getline(telefono, 30);
+        cout<<endl;
+        reg.setTelefono(telefono);
+        if(archi.modificarRegistro(pos,reg)){
+        cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+        } else{
+        cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+        }
+    }
+    else if(c=='q' || c=='Q'){
+        return;
+    }
+    else{
+        cout<<"OPCION NO VALIDA. "<<endl;
+    }
+}
 void menuClientes(){
 	int op;
     while(true){
@@ -61,6 +104,7 @@ void menuClientes(){
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
 		cout << "3. BAJAR CLIENTE" << endl;
+		cout << "4. MODIFICAR TELEFONO CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCIóN: ";
@@ -84,6 +128,9 @@ void menuClientes(){
                 cout<<"ERROR AL DAE BAJA"<<endl;
 			}
 			break;
+		case 4:
+            Modificar_cliente();
+            break;
         case 0:
             return;
         default: cout<<"OPCION INVALIDA. "<<endl;
