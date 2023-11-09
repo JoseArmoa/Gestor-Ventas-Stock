@@ -84,7 +84,7 @@ void punto_2(){
         if(desde < hasta && hasta <= hoy){//Verifico que la fecha este cargada en orden y no sea mayor al dia actual.
             for(int i=0;i<tam;i++){
                 rVentas = archiVentas.Leer(i);
-                if(rVentas.getFecha()>= desde && rVentas.getFecha() <= hasta){
+                if(rVentas.getFecha()>= desde && rVentas.getFecha() <= hasta && rVentas.getEstado()){
                     totalFacturado += rVentas.getTotal();
                 }
             }
@@ -100,18 +100,27 @@ void punto_2(){
         cout<<"FECHAS INVALIDAS"<<endl;
     }
 }
-
+void ponerEnCero(int *v,int tam){
+    for(int i=0;i<tam;i++){
+        v[i]=0;
+    }
+}
 //MOSTRAR MODELO CELULAR MAYOR SE VENDE. mostrar modelo de celulasr mas vendido
 void punto_5(){
 
-    ArchivosCelular r1("Celulares.dat");
+    ArchivosCelular r1("celulares.dat");
     celularVendido r;
+    clsCelular rCelular;
     ArchivoCelularVendido archiCelVendido("vendidos.dat");
 
     int *vecContador;
 
     vecContador = new int[r1.contarRegistros()];
-    vecContador = {};
+    if(vecContador==NULL){
+        cout<<"ERROR";
+        system("pause");
+    }
+    ponerEnCero(vecContador,r1.contarRegistros());
 
     int pos;
     for(int i=0; i<archiCelVendido.contarRegistros(); i++){
@@ -120,25 +129,23 @@ void punto_5(){
         vecContador[pos]++;
     }
 
-    int mayor=0; //guarda la cantidad de veces q se vendio un celular
+    int mayor=vecContador[0]; //guarda la cantidad de veces q se vendio un celular
     int posMayor=0; //guarda en q posicion del array se encuentra el modelo mas vendido
-
-    for(int i=0; i<archiCelVendido.contarRegistros(); i++){
+    for(int i=0;i<archiCelVendido.contarRegistros();i++){
+        cout<<vecContador[i];
+    }
+    system("pause");
+    for(int i=1; i<archiCelVendido.contarRegistros(); i++){
         if(vecContador[i]>mayor){
             posMayor=i;
+            mayor = vecContador[i];
         }
     }
-
-    r=archiCelVendido.Leer(posMayor);
-    cout<<"EL MODELO MAS VENDIDO ES EL "<<r.getModelo()<<endl;
-
-
-
     delete [] vecContador;
-    vecContador=NULL;
-    //tendria q hacer una enumerador con los modelos y q un numero represente a cada modelo o agregarle a la clase celular un codigo para cada modelo
-
-
+    rCelular=r1.Leer(posMayor);
+    cin.ignore();
+    cout<<"EL MODELO MAS VENDIDO ES EL "<<rCelular.getModelo();
+    cout<<" CON "<<mayor<<" VENTAS."<<endl;
 }
 void punto_6(){//Dada una fecha, mostrar el total facturado ese dia, informar si no se facturo nada.
     Fecha dia,hoy;
@@ -148,7 +155,7 @@ void punto_6(){//Dada una fecha, mostrar el total facturado ese dia, informar si
     int tam = archiVentas.contarRegistros();
     cout<<"INGRESE DIA: "<<endl;
     if(dia.Cargar()){
-        if(dia <= hoy){
+        if(dia <= hoy && rVentas.getEstado()){
             for(int i=0;i<tam;i++){
                 rVentas = archiVentas.Leer(i);
                 if(rVentas.getFecha() == dia){
@@ -203,6 +210,8 @@ void menuReporte() {
                 break;
             case 5:
                 punto_5();
+                cout << "Generando Reporte 5..." << endl;
+
                 break;
             case 6:
                 punto_6();

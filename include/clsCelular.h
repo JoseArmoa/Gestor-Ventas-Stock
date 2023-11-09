@@ -119,6 +119,7 @@ public:
     void setEstado(bool);
     int getCodVenta();
     void mostrar();
+    const char* getModelo();
     celularVendido& operator=(const vectorDinamicoCelular &r);
 };
 

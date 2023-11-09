@@ -268,7 +268,9 @@ void celularVendido::setEstado(bool e){
 int celularVendido::getCodVenta(){
     return codVenta;
 }
-
+const char* celularVendido::getModelo(){
+    return modelo;
+}
 
 void celularVendido::mostrar(){
     clsCelular::mostrarMenos();
@@ -328,11 +330,9 @@ bool ArchivoCelularVendido::LeerVenta(int c){
     if(p==NULL){
         return false;
     }
-    //REVISAR. al while le falta la condicion que seria si el fread == 1 pero creo que funciona igual. lo anoto por si acaso nomas
     while(fread(&r,sizeof(celularVendido),1,p)){
         if(r.getCodVenta()==c){
-            //r.mostrar();
-            //!!!!!!!!!comente el r.mostrar porque cada vez que quiero leer el archivo en otro metodo muestra todos los registros cuando no hace falta mostrarlos
+            r.mostrar();
         }
     }
     fclose(p);
