@@ -34,18 +34,18 @@ using namespace std;
     }
 	void clsCelular::cargar(const char *n,const char *m){
 		if(n==nullptr){
-            cout << "Ingrese el modelo (hasta 30 caracteres): ";
+            cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
             cin.ignore(); // Limpia el buffer de entrada.
             cin.getline(modelo, 30);
 		}else{
             strcpy(modelo,n);
 		}
 
-		cout << "Ingrese el nombre (hasta 30 caracteres): ";
+		cout << "INGRESE EL NOMBRE (HASTA 30 CARACTERES): ";
 		cin.getline(nombre, 30);
 
-		if(n==nullptr){
-            cout << "Ingrese el modelo (hasta 30 caracteres): ";
+		if(m==nullptr){
+            cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
             cin.ignore(); // Limpia el buffer de entrada.
             cin.getline(Marca_celu, 30);
 		}else{
@@ -56,10 +56,10 @@ using namespace std;
 		cout<<"FECHA LANZAMIENTO: "<<endl;
 		anioLanzamiento.Cargar();
 
-		cout << "Ingrese el precio: ";
+		cout << "INGRESE EL PRECIO: ";
 		cin >> precio;
         int s;
-		cout << "Ingrese la cantidad en stock: ";
+		cout << "INGRESE LA CANTIDAD EN STOCK: ";
 		cin >> s;
 		setStock(s);
         if(s > 0){
@@ -69,13 +69,13 @@ using namespace std;
 	}
 	void clsCelular::mostrar() {
 		if (getEstado()) {
-			cout << "Modelo: " << modelo << endl;
-			cout << "Nombre: " << nombre << endl;
-			cout << "Fecha de lanzamiento: ";
+			cout << "MODELO: " << modelo << endl;
+			cout << "NOMBRE: " << nombre << endl;
+			cout << "FECHA DE LANZAMIENTO: ";
 			anioLanzamiento.Mostrar();
-			cout << "Marca: " << Marca_celu << endl;
-			cout << "Precio: " << precio << endl;
-			cout << "Stock: " << stock << endl;
+			cout << "MARCA: " << Marca_celu << endl;
+			cout << "PRECIO: " << precio << endl;
+			cout << "STOCK: " << stock << endl;
 		}
 	}
 
@@ -164,7 +164,7 @@ using namespace std;
         if(t>0){
             tam = t;
             vectorCelular = new clsCelular[tam];
-            if(vectorCelular==NULL)cout<<"error";
+            if(vectorCelular==NULL)cout<<"ERROR";
             inicio = 0;
         }
     }
@@ -180,14 +180,14 @@ using namespace std;
         if(t>tam){
             clsCelular *aux;
             aux =new clsCelular[tam];
-            if(aux==NULL)cout<<"error"<<endl;
+            if(aux==NULL)cout<<"ERROR"<<endl;
             for(int i=0;i<tam;i++){
                 aux[i]=vectorCelular[i];
             }
             delete vectorCelular;
             tam = t;
             vectorCelular = new clsCelular[tam];
-            if(vectorCelular==NULL)cout<<"error"<<endl;
+            if(vectorCelular==NULL)cout<<"ERROR"<<endl;
             for(int i=0;i<tam;i++){
                 vectorCelular[i]=aux[i];
             }

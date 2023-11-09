@@ -30,7 +30,7 @@ Fecha::Fecha(int d, int m, int a)
     std::cin>>a;
     setAnio(a);
     setDia(d,m,a);
-    if(this->dia==-1 || this->anio == -1 || this->mes == -1)return false;
+    if(dia == -1 || anio == -1 || mes == -1)return false;
     return true;
 }
 
@@ -143,8 +143,20 @@ void Fecha::setDia(int x, int m, int a){
         }
     }
 }
-void Fecha::setMes(int x){if(x>0 && x<13)mes=x;}
-void Fecha::setAnio(int x){anio=x;}
+void Fecha::setMes(int x){
+    if(x>0 && x<13){
+        mes=x;
+    }else{
+    mes = -1;
+    }
+}
+void Fecha::setAnio(int x){
+    if(x > 1900){
+        anio=x;
+    }else{
+    anio = -1;
+    }
+}
 
 int Fecha::getDia(){return dia;}
 int Fecha::getMes(){return mes;}

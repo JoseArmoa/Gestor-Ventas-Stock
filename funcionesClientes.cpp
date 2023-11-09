@@ -5,22 +5,27 @@ using namespace std;
 
 
 
-bool agregarCliente(){
+bool agregarCliente(int dni = -1){
 
     clsCliente r;
     ArchivoCliente archiCliente("clientes.dat");
 
-    int dni=0;
-    cout<<"DNI: "<<endl;
-    cin>>dni;
+    if(dni == -1){
+        int dni=0;
+        cout<<"DNI: ";
+        cin>>dni;
 
-    int encontro=archiCliente.leerDni(dni);
+        int encontro=archiCliente.leerDni(dni);
 
-    if(encontro >=0){
+        if(encontro >=0){
         cout<<"EL CLIENTE YA EXISTE EN EL SISTEMA. "<<endl;
         return false;
-    }
-    else{
+        }else{
+        r.Cargar(dni);
+        archiCliente.Cargar(r);
+        return true;
+        }
+    }else{
         r.Cargar(dni);
         archiCliente.Cargar(r);
         return true;
@@ -39,7 +44,7 @@ bool bajaCliente(){
 	clsCliente r;
 	ArchivoCliente archi ("clientes.dat");
 	int dni;
-	cout << "Introduzca el numero de documento: ";
+	cout << "INTRODUZCA EL NUMERO DE DOCUMENTO: ";
 	cin >> dni;
 	int pos = archi.leerDni(dni);
 	if(pos > -1){
@@ -51,12 +56,12 @@ bool bajaCliente(){
 void menuClientes(){
 	int op;
     while(true){
-        cout << "Menú de Celulares:" << endl;
+        cout << "MENU CLIENTE:" << endl;
         cout << "-------------------------------"<<endl;
-		cout << "1. Agregar Cliente" << endl;
-		cout << "2. Listar Cliente" << endl;
-		cout << "3. Bajar cliente" << endl;
-		cout << "0. Salir del Menú Clientes" << endl;
+		cout << "1. AGREGAR CLIENTE" << endl;
+		cout << "2. LISTAR CLIENTE" << endl;
+		cout << "3. BAJAR CLIENTE" << endl;
+		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "Elija una opción: ";
 		cin>>op;

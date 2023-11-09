@@ -9,6 +9,7 @@ void menuVentas(){
         switch(op){
         case 1:
             if(cargarVentas()){
+                system("cls");
                 std::cout<<"VENTA EXITOSA"<<std::endl;
             }else{
                 std::cout<<"VENTA CANCELADA"<<std::endl;
@@ -16,6 +17,13 @@ void menuVentas(){
             break;
         case 2:
             listarVentas();
+            break;
+        case 3:
+            if(eliminarVenta()){
+                std::cout<<"VENTA ELIMINADA"<<std::endl;
+            }else{
+                std::cout<<"NO SE ELIMINO VENTAS"<<std::endl;
+            }
             break;
         case 0:
             return;
@@ -31,9 +39,9 @@ bool cargarVentas(){
     clsCelular rCelular;
     clsCliente rCliente;
     ArchivoCliente archiCLiente("clientes.dat");
-    ArchivoCelularVendido archiCelularVendido("vendidos.dat");
     ArchivosCelular archiCelular("celulares.dat");
     ArchivosVentas archiVentas("ventas.dat");
+    ArchivoCelularVendido archiCelularVendido("vendidos.dat");
     char mod[30];
     int tam = 1, pos,cantRegistros,dni,encontro;
     float total = 0;//acumulador que ira sumando o restando el importe a medida que añadan o eliminen articulos a la venta.
@@ -52,8 +60,10 @@ bool cargarVentas(){
         std::cout<<"A: AGREGAR   Q: CANCELAR";
         std::cin>>op;
         if(op=='A' || op == 'a'){
-            if(agregarCliente()){
+            if(agregarCliente(dni)){
                  std::cout<<"CLIENTE AGREGADO"<<std::endl;
+                 rCliente = archiCLiente.leer(archiCLiente.leerDni(dni));
+                 op = 'n';
                  system("pause");
                  system("cls");
             }else{
@@ -139,7 +149,6 @@ bool cargarVentas(){
                 return false;
                 break;
         }
-        system("pause");
         system("cls");
         rCliente.mostrarMenos();
         std::cout<<std::endl;
@@ -183,13 +192,34 @@ void descontarStock(clsCelular &r){
         archiCelular.modificar_registro(pos,r);
     }
 }
+bool eliminarVenta(){
+    clsVentas rVentas;
+    ArchivosVentas aVentas("ventas.dat");
+    int cod;
+    std::cout<<"INGRESE CODIGO DE VENTA: ";
+    std::cin>>cod;
+    rVentas = aVentas.Leer(cod-1);
+    rVentas.Mostrar();
+    char op;
+    std::cout<<std::endl;
+    std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+    std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+    std::cin>>op;
+    system("cls");
+    if(op == 'y' || op == 'Y'){
+        rVentas.setEstado(false);
+        if(aVentas.Modificar(cod-1,rVentas)) return true;
+        return false;
+    }
+    return false;
+}
 void mostrarMenuVentas(){
     std::cout<<"MENU VENTAS"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
-    std::cout<<"1)VENTA NUEVA"<<std::endl;
-    std::cout<<"2)LISTAR VENTAS"<<std::endl;
-    std::cout<<"3)CANCELAR VENTA"<<std::endl;
-    std::cout<<"0)VOLVER"<<std::endl;
+    std::cout<<"1.VENTA NUEVA"<<std::endl;
+    std::cout<<"2.LISTAR VENTAS"<<std::endl;
+    std::cout<<"3.ELIMINAR VENTA"<<std::endl;
+    std::cout<<"0.VOLVER"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
     std::cout<<"Ingrese una opcion."<<std::endl;
 }

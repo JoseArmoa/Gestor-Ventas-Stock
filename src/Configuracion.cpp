@@ -11,9 +11,9 @@ void Guardar() {
     int resultado_5 = system("copy marcas.dat marcas.bkp");
 
     if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0 && resultado_5 == 0) {
-        cout << "Archivos copiados exitosamente." << endl;
+        cout << "ARCHIVOS COPIADOS EXITOSAMENTE." << endl;
     } else {
-        cout << "Error al copiar los archivos." << endl;
+        cout << "ERROR AL COPIAR LOS ARCHIVOS." << endl;
     }
     system("pause");
 }
@@ -26,9 +26,9 @@ void Restaurar() {
     int resultado_5 = system("copy marcas.bkp marcas.dat");
 
     if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0 && resultado_5 == 0) {
-        cout << "Archivos restaurados exitosamente." << endl;
+        cout << "ARCHIVOS RESTAURADOS EXITOSAMENTE." << endl;
     } else {
-        cout << "Error al restaurar los archivos." << endl;
+        cout << "ERROR AL RESTAURAR LOS ARCHIVOS." << endl;
     }
     system("pause");
 }
@@ -48,23 +48,23 @@ void ValoresInicio(){
 	int resultado_2 = system("copy clientesValoresInicio.dat clientes.dat");
 	int resultado_3 = system("copy celularesValoresInicio.dat celulares.dat");
 	if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 ) {
-        cout << "Archivos restaurados exitosamente." << endl;
+        cout << "ARCHIVOS RESTAURADOS EXITOSAMENTE." << endl;
     } else {
-        cout << "Error al restaurar los archivos." << endl;
+        cout << "ERROR AL RESTAURAR LOS ARCHIVOS." << endl;
     }
 }
 void menuConfiguracion() {
     int opcion;
     do {
         system("cls");
-        cout << "Menu de Configuraciones" << endl;
-        cout << "0. Salir" << endl;
+        cout << "MENU CONFIGURACION" << endl;
 		cout << "---------------------------------"<<endl;
-        cout << "1. Guardar archivos" << endl;
-        cout << "2. Restaurar archivos" << endl;
-        cout << "3. Valores de inicio" << endl;
-        cout << "4. Borrar todo" << endl;
+        cout << "1. CREAR COPIA" << endl;
+        cout << "2. RESTAURAR COPIA" << endl;
+        cout << "3. VALORES DE INICIO" << endl;
+        cout << "4. BORRAR TODO" << endl;
         cout << "---------------------------------"<<endl;
+        cout << "0. SALIR" << endl;
         cout << "Ingrese su opcion: ";
         cin >> opcion;
 		system("cls");
@@ -81,9 +81,9 @@ void menuConfiguracion() {
 				break;
 			case 4:
                 if (borrarTodo()) {
-                    cout << "Archivos eliminados exitosamente." << endl;
+                    cout << "ARCHIVOS ELIMINADOS EXITOSAMENTE." << endl;
                 } else {
-                    cout << "Error al eliminar archivos." << endl;
+                    cout << "ERROR AL ELIMINAR ARCHIVOS." << endl;
                 }
                 break;
         }

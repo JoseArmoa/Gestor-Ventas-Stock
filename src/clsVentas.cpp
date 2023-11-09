@@ -8,9 +8,6 @@ clsVentas::clsVentas()
     setFecha(hoy);
     estado = true;
 }
-/*clsVentas::~clsVentas(){
-    delete vectorCelulares;
-}*/
 ///Metodos Set
 void clsVentas::setCodVenta(int c){
     codVenta = c;
@@ -21,18 +18,6 @@ void clsVentas::setDniCliente(int d){
 void clsVentas::setCantidad(int d){
     cant = d;
 }
-/*void clsVentas::setVectorCelulares(vectorDinamicoCelular &v,int t){
-    vectorCelulares = new clsCelular[t];
-    if(vectorCelulares==NULL)return;
-    for(int i=0;i<t;i++){
-        vectorCelulares[i]=v[i];
-    }
-}*/
-/*void clsVentas::mostrarArticulos(){
-    for(int i=0;i<cant;i++){
-        vectorCelulares[i].mostrarMenos();
-    }
-}*/
 void clsVentas::setFecha(Fecha f){
     diaVenta = f;
 }
@@ -51,16 +36,17 @@ bool clsVentas::getEstado(){return estado;}
 ///Metodos Principales
 
 void clsVentas::Mostrar(){
-
-    std::cout<<"COD VENTA: "<<codVenta<<std::endl;
-    std::cout<<"DNI CLIENTE: "<<dniCliente<<std::endl;
-    std::cout<<"CANTIDAD ARTICULOS: "<<cant<<std::endl;
-    std::cout<<"FECHA: ";
-    diaVenta.Mostrar();
-    std::cout<<"ARTICULOS: "<<std::endl;
-    ArchivoCelularVendido archi("vendidos.dat");
-    archi.LeerVenta(this->codVenta);
-    std::cout<<"TOTAL: "<<total<<std::endl<<std::endl;
+    if(estado){
+        std::cout<<"COD VENTA: "<<codVenta<<std::endl;
+        std::cout<<"DNI CLIENTE: "<<dniCliente<<std::endl;
+        std::cout<<"CANTIDAD ARTICULOS: "<<cant<<std::endl;
+        std::cout<<"FECHA: ";
+        diaVenta.Mostrar();
+        std::cout<<"ARTICULOS: "<<std::endl;
+        ArchivoCelularVendido archi("vendidos.dat");
+        archi.LeerVenta(this->codVenta);
+        std::cout<<"TOTAL: "<<total<<std::endl<<std::endl;
+    }
 }
 
 
@@ -95,7 +81,18 @@ clsVentas ArchivosVentas::Leer(int pos){
         fclose(p);
         return reg;
     }
-
+bool ArchivosVentas::Modificar(int pos,clsVentas r){
+        FILE *p;
+        p=fopen(nombreArchivo, "rb+");
+        if(p==NULL) return false;
+        fseek(p, sizeof (clsVentas)* pos,0);
+        if(fwrite(&r, sizeof r,1, p)){
+            fclose(p);
+            return true;
+        }
+        fclose(p);
+        return false;
+    }
     int ArchivosVentas::contarRegistros(){
         FILE *p;
         p = fopen(nombreArchivo,"rb");

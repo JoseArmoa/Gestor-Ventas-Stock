@@ -44,6 +44,7 @@ public:
     ArchivosVentas(const char *v);
     bool Cargar(clsVentas r);
     clsVentas Leer(int);
+    bool Modificar(int,clsVentas);
     int contarRegistros();
     bool borrar();
 };

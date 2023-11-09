@@ -12,12 +12,12 @@ void MenuCelulares(){
 		cout << "1. AGREGAR CELULAR" << endl;
 		cout << "2. REPONER STOCK" << endl;
 		cout << "3. MODIFICAR PRECIO" << endl;
-		cout << "4. Baja de Celular" << endl;
+		cout << "4. BAJA CELULAR" << endl;
 		cout << "5. LISTAR CELULARES" << endl;
 		cout << "6. AEGREGAR MARCAS" << endl;
 		cout << "7. LISTAR MARCAS" << endl;
 		cout << "8. DAR BAJA MARCA" << endl;
-		cout << "0. SALIR DEL MENU CELULARES" << endl;
+		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
 		cin>>op;
@@ -101,17 +101,16 @@ bool Agregar_celular() {
         if (op == 'a' || op == 'A') {
             clsMarca mar(marca);
             if (archi_marca.Cargar(mar)) {
-                cout << "Marca cargada" << endl;
+                cout << "MARCA CARGADA" << endl;
             } else {
-                cout << "Error al cargar la marca" << endl;
+                cout << "ERROR AL CARGAR LA MARCA" << endl;
                 return false;
             }
         } else {
-            cout << "Cargar celular cancelado" << endl;
+            cout << "CARGAR CELULAR CANCELADO" << endl;
             return false;
         }
     }
-    cin.ignore();
     reg.cargar(mod, marca);
     archi.Cargar(reg);
     return true;
@@ -120,69 +119,69 @@ bool Agregar_celular() {
 void Reponer_Stock(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
-	cout << "Ingrese el modelo (hasta 30 caracteres): ";
+	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
 	int pos;
 	clsCelular reg;
 	pos = archi.buscarCelular(modelo);
 	if (pos < 0) {
-		cout << "El celular no existe" << endl;
+		cout << "EL CELULAR NO EXISTE" << endl;
 		return;
 	}
 	reg = archi.Leer(pos);
 	int stock_nuevo;
-	cout<<"Ingrese el nuevo stock a reponer: ";
+	cout<<"INGRESE EL NUEVO STOCK A REPONER: ";
 	cin>>stock_nuevo;
 	stock_nuevo+=reg.getStock();
 	reg.setStock(stock_nuevo);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"El archivo fue modificado con exito"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
 	} else{
-		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
 }
 void Modificar_precio(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30], nombre[30];
-	cout << "Ingrese el modelo (hasta 30 caracteres): ";
+	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
 	int pos = archi.buscarCelular(modelo);
 	clsCelular reg;
 	if (pos < 0) {
-		cout << "El celular no existe" << endl;
+		cout << "EL CELULAR NO EXISTE" << endl;
 		return;
 	}
 	reg = archi.Leer(pos);
 	float _precio;
-	cout<<"Ingrese el nuevo precio: "<<endl;
+	cout<<"INGRESE EL NUEVO PRECIO: "<<endl;
 	cin>>_precio;
 	reg.setPrecio(_precio);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"El archivo fue modificado con exito"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
 	} else{
-		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
 }
 void Baja_celular(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
-	cout << "Ingrese el modelo (hasta 30 caracteres): ";
+	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cin.ignore();
 	cin.getline(modelo, 30);
 	int pos=archi.buscarCelular(modelo);
 	clsCelular reg;
 	if (pos < 0) {
-		cout << "El celular no existe" << endl;
+		cout << "EL CELULAR NO EXISTE" << endl;
 		return;
 	}
 	reg = archi.Leer(pos);
 	reg.setEstado(false);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"El archivo fue modificado con exito"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
 	} else{
-		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
 }
 void Listar_celular(){
@@ -198,7 +197,7 @@ void Listar_celular(){
 void Agregar_marca() {
     ArchivoMarca Archi("marcas.dat");
     char marca[30];
-    cout << "Ingrese la marca que quiere agregar: ";
+    cout << "INGRESE LA MARCA QUE QUIERE AGREGAR: ";
     cin.ignore();
     cin.getline(marca, 30);
     int pos = Archi.buscarMarca(marca);
@@ -227,19 +226,19 @@ void Listar_marca(){
 void bajar_marca(){
 	ArchivoMarca archi("marcas.dat");
     char marca[30];
-    cout << "Ingrese la marca (hasta 30 caracteres): ";
+    cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
 	cin.ignore();
 	cin.getline(marca, 30);
 	int pos=archi.buscarMarca(marca);
 	if (pos < 0) {
-		cout << "La marca no existe" << endl;
+		cout << "LA MARCA NO EXISTE" << endl;
 		return;
 	}
 	clsMarca reg=archi.Leer(pos);
 	reg.setEstado(false);
 	if (archi.modificar_registro(pos,reg)){
-		cout<<"El archivo fue modificado con exito"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
 	} else {
-		cout<<"Error, El archivo no pudo ser modificado con exito"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
 }

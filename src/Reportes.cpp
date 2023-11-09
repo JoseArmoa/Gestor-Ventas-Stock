@@ -25,18 +25,18 @@ using namespace std;
     }
 	void celular_cliente::mostrar() {
 		if (getEstado()){
-			cout << "Modelo: " << modelo << endl;
-			cout << "Nombre: " << nombre << endl;
-			cout << "Marca: " << marca << endl;
+			cout << "MODELO: " << modelo << endl;
+			cout << "NOMBRE: " << nombre << endl;
+			cout << "MARCA: " << marca << endl;
 			Fecha_compra.Mostrar();
-			cout << "Precio: " << precio << endl;
+			cout << "PRECIO: " << precio << endl;
 		}
 	}
 void punto_1() {
     ArchivosCelular Archi("celulares.dat");
     int tam = Archi.contarRegistros();
     int num;
-    cout << "Ingrese el número entero: ";
+    cout << "INGRESE EL NUMERO ENTERO: ";
     cin >> num;
     bool estado=false;
     for (int i = 0; i < tam; i++) {
@@ -44,10 +44,11 @@ void punto_1() {
         if (reg.getStock() <= num) {
             estado = true;
             reg.mostrar();
+            cout << endl;
         }
     }
     if (!estado) {
-        cout << "No hay registros bajo ese stock" << endl;
+        cout << "NO HAY REGISTROS BAJO ESE STOCK" << endl;
     }
 }
 void punto_3(){
@@ -56,7 +57,7 @@ void punto_3(){
 	int pos_reg=archi_venta.contarRegistros();
 	int dni;
 	bool estado=false;
-	cout<<"Ingrese el dni del cliente";
+	cout<<"INGRESE EL DNI DEL CLIENTE: ";
 	cin >> dni;
 	for (int i=0;i<pos_reg;i++){
 		clsVentas reg = archi_venta.Leer(i);
@@ -66,7 +67,7 @@ void punto_3(){
 		}
 	}
 	if (!estado){
-		cout <<"No hay archivos"<<endl;
+		cout <<"NO HAY ARCHIVOS"<<endl;
 	}
 }
 void punto_2(){
@@ -77,9 +78,9 @@ void punto_2(){
     int tam = archiVentas.contarRegistros();
     bool desdeB, hastaB;
     cout<<"INGRESE DESDE: "<<endl;
-    desde.Cargar();
+    desdeB=desde.Cargar();
     cout<<"INGRESE HASTA: "<<endl;
-    hasta.Cargar();
+    hastaB=hasta.Cargar();
     if(desdeB && hastaB){//Verifico que no se carguen fechas incoherentes
         if(desde < hasta && hasta <= hoy){//Verifico que la fecha este cargada en orden y no sea mayor al dia actual.
             for(int i=0;i<tam;i++){
@@ -106,7 +107,7 @@ void ponerEnCero(int *v,int tam){
     }
 }
 //MOSTRAR MODELO CELULAR MAYOR SE VENDE. mostrar modelo de celulasr mas vendido
-void punto_5(){
+void punto_4(){
 
     ArchivosCelular r1("celulares.dat");
     celularVendido r;
@@ -131,10 +132,6 @@ void punto_5(){
 
     int mayor=vecContador[0]; //guarda la cantidad de veces q se vendio un celular
     int posMayor=0; //guarda en q posicion del array se encuentra el modelo mas vendido
-    for(int i=0;i<archiCelVendido.contarRegistros();i++){
-        cout<<vecContador[i];
-    }
-    system("pause");
     for(int i=1; i<archiCelVendido.contarRegistros(); i++){
         if(vecContador[i]>mayor){
             posMayor=i;
@@ -147,7 +144,7 @@ void punto_5(){
     cout<<"EL MODELO MAS VENDIDO ES EL "<<rCelular.getModelo();
     cout<<" CON "<<mayor<<" VENTAS."<<endl;
 }
-void punto_6(){//Dada una fecha, mostrar el total facturado ese dia, informar si no se facturo nada.
+void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si no se facturo nada.
     Fecha dia,hoy;
     clsVentas rVentas;
     float totalFacturado = 0;
@@ -175,13 +172,13 @@ void punto_6(){//Dada una fecha, mostrar el total facturado ese dia, informar si
 void menuReporte() {
     int opcion;
     do {
-        cout << "Menú de Reportes" << endl;
+        cout << "MENU REPORTES" << endl;
         cout << "----------------------------"<<endl;
         cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
-        cout << "5. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
-        cout << "6. FACTURADO POR DIA" << endl;
+        cout << "4. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
+        cout << "5. FACTURADO POR DIA" << endl;
         cout << "0. Salir" << endl;
         cout << "----------------------------"<<endl;
         cout << "Selecciona una opción: ";
@@ -189,7 +186,7 @@ void menuReporte() {
         cin >> opcion;
         switch (opcion) {
             case 0:
-                cout << "Saliendo del programa." << endl;
+                system("cls");
                 return;
             case 1:
 				punto_1();
@@ -201,22 +198,14 @@ void menuReporte() {
             case 3:
             	punto_3();
 				break;
-            /*char  n[30];
-            strcpy(n,r.getNombre());
-            strcat(n,".dat");
-            ArchivoCliente archi(n);*/
-                cout << "Generando Reporte 4..." << endl;
 
+
+                break;
+            case 4:
+                punto_4();
                 break;
             case 5:
                 punto_5();
-                cout << "Generando Reporte 5..." << endl;
-
-                break;
-            case 6:
-                punto_6();
-                cout << "Generando Reporte 6..." << endl;
-
                 break;
         }
         system("pause");

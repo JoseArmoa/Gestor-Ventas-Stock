@@ -11,5 +11,6 @@ void listarVentas();
 void mostrarMenuVentas();
 void guardarVectorArchivo(vectorDinamicoCelular &,int,int);
 void descontarStock(clsCelular &);
+bool eliminarVenta();
 
 #endif // FUNCIONESVENTAS_H_INCLUDED

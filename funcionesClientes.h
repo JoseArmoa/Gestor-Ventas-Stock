@@ -3,7 +3,7 @@
 
 
 void menuClientes();
-bool agregarCliente();
+bool agregarCliente(int);
 void listarClientes();
 bool bajaCliente();
 
