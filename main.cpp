@@ -13,6 +13,8 @@ using namespace std;
 #include "Configuracion.h"
 #include "funcionesClientes.h"
 
+
+
 int main(){
     setlocale(LC_ALL, "");
     int op;

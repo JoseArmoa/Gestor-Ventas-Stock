@@ -27,7 +27,7 @@ void menuVentas(){
             break;
         case 0:
             return;
-        default: cout<<"OPCION INVALIDA. "<<endl;
+        default: std::cout<<"OPCION INVALIDA. "<<std::endl;
             break;
         }
         system("pause");
@@ -148,7 +148,7 @@ bool cargarVentas(){
             case 'q': case 'Q':
                 return false;
                 break;
-            default: cout<<"OPCION INVALIDA. "<<endl;
+            default: std::cout<<"OPCION INVALIDA. "<<std::endl;
                     break;
         }
         system("cls");
