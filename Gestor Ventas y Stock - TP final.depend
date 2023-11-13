@@ -632,3 +632,142 @@
 	<sys/types.h>
 	<sys/time.h>
 
+1699907885 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.cpp
+	<iostream>
+	"clsCliente.h"
+	"rlutil.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscliente.h
+	<iostream>
+	<cstdio>
+	<cstring>
+	"clsFecha.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsfecha.h
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesglobales.cpp
+	"funcioneGlobales.h"
+	"rlutil.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcioneglobales.h
+	<iostream>
+	"clsCelular.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscelular.h
+	"clsFecha.h"
+	<cstring>
+	"clsMarca.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsmarca.h
+	<cstring>
+
+1699905700 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<vector>
+	"rlutil.h"
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	"clsVentas.h"
+	"funcionesVentas.h"
+	"funcionesCelulares.h"
+	"Reportes.h"
+	"Configuracion.h"
+	"funcionesClientes.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsventas.h
+	<iostream>
+	<cstring>
+	"clsFecha.h"
+	"clsCelular.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.h
+	<iostream>
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+	"funcionesClientes.h"
+
+1699907776 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.h
+
+1699907283 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionescelulares.h
+	"funcionesMarca.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\reportes.h
+	<cstring>
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+
+1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\configuracion.h
+	"clsCelular.h"
+	"clsCliente.h"
+	"clsVentas.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscelular.cpp
+	<iostream>
+	<cstdlib>
+	"clsCelular.h"
+
+1699903909 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscliente.cpp
+	"clsCliente.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsfecha.cpp
+	<iostream>
+	<ctime>
+	"clsFecha.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsmarca.cpp
+	<iostream>
+	<cstdlib>
+	"clsMarca.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsventas.cpp
+	"clsVentas.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\configuracion.cpp
+	<iostream>
+	<cstdlib>
+	"Configuracion.h"
+	"rlutil.h"
+
+1699907458 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionescelulares.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesCelulares.h"
+	"clsCelular.h"
+	"rlutil.h"
+
+1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\reportes.cpp
+	<iostream>
+	<cstdlib>
+	"Reportes.h"
+	"rlutil.h"
+
+1699907710 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.cpp
+	"funcionesVentas.h"
+	"rlutil.h"
+
+1699906268 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionesmarca.h
+	"clsMarca.h"
+
+1699906923 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionesmarca.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesMarca.h"
+

@@ -48,6 +48,7 @@
 		<Unit filename="include/clsMarca.h" />
 		<Unit filename="include/clsVentas.h" />
 		<Unit filename="include/funcionesCelulares.h" />
+		<Unit filename="include/funcionesMarca.h" />
 		<Unit filename="include/rlutil.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Configuracion.cpp" />
@@ -58,6 +59,7 @@
 		<Unit filename="src/clsMarca.cpp" />
 		<Unit filename="src/clsVentas.cpp" />
 		<Unit filename="src/funcionesCelulares.cpp" />
+		<Unit filename="src/funcionesMarca.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

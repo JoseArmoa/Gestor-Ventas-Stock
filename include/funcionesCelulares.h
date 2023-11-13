@@ -1,15 +1,19 @@
 #ifndef FUNCIONESCELULARES_H
 #define FUNCIONESCELULARES_H
+#include "funcionesMarca.h"
+
+
 
 void MenuCelulares();
+void menuStocCelulares();
 
 bool Agregar_celular();
 void Reponer_Stock();
 void Modificar_precio();
 void Baja_celular();
 void Listar_celular();
-void Agregar_marca();
-void Listar_marca();
-void bajar_marca();
+void Alta_celular();
+
+
 
 #endif // FUNCIONESCELULARES_H

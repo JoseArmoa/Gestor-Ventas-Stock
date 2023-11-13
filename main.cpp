@@ -65,8 +65,8 @@ int main(){
         system("cls");
             break;
     case 51://si se apreta 3
-        MenuCelulares();
-        system("cls");
+			menuStocCelulares();
+			system("cls");
         	break;
     case 52://si se apreta 4
         menuReporte();

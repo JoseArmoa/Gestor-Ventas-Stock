@@ -5,58 +5,52 @@ using namespace std;
 #include "clsCelular.h"
 #include "rlutil.h"
 
+
+void menuStocCelulares(){
+	int op;
+    while(true){
+        system("cls");
+        cout << "MENU STOCK CELULARES:" << endl;
+        cout << "-------------------------------"<<endl;
+		cout << "1. MENU CELULAR" << endl;
+		cout << "2. MENU MARCA" << endl;
+		cout << "0. VOLVER" << endl;
+		cout << "-------------------------------"<<endl;
+		cout << "ELIJA UNA OPCION: ";
+		cin>> op;
+		system("cls");
+		switch(op){
+			case 1:
+				MenuCelulares();
+				break;
+			case 2:
+				menuMarca();
+				break;
+			case 0:
+				return;
+			default:
+				break;
+		}
+
+	}
+}
+
 void MenuCelulares(){
 	int op;
     while(true){
         cout << "MENU CELULARES:" << endl;
         cout << "-------------------------------"<<endl;
 		cout << "1. AGREGAR CELULAR" << endl;
-		cout << "2. REPONER STOCK" << endl;
-		cout << "3. MODIFICAR PRECIO" << endl;
-		cout << "4. BAJA CELULAR" << endl;
-		cout << "5. LISTAR CELULARES" << endl;
-		cout << "6. AGREGAR MARCAS" << endl;
-		cout << "7. LISTAR MARCAS" << endl;
-		cout << "8. DAR BAJA MARCA" << endl;
+		cout << "2. LISTAR CELULARES" << endl;
+		cout << "3. REPONER STOCK" << endl;
+		cout << "4. MODIFICAR PRECIO" << endl;
+		cout << "5. BAJA CELULAR" << endl;
+		cout << "6. ALTA CELULAR" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
 		op=rlutil::getkey();
 		system("cls");
-        /*switch(op){
-        case 1:
-            if(Agregar_celular()){
-                cout<<"CELULAR CARGADO"<<endl;
-            }else{
-                cout<<"ERROR AL CARGAR CELULAR"<<endl;
-            }
-            break;
-        case 2:
-            Reponer_Stock();
-            break;
-		case 3:
-			Modificar_precio();
-			break;
-		case 4:
-			Baja_celular();
-			break;
-        case 5:
-            Listar_celular();
-            break;
-		case 6:
-            Agregar_marca();
-            break;
-		case 7:
-            Listar_marca();
-            break;
-		case 8:
-            bajar_marca();
-            break;
-        case 0:
-            return;
-        default: cout<<"OPCION INVALIDA. "<<endl;
-            break;
-        }*/
         switch(op){
     case 49: //si se apreta 1
             if(Agregar_celular()){
@@ -66,25 +60,25 @@ void MenuCelulares(){
             }
             break;
     case 50://si se apreta 2
-            Reponer_Stock();
+            Listar_celular();
             break;
     case 51://si se apreta 3
-            Modificar_precio();
+			Reponer_Stock();
         	break;
     case 52://si se apreta 4
-            Baja_celular();
+			Modificar_precio();
         	break;
     case 53://si se apreta 5
-            Listar_celular();
-		break;
+			Baja_celular();
+			break;
     case 54://6
-            Agregar_marca();
+			Alta_celular();
             break;
     case 55://7
-            Listar_marca();
+
             break;
     case 56: //8
-            bajar_marca();
+
             break;
     case 48://si se apreta 0
         return;
@@ -213,6 +207,10 @@ void Baja_celular(){
 		return;
 	}
 	reg = archi.Leer(pos);
+	if (reg.getEstado()==true){
+		cout << "EL CELULAR YA ESTA DADO BAJA"<<endl;
+		return;
+	}
 	reg.setEstado(false);
 	if(archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
@@ -230,51 +228,28 @@ void Listar_celular(){
         cout<<endl;
     }
 }
-void Agregar_marca() {
-    ArchivoMarca Archi("marcas.dat");
-    char marca[30];
-    cout << "INGRESE LA MARCA QUE QUIERE AGREGAR: ";
-    cin.ignore();
-    cin.getline(marca, 30);
-    int pos = Archi.buscarMarca(marca);
-    if (pos >= 0) {
-        cout << "MARCA REPETIDA, SE CANCELARÁ LA OPERACIÓN" << endl;
-        return;
-    }
-    clsMarca reg(marca);
-    if (Archi.Cargar(reg)) {
-        cout << "MARCA CARGADA CON ÉXITO" << endl;
-    } else {
-        cout << "ERROR AL CARGAR LA MARCA" << endl;
-    }
-}
-void Listar_marca(){
-	ArchivoMarca Archi("marcas.dat");
-	int tam=Archi.contarRegistros();
-	for (int i=0;i<tam;i++){
-		clsMarca reg=Archi.Leer(i);
-		reg.mostrar();
-		cout<<"\n";
-
-	}
-	return;
-}
-void bajar_marca(){
-	ArchivoMarca archi("marcas.dat");
-    char marca[30];
-    cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
+void Alta_celular(){
+	ArchivosCelular archi("celulares.dat");
+	char modelo[30];
+	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cin.ignore();
-	cin.getline(marca, 30);
-	int pos=archi.buscarMarca(marca);
+	cin.getline(modelo, 30);
+	int pos=archi.buscarCelular(modelo);
+	clsCelular reg;
 	if (pos < 0) {
-		cout << "LA MARCA NO EXISTE" << endl;
+		cout << "EL CELULAR NO EXISTE" << endl;
 		return;
 	}
-	clsMarca reg=archi.Leer(pos);
-	reg.setEstado(false);
-	if (archi.modificar_registro(pos,reg)){
+	reg = archi.Leer(pos);
+	if (reg.getEstado()==true){
+		cout << "EL CELULAR YA ESTA DADO ALTA"<<endl;
+		return;
+	}
+	reg.setEstado(true);
+	if(archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
-	} else {
+	} else{
 		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
 }
+

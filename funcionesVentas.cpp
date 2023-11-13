@@ -76,7 +76,7 @@ bool cargarVentas(){
     }else{
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
         std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
-        std::cout<<"A: AGREGAR   Q: CANCELAR";
+        std::cout<<"A: AGREGAR   Q: CANCELAR"<<std::endl;
         std::cin>>op;
         if(op=='A' || op == 'a'){
             if(agregarCliente(dni)){
@@ -326,12 +326,12 @@ bool devolucion(){
 void mostrarMenuVentas(){
     std::cout<<"MENU VENTAS"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
-    std::cout<<"1.VENTA NUEVA"<<std::endl;
-    std::cout<<"2.LISTAR VENTAS"<<std::endl;
-    std::cout<<"3.ELIMINAR VENTA"<<std::endl;
-    std::cout<<"4.MODIFICAR FECHA VENTAS"<<std::endl;
-    std::cout<<"5.DEVOLVER TELEFONO"<<std::endl;
-    std::cout<<"0.VOLVER"<<std::endl;
+    std::cout<<"1. VENTA NUEVA"<<std::endl;
+    std::cout<<"2. LISTAR VENTAS"<<std::endl;
+    std::cout<<"3. ELIMINAR VENTA"<<std::endl;
+    std::cout<<"4. MODIFICAR FECHA VENTAS"<<std::endl;
+    std::cout<<"5. DEVOLVER TELEFONO"<<std::endl;
+    std::cout<<"0. VOLVER"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
     std::cout<<"Ingrese una opcion."<<std::endl;
 }

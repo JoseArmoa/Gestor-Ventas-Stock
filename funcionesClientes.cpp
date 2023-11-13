@@ -102,6 +102,20 @@ bool bajaCliente(){
 	return archi.modificarRegistro(pos,r);
 }
 
+bool altaCliente(){
+	clsCliente r;
+	ArchivoCliente archi ("clientes.dat");
+	int dni;
+	cout << "INTRODUZCA EL NUMERO DE DOCUMENTO: ";
+	cin >> dni;
+	int pos = archi.leerDni(dni);
+	if(pos > -1){
+        r = archi.leer(pos);
+	}
+	r.setEstado(true);
+	return archi.modificarRegistro(pos,r);
+}
+
 void menuClientes(){
 	int op;
     while(true){
@@ -110,43 +124,13 @@ void menuClientes(){
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
 		cout << "3. BAJAR CLIENTE" << endl;
-		cout << "4. MODIFICAR TELEFONO CLIENTE" << endl;
-		cout << "4. MODIFICAR TELEFONO DE CLIENTE" << endl;
+		cout << "4. ALTA CLIENTE" << endl;
+		cout << "5. MODIFICAR TELEFONO DE CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCIóN: ";
 		op=rlutil::getkey();
 		system("cls");
-        /*switch(op){
-        case 1:
-            if(agregarCliente()){
-                cout<<"CLIENTE CARGADO"<<endl;
-            }else{
-                cout<<"ERROR AL CARGAR CLIENTE"<<endl;
-            }
-            break;
-        case 2:
-        	listarClientes();
-            break;
-		case 3:
-			if(bajaCliente()){
-                cout<<"BAJA EXITOSA"<<endl;
-			}else{
-                cout<<"ERROR AL DAE BAJA"<<endl;
-			}
-			break;
-<<<<<<< HEAD
-		case 4:
-            Modificar_cliente();
-=======
-        case 4: Modificar_cliente();
->>>>>>> 469d59cfa505599647be77836803fc6fd5449a98
-            break;
-        case 0:
-            return;
-        default: cout<<"OPCION INVALIDA. "<<endl;
-            break;
-        }*/
         switch(op){
     case 49: //si se apreta 1
             if(agregarCliente()){
@@ -162,10 +146,17 @@ void menuClientes(){
             if(bajaCliente()){
                 cout<<"BAJA EXITOSA"<<endl;
 			}else{
-                cout<<"ERROR AL DAE BAJA"<<endl;
+                cout<<"ERROR AL DAR BAJA"<<endl;
 			}
         	break;
     case 52://si se apreta 4
+            if(altaCliente()){
+                cout<<"ALTA EXITOSA"<<endl;
+			}else{
+                cout<<"ERROR AL DAR ALTA"<<endl;
+			}
+        	break;
+	case 53://si se apreta 5
             Modificar_cliente();
         	break;
 

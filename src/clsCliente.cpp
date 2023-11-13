@@ -53,7 +53,7 @@ void clsCliente::Cargar(int d=-1){
         cin.getline(apellido, 30);
         cout<<"TELEFONO: ";
         cin.getline(telefono, 30);
-        cout<<"FECHA: "<<endl;
+        cout<<"FECHA DE NACIMIENTO: "<<endl;
         while(!fechaNacimiento.Cargar()){
             cout<<"FECHA INCORRECTA"<<endl;
             cout<<"VUELVA A INGRESAR"<<endl;
