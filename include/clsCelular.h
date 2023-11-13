@@ -102,26 +102,19 @@ public:
     void aumentar(int t);
     bool eliminar(const char *n);
     void mostrar();
-    int getTam();
-    clsCelular getElemento(int);
     const clsCelular& operator[](int);
-    vectorDinamicoCelular& operator=(const clsCelular& );
+
 };
 
 ///CLASE PARA GUARDAR EN UN ARCHIVO LOS CELULARES VENDIDOS INDIVIDUALMENTE CON SU CODIGO DE VENTA
-class celularVendido:clsCelular{
+class celularVendido:public clsCelular{
 private:
     int codVenta;
 public:
     void cargar(int,clsCelular &);
     void setCodVenta(int);
-    void setEstado(bool);
     int getCodVenta();
-    float getPrecio();
-    bool getEstado();
     void mostrar();
-    const char* getModelo();
-    celularVendido& operator=(const vectorDinamicoCelular &r);
 };
 
 class ArchivoCelularVendido{

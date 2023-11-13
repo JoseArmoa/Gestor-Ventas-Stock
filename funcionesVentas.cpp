@@ -222,19 +222,24 @@ bool eliminarVenta(){
     std::cin>>cod;
     if(cod <= tam){
         rVentas = aVentas.Leer(cod-1);
-        rVentas.Mostrar();
-        char op;
-        std::cout<<std::endl;
-        std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
-        std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-        std::cin>>op;
-        system("cls");
-        if(op == 'y' || op == 'Y'){
-            rVentas.setEstado(false);
-            if(aVentas.Modificar(cod-1,rVentas)) return true;
+        if(rVentas.getEstado()){
+            rVentas.Mostrar();
+            char op;
+            std::cout<<std::endl;
+            std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+            std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+            std::cin>>op;
+            system("cls");
+            if(op == 'y' || op == 'Y'){
+                rVentas.setEstado(false);
+                if(aVentas.Modificar(cod-1,rVentas)) return true;
+                return false;
+            }
             return false;
-        }
-        return false;
+            }else{
+                std::cout<<"EL CODIGO PERTENECE A UN REGISTRO DADO DE BAJA"<<std::endl;
+                return false;
+            }
         }
     std::cout<<"CODIGO VENTA INCORRECTO"<<std::endl;
     return false;
@@ -248,25 +253,28 @@ bool modificarFecha(){
     int cod;
     std::cout<<"INGRESE CODIGO DE VENTA: ";
     std::cin>>cod;
-    if(cod <= tam){
+    if(cod <= tam && cod > 0){
         rVentas = aVentas.Leer(cod-1);
-        rVentas.Mostrar();
-        char op;
-        std::cout<<std::endl;
-        std::cout<<"DESEA MODIFICAR FECHA?"<<std::endl;
-        std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-        std::cin>>op;
-        system("cls");
-        if(op == 'y' || op == 'Y'){
-            std::cout<<"INGRESE FECHA NUEVA: "<<std::endl;
-            nueva.Cargar();
-            rVentas.setFecha(nueva);
-            if(aVentas.Modificar(cod-1,rVentas)) return true;
+        if(rVentas.getEstado()){
+            rVentas.Mostrar();
+            char op;
+            std::cout<<std::endl;
+            std::cout<<"DESEA MODIFICAR FECHA?"<<std::endl;
+            std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+            std::cin>>op;
+            system("cls");
+            if(op == 'y' || op == 'Y'){
+                std::cout<<"INGRESE FECHA NUEVA: "<<std::endl;
+                nueva.Cargar();
+                rVentas.setFecha(nueva);
+                if(aVentas.Modificar(cod-1,rVentas)) return true;
+                return false;
+            }
+        }else{
+            std::cout<<"EL CODIGO PERTENECE A UN REGISTRO DADO DE BAJA"<<std::endl;
             return false;
         }
-        return false;
-        }
-
+    }
     std::cout<<"CODIGO VENTA INCORRECTO"<<std::endl;
     return false;
 }
@@ -280,43 +288,48 @@ bool devolucion(){
     std::cin>>cod;
     if(cod > 0 && cod <= tam){
         rVentas = aVentas.Leer(cod-1);
-        if(rVentas.getCantidad()==1){
-            rVentas.Mostrar();
-            std::cout<<std::endl;
-            std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
-            std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-            char op;
-            std::cin>>op;
-            system("cls");
-            if(op == 'y' || op == 'Y'){
-                rVentas.setEstado(false);
-                aVentas.Modificar(cod-1,rVentas);
-                return true;
+        if(rVentas.getEstado()){
+            if(rVentas.getCantidad()==1){
+                rVentas.Mostrar();
+                std::cout<<std::endl;
+                std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+                std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
+                char op;
+                std::cin>>op;
+                system("cls");
+                if(op == 'y' || op == 'Y'){
+                    rVentas.setEstado(false);
+                    aVentas.Modificar(cod-1,rVentas);
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                rVentas.Mostrar();
+                std::cout<<std::endl;
+                std::cout<<"INGRESE MODELO A ELIMINAR ";
+                std::cin.ignore();
+                std::cin.getline(mod,30);
+                ArchivoCelularVendido aCelularVendido("vendidos.dat");
+                int pos;
+                celularVendido rCelularVendido;
+                rCelularVendido = aCelularVendido.LeerIndividual(cod,mod,pos);
+                rCelularVendido.setEstado(false);
+                aCelularVendido.modificar(pos,rCelularVendido);
+                rVentas.setCantidad(rVentas.getCantidad()-1);
+                if(rVentas.getCantidad()== 0){
+                    rVentas.setEstado(false);
+                    aVentas.Modificar(cod-1,rVentas);
+                    return true;
+                }else{
+                    rVentas.setTotal(rVentas.getTotal()-rCelularVendido.getPrecio());
+                    aVentas.Modificar(cod-1,rVentas);
+                    return true;
+                }
             }
         }else{
-            rVentas.Mostrar();
-            std::cout<<std::endl;
-            std::cout<<"INGRESE MODELO A ELIMINAR ";
-            std::cin.ignore();
-            std::cin.getline(mod,30);
-            ArchivoCelularVendido aCelularVendido("vendidos.dat");
-            int pos;
-            celularVendido rCelularVendido;
-            rCelularVendido = aCelularVendido.LeerIndividual(cod,mod,pos);
-            rCelularVendido.setEstado(false);
-            aCelularVendido.modificar(pos,rCelularVendido);
-            rVentas.setCantidad(rVentas.getCantidad()-1);
-            if(rVentas.getCantidad()== 0){
-                rVentas.setEstado(false);
-                aVentas.Modificar(cod-1,rVentas);
-                return true;
-            }else{
-                rVentas.setTotal(rVentas.getTotal()-rCelularVendido.getPrecio());
-                aVentas.Modificar(cod-1,rVentas);
-                return true;
-            }
+            std::cout<<"EL CODIGO PERTENECE A UN REGISTRO DADO DE BAJA"<<std::endl;
+            return false;
         }
     }else{
         std::cout<<"CODIGO INCORRECTO"<<std::endl;

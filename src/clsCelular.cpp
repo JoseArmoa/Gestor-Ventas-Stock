@@ -230,52 +230,35 @@ using namespace std;
         }
     }
 
-    void vectorDinamicoCelular::mostrar(){
-        for(int i=0;i<tam;i++){
-            vectorCelular[i].mostrarMenos();
-            cout<<endl;
-        }
+void vectorDinamicoCelular::mostrar(){
+    for(int i=0;i<tam;i++){
+        vectorCelular[i].mostrarMenos();
+        cout<<endl;
     }
-    int vectorDinamicoCelular::getTam(){
-        if(tam>0){
-            return tam;
-        }
+}
+const clsCelular& vectorDinamicoCelular::operator[](int i){
+    if(i>=0 && i<tam){
+        return vectorCelular[i];
     }
-    clsCelular vectorDinamicoCelular::getElemento(int pos){
-        return vectorCelular[pos];
-    }
-    const clsCelular& vectorDinamicoCelular::operator[](int i){
-        if(i>=0 && i<tam){
-            return vectorCelular[i];
-        }
-    }
+}
 
 ///FUNCIONES CLASE CELULARES VENDIDOS
 void celularVendido::cargar(int c,clsCelular &r){
     codVenta=c;
     strcpy(this->modelo,r.getModelo());
     strcpy(this->nombre,r.getNombre());
+    strcpy(this->Marca_celu,r.getMarca());
     precio=r.getPrecio();
+    stock = 0;
+    Disponibilidad = true;
     estado=true;
 }
 
 void celularVendido::setCodVenta(int p){
     codVenta=p;
 }
-void celularVendido::setEstado(bool e){
-    estado = e;
-}
-bool celularVendido::getEstado(){
-    return estado;
-}
 int celularVendido::getCodVenta(){
     return codVenta;
-}
-const char* celularVendido::getModelo(){
-    return modelo;
-}
-float celularVendido::getPrecio(){
-    return precio;
 }
 
 void celularVendido::mostrar(){
