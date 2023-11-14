@@ -2,6 +2,7 @@
 #include "rlutil.h"
 
 void menuVentas(){
+    rlutil::setConsoleTitle("VENTAS");
     int op;
     while(true){
     mostrarMenuVentas();

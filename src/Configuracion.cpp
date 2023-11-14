@@ -55,6 +55,7 @@ void ValoresInicio(){
     }
 }
 void menuConfiguracion() {
+    rlutil::setConsoleTitle("CONFIGURACION");
     int opcion;
     do {
         system("cls");

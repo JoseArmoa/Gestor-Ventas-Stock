@@ -7,6 +7,7 @@ using namespace std;
 
 
 void menuStocCelulares(){
+	rlutil::setConsoleTitle("CELULARES");
 	int op;
     while(true){
         system("cls");

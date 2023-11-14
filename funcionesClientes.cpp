@@ -139,6 +139,7 @@ bool altaCliente(){
 }
 
 void menuClientes(){
+	rlutil::setConsoleTitle("CLIENTES");
 	int op;
     while(true){
         cout << "MENU CLIENTE:" << endl;

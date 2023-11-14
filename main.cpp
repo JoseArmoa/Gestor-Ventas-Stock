@@ -16,6 +16,7 @@ using namespace std;
 
 
 int main(){
+    rlutil::setConsoleTitle("MENU PRINCIPAL");
     rlutil::hidecursor();
     system("color 80");
     setlocale(LC_ALL, "");

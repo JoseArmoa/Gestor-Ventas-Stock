@@ -171,6 +171,7 @@ void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si
     }
 }
 void menuReporte() {
+    rlutil::setConsoleTitle("REPORTES");
     int opcion;
     system("cls");
     do {
