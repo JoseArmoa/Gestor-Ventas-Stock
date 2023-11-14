@@ -2,6 +2,7 @@
 #include <cstdlib>
 using namespace std;
 #include "funcionesMarca.h"
+#include "rlutil.h"
 
 void menuMarca(){
 	int op;
@@ -17,27 +18,28 @@ void menuMarca(){
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
-		cin>> op;
+		op =rlutil::getkey();
 		system("cls");
 		switch(op){
-			case 1:
+			case 49:
 				Agregar_marca();
 				break;
-			case 2:
+			case 50:
 				Listar_marca();
 				break;
-			case 3:
-
+			case 51:
+                Modificar_marca();
 				break;
-			case 4:
+			case 53:
 				bajar_marca();
 				break;
-			case 5:
+			case 54:
 				Alta_marca();
 				break;
-			case 0:
+			case 48:
 				return;
 			default:
+			    cout<<"OPCION INVALIDA"<<endl;
 				break;
 		}
 

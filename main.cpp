@@ -16,45 +16,14 @@ using namespace std;
 
 
 int main(){
-    //rlutil::setBackgroundColor(rlutil::GREY);rlutil::
-    //rlutil::setColor(rlutil::BLACK);
     rlutil::hidecursor();
     system("color 80");
     setlocale(LC_ALL, "");
-    //cout<<rlutil::getkey();
-    //system("pause");
     int op;
     while(true){
     menuPrincipal();
-
-//    op=rlutil::getkey()
         op=rlutil::getkey();
     system("cls");
-
-        /*switch(op){
-        case 1:
-            menuVentas();
-            break;
-		case 2:
-            menuClientes();
-            break;
-        case 3:
-        	MenuCelulares();
-        	break;
-		case 4:
-        	menuReporte();
-        	break;
-		case 5:
-			menuConfiguracion();
-			break;
-        case 0:
-            return 0;
-        default: cout<<"OPCION INVALIDA. "<<endl;
-            break;
-        }*/
-
-
-        //system("pause");
         switch(op){
     case 49: //si se apreta 1
         menuVentas();

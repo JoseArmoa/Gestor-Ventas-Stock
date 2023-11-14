@@ -17,18 +17,19 @@ void menuStocCelulares(){
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
-		cin>> op;
+		op = rlutil::getkey();
 		system("cls");
 		switch(op){
-			case 1:
+			case 49:
 				MenuCelulares();
 				break;
-			case 2:
+			case 50:
 				menuMarca();
 				break;
-			case 0:
+			case 48:
 				return;
 			default:
+			    cout<<"OPCION INVALIDA"<<endl;
 				break;
 		}
 
@@ -96,9 +97,7 @@ bool Agregar_celular() {
     clsCelular reg;
     char mod[30], marca[30];
     cout << "MODELO: ";
-    cin.ignore();
-    cin.getline(mod, 30);
-
+    cargarCadena(mod,30);
     int pos = archi.buscarCelular(mod);
     if (pos >= 0) {
         reg = archi.Leer(pos);
@@ -108,9 +107,8 @@ bool Agregar_celular() {
         } else {
             cout << "MODELO CORRESPONDE A REGISTRO DADO DE BAJA" << endl;
             cout << "PRESIONE Y PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
-            char op;
-            cin >> op;
-            if (op == 'y' || op == 'Y') {
+            int op = rlutil::getkey();
+            if (op == 89 || op == 121) {
                 reg.setEstado(true);
                 archi.modificar_registro(pos, reg);
                 return true;
@@ -126,9 +124,8 @@ bool Agregar_celular() {
     if (pos_m < 0) {
         cout << "¿QUIERE ESTA MARCA EN EL ARCHIVO MARCA 'marcas.dat'?" << endl;
         cout << "PRESIONE A PARA AGREGAR O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
-        char op;
-        cin >> op;
-        if (op == 'a' || op == 'A') {
+        int op = rlutil::getkey();
+        if (op == 65|| op == 97) {
             clsMarca mar(marca);
             if (archi_marca.Cargar(mar)) {
                 cout << "MARCA CARGADA" << endl;
@@ -207,7 +204,7 @@ void Baja_celular(){
 		return;
 	}
 	reg = archi.Leer(pos);
-	if (reg.getEstado()==true){
+	if (!reg.getEstado()){
 		cout << "EL CELULAR YA ESTA DADO BAJA"<<endl;
 		return;
 	}

@@ -17,10 +17,24 @@ bool agregarCliente(int dni = -1){
         cin>>dni;
 
         int encontro=archiCliente.leerDni(dni);
-
         if(encontro >=0){
-        cout<<"EL CLIENTE YA EXISTE EN EL SISTEMA. "<<endl;
-        return false;
+            r = archiCliente.leer(encontro);
+            if(r.getEstado()){
+                cout<<"EL CLIENTE YA EXISTE EN EL SISTEMA. "<<endl;
+                return false;
+            }else{
+                cout << "DNI CORRESPONDE A CLIENTE DADO DE BAJA" << endl;
+                cout << "PRESIONE Y PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+                int op;
+                op = rlutil::getkey();
+                if (op == 89 || op == 121) {
+                    r.setEstado(true);
+                    archiCliente.modificarRegistro(encontro,r);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }else{
         r.Cargar(dni);
         archiCliente.Cargar(r);
@@ -58,33 +72,36 @@ void Modificar_cliente(){
 
 	reg = archi.leer(pos);
 
-	cout<<"NOMBRE COMPLETO: "<<reg.getNombre()<<" "<<reg.getApellido()<<endl;
-	cout<<"EL TELEFONO ACTUAL ES: "<<reg.getTelefono()<<endl;
-	cout<<"-----------------"<<endl;
-	cout<<"DESEA CAMBIAR EL TELEFONO?..."<<endl;
-	cout<<"Y. ACEPTAR                          Q. VOLVER"<<endl;
-	char c;
-	cin>>c;
-	if(c=='y' || c=='Y'){
+	if(reg.getEstado()){
+        cout<<"NOMBRE COMPLETO: "<<reg.getNombre()<<" "<<reg.getApellido()<<endl;
+        cout<<"EL TELEFONO ACTUAL ES: "<<reg.getTelefono()<<endl;
+        cout<<"-----------------"<<endl;
+        cout<<"DESEA CAMBIAR EL TELEFONO?..."<<endl;
+        cout<<"Y. ACEPTAR                          Q. VOLVER"<<endl;
+        int c= rlutil::getkey();
+        if(c==89 || c==121){
 
-        char telefono[30];
-        cout << "INGRESE EL TELEFONO NUEVO: ";
-        cin.ignore();
-        cin.getline(telefono, 30);
-        cout<<endl;
-        reg.setTelefono(telefono);
-        if(archi.modificarRegistro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
-        } else{
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+            char telefono[30];
+            cout << "INGRESE EL TELEFONO NUEVO: ";
+            cin.ignore();
+            cin.getline(telefono, 30);
+            cout<<endl;
+            reg.setTelefono(telefono);
+            if(archi.modificarRegistro(pos,reg)){
+            cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+            } else{
+            cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+            }
         }
+        else if(c==81 || c==113){
+            return;
+        }
+        else{
+            cout<<"OPCION NO VALIDA. "<<endl;
+        }
+	}else{
+        cout<<"DNI CORRESPONDE A CLIENTE DADO DE BAJA"<<endl;
 	}
-    else if(c=='q' || c=='Q'){
-        return;
-    }
-    else{
-        cout<<"OPCION NO VALIDA. "<<endl;
-    }
 }
 
 
@@ -98,8 +115,13 @@ bool bajaCliente(){
 	if(pos > -1){
         r = archi.leer(pos);
 	}
-	r.setEstado(false);
-	return archi.modificarRegistro(pos,r);
+	if(r.getEstado()){
+        r.setEstado(false);
+        return archi.modificarRegistro(pos,r);
+	}else{
+        cout<<"EL REGISTRO YA ESTA DADO DE BAJA";
+	}
+	return false;
 }
 
 bool altaCliente(){
@@ -124,11 +146,10 @@ void menuClientes(){
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
 		cout << "3. BAJAR CLIENTE" << endl;
-		cout << "4. ALTA CLIENTE" << endl;
-		cout << "5. MODIFICAR TELEFONO DE CLIENTE" << endl;
+		cout << "4. MODIFICAR TELEFONO DE CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "ELIJA UNA OPCIóN: ";
+		cout << "ELIJA UNA OPCION: ";
 		op=rlutil::getkey();
 		system("cls");
         switch(op){

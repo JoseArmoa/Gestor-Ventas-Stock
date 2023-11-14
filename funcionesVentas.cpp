@@ -67,7 +67,7 @@ bool cargarVentas(){
     bool bandera=true;//bandera para saber si es el primer producto a agregar.
 
     vectorDinamicoCelular v(tam);//Inicializamos vector dinamico que contiene los productos de la venta empezando el valor en 1.
-    char op;//cuando se ingrese a la funcion ventas se inicializa la opcion para automaticamente añadir un producto a la venta.
+    int op;
     std::cout<<"DNI: ";
     std::cin>>dni;
     encontro = archiCLiente.leerDni(dni);
@@ -77,23 +77,26 @@ bool cargarVentas(){
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
         std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
         std::cout<<"A: AGREGAR   Q: CANCELAR"<<std::endl;
-        std::cin>>op;
-        if(op=='A' || op == 'a'){
+        op = rlutil::getkey();
+        system("cls");
+        if(op==89 || op == 121){
             if(agregarCliente(dni)){
                  std::cout<<"CLIENTE AGREGADO"<<std::endl;
                  rCliente = archiCLiente.leer(archiCLiente.leerDni(dni));
-                 op = 'n';
+                 op = 78;
                  system("pause");
                  system("cls");
             }else{
                 std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
-                op = 'q';
+                op = 81;
             }
         }
     }
     while(true){
+            op = rlutil::getkey();
+            system("cls");
             switch(op){
-            case 'A':case 'a':///CASO A PARA AGREGA PRODUCTO A LA VENTA
+            case 65:case 97:///CASO A PARA AGREGA PRODUCTO A LA VENTA
                 if(bandera){
                   std::cout<<"MODELO: ";
                   std::cin.ignore();
@@ -131,7 +134,7 @@ bool cargarVentas(){
                     }
             }
                 break;
-            case 'y': case 'Y':
+            case 89: case 121:
                 cantRegistros= archiVentas.contarRegistros();
                 if(cantRegistros == -1){
                     rVentas.setCodVenta(1);
@@ -151,7 +154,7 @@ bool cargarVentas(){
                     return true;
                 }
                 break;
-            case 'e': case 'E':
+            case 69: case 101:
                 std::cout<<"MODELO: ";
                 std::cin.ignore();
                 std::cin.getline(mod,30);
@@ -164,7 +167,7 @@ bool cargarVentas(){
                     }
                 }
                 break;
-            case 'q': case 'Q':
+            case 81: case 113:
                 return false;
                 break;
             default: std::cout<<"OPCION INVALIDA. "<<std::endl;
@@ -179,7 +182,6 @@ bool cargarVentas(){
         std::cout<<"TOTAL: $"<<total<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Y:CONFIRMAR VENTA  A:AGREGAR PRODUCTO  E:ELIMINAR PRODUCTO Q:CANCELAR VENTA"<<std::endl;
-        std::cin>>op;
     }
 }
 void listarVentas(){
@@ -224,13 +226,11 @@ bool eliminarVenta(){
         rVentas = aVentas.Leer(cod-1);
         if(rVentas.getEstado()){
             rVentas.Mostrar();
-            char op;
             std::cout<<std::endl;
             std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
             std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-            std::cin>>op;
-            system("cls");
-            if(op == 'y' || op == 'Y'){
+            int op = rlutil::getkey();
+            if (op == 89 || op == 121){
                 rVentas.setEstado(false);
                 if(aVentas.Modificar(cod-1,rVentas)) return true;
                 return false;
@@ -257,13 +257,11 @@ bool modificarFecha(){
         rVentas = aVentas.Leer(cod-1);
         if(rVentas.getEstado()){
             rVentas.Mostrar();
-            char op;
             std::cout<<std::endl;
             std::cout<<"DESEA MODIFICAR FECHA?"<<std::endl;
             std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-            std::cin>>op;
-            system("cls");
-            if(op == 'y' || op == 'Y'){
+            int op = rlutil::getkey();
+            if (op == 89 || op == 121){
                 std::cout<<"INGRESE FECHA NUEVA: "<<std::endl;
                 nueva.Cargar();
                 rVentas.setFecha(nueva);
@@ -294,10 +292,8 @@ bool devolucion(){
                 std::cout<<std::endl;
                 std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
                 std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
-                char op;
-                std::cin>>op;
-                system("cls");
-                if(op == 'y' || op == 'Y'){
+                int op = rlutil::getkey();
+                if (op == 89 || op == 121){
                     rVentas.setEstado(false);
                     aVentas.Modificar(cod-1,rVentas);
                     return true;

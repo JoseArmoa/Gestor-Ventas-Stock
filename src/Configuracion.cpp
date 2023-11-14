@@ -69,27 +69,6 @@ void menuConfiguracion() {
         cout << "Ingrese su opcion: ";
         opcion=rlutil::getkey();
 		system("cls");
-        /*switch (opcion) {
-			case 0:
-				return;
-            case 1:
-				Guardar();
-                break;
-            case 2:
-				Restaurar();
-                break;
-			case 3:ValoresInicio();
-				break;
-			case 4:
-                if (borrarTodo()) {
-                    cout << "ARCHIVOS ELIMINADOS EXITOSAMENTE." << endl;
-                } else {
-                    cout << "ERROR AL ELIMINAR ARCHIVOS." << endl;
-                }
-                break;
-            default: cout<<"OPCION INVALIDA. "<<endl;
-                break;
-        }*/
         switch(opcion){
             case 49: //si se apreta 1
                     Guardar();

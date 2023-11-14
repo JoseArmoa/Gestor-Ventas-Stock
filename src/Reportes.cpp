@@ -172,6 +172,7 @@ void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si
 }
 void menuReporte() {
     int opcion;
+    system("cls");
     do {
         cout << "MENU REPORTES" << endl;
         cout << "----------------------------"<<endl;
@@ -185,30 +186,6 @@ void menuReporte() {
         cout << "Selecciona una opción: ";
 
         opcion=rlutil::getkey();
-        /*switch (opcion) {
-            case 0:
-                system("cls");
-                return;
-            case 1:
-				punto_1();
-                break;
-            case 2:
-                punto_2();
-            //DADA DOS FECHAS, DEVOLVER EL TOTAL FACTURADO EN ESE RANGO DE TIEMPO
-                break;
-            case 3:
-            	punto_3();
-				break;
-                break;
-            case 4:
-                punto_4();
-                break;
-            case 5:
-                punto_5();
-                break;
-            default: cout<<"OPCION INVALIDA. "<<endl;
-                break;
-        }*/
         switch(opcion){
     case 49: //si se apreta 1
             punto_1();

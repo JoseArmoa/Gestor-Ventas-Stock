@@ -63,15 +63,16 @@ void clsCliente::Cargar(int d=-1){
 }
 
 void clsCliente::Mostrar(){
-        cout<<"------------"<<endl;
-        cout<<"DNI: "<<dni<<endl;
-        cout<<"NOMBRE: "<<nombre<<endl;
-        cout<<"APELLIDO: "<<apellido<<endl;
-        cout<<"TELEFONO: "<<telefono<<endl;
-        cout<<"FECHA: ";
-        fechaNacimiento.Mostrar();
-        cout<<"------------"<<endl;
-        //cout<<estado;
+        if(estado){
+            cout<<"------------"<<endl;
+            cout<<"DNI: "<<dni<<endl;
+            cout<<"NOMBRE: "<<nombre<<endl;
+            cout<<"APELLIDO: "<<apellido<<endl;
+            cout<<"TELEFONO: "<<telefono<<endl;
+            cout<<"FECHA: ";
+            fechaNacimiento.Mostrar();
+            cout<<"------------"<<endl;
+        }
 }
 void clsCliente::mostrarMenos(){
     cout<<"DNI: "<<dni<<" NOMBRE: "<<nombre<<endl;

@@ -36,7 +36,7 @@ void menuPrincipal() {
 	std::cout << "5. CONFIGURACION" << std::endl;
 	std::cout << "0. SALIR" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
-	std::cout << "INGRESE UNA OPCIóN: ";
+	std::cout << "INGRESE UNA OPCION: ";
 }
 
 
