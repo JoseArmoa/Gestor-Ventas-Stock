@@ -31,13 +31,12 @@ bool clsMarca::getEstado() {
 
 void clsMarca::mostrar() {
     if (getEstado()){
-		cout<<"MARCA: "<< Marca<<endl;
+		cout<<Marca<<endl;
 	}
 }
 void clsMarca::cargar() {
     cout << "INGRESE LA MARCA: ";
-    cin.ignore();
-    cin.getline(Marca, 30);
+    cargarCadena(Marca,30);
     setEstado(true);
 }
 

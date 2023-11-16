@@ -148,8 +148,7 @@ void Reponer_Stock(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(modelo, 30);
+	cargarCadena(modelo,30);
 	int pos;
 	clsCelular reg;
 	pos = archi.buscarCelular(modelo);
@@ -173,8 +172,7 @@ void Modificar_precio(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(modelo, 30);
+	cargarCadena(modelo,30);
 	int pos = archi.buscarCelular(modelo);
 	clsCelular reg;
 	if (pos < 0) {
@@ -196,8 +194,7 @@ void Baja_celular(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(modelo, 30);
+	cargarCadena(modelo,30);
 	int pos=archi.buscarCelular(modelo);
 	clsCelular reg;
 	if (pos < 0) {
@@ -220,18 +217,25 @@ void Listar_celular(){
     clsCelular r;
     ArchivosCelular archi("celulares.dat");
     int tam = archi.contarRegistros();
+    cout << left;
+    cout << setw(7)  << "MODELO";
+    cout << setw(7) << "NOMBRE";
+    cout << setw(18) << "         FECHA LANZ.";
+    cout << setw(6)  << "  MARCA";
+    cout << setw(7)  << "     PRECIO";
+    cout << setw(6) << "    STOCK" << endl;
+    cout<<"-------------------------------------------------------------"<<endl;
+
     for(int i=0;i<tam;i++){
         r = archi.Leer(i);
         r.mostrar();
-        cout<<endl;
     }
 }
 void Alta_celular(){
 	ArchivosCelular archi("celulares.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(modelo, 30);
+	cargarCadena(modelo,30);
 	int pos=archi.buscarCelular(modelo);
 	clsCelular reg;
 	if (pos < 0) {

@@ -2,7 +2,7 @@
 #define CLSMARCA_H
 
 #include <cstring>
-
+#include "funcioneGlobales.h"
 class clsMarca {
 private:
     char Marca[30];

@@ -30,10 +30,10 @@ void menuMarca(){
 			case 51:
                 Modificar_marca();
 				break;
-			case 53:
+			case 52:
 				bajar_marca();
 				break;
-			case 54:
+			case 53:
 				Alta_marca();
 				break;
 			case 48:
@@ -42,7 +42,7 @@ void menuMarca(){
 			    cout<<"OPCION INVALIDA"<<endl;
 				break;
 		}
-
+		system("pause");
 	}
 }
 
@@ -51,8 +51,7 @@ void Agregar_marca() {
     ArchivoMarca Archi("marcas.dat");
     char marca[30];
     cout << "INGRESE LA MARCA QUE QUIERE AGREGAR: ";
-    cin.ignore();
-    cin.getline(marca, 30);
+    cargarCadena(marca,30);
     int pos = Archi.buscarMarca(marca);
     if (pos >= 0) {
         cout << "MARCA REPETIDA, SE CANCELARÁ LA OPERACIÓN" << endl;
@@ -68,20 +67,20 @@ void Agregar_marca() {
 void Listar_marca(){
 	ArchivoMarca Archi("marcas.dat");
 	int tam=Archi.contarRegistros();
+	cout<<"NOMBRE MARCAS"<<endl;
+    cout<<"-------------"<<endl;
 	for (int i=0;i<tam;i++){
 		clsMarca reg=Archi.Leer(i);
 		reg.mostrar();
 		cout<<"\n";
 
 	}
-	return;
 }
 void Modificar_marca(){
 	ArchivoMarca archi("marcas.dat");
     char marca[30];
     cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(marca, 30);
+	cargarCadena(marca,30);
 	int pos=archi.buscarMarca(marca);
 	if (pos < 0) {
 		cout << "LA MARCA NO EXISTE" << endl;
@@ -90,7 +89,7 @@ void Modificar_marca(){
 	clsMarca reg=archi.Leer(pos);
 	char marca_[30];
 	cout<< "INGRESE EL NUEVO NOMBRE DE LA MARCA (HASTA 30 CARACTERES): "<<endl;
-	cin.getline(marca_, 30);
+	cargarCadena(marca_,30);
 	reg.setMarca(marca_);
 	if (archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
@@ -102,8 +101,7 @@ void bajar_marca(){
 	ArchivoMarca archi("marcas.dat");
     char marca[30];
     cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(marca, 30);
+	cargarCadena(marca,30);
 	int pos=archi.buscarMarca(marca);
 	if (pos < 0) {
 		cout << "LA MARCA NO EXISTE" << endl;
@@ -125,8 +123,7 @@ void Alta_marca(){
 	ArchivoMarca archi("marcas.dat");
     char marca[30];
     cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
-	cin.ignore();
-	cin.getline(marca, 30);
+	cargarCadena(marca,30);
 	int pos=archi.buscarMarca(marca);
 	if (pos < 0) {
 		cout << "LA MARCA NO EXISTE" << endl;

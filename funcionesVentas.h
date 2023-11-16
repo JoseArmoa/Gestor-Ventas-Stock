@@ -1,6 +1,7 @@
 #ifndef FUNCIONESVENTAS_H_INCLUDED
 #define FUNCIONESVENTAS_H_INCLUDED
 #include <iostream>
+#include "funcioneGlobales.h"
 #include "clsCelular.h"
 #include "clsVentas.h"
 #include "clsCliente.h"

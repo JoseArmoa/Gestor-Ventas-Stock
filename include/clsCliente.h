@@ -1,9 +1,10 @@
 #ifndef CLSCLIENTE_H
 #define CLSCLIENTE_H
-
+#include <iomanip>
 #include <iostream>
 #include <cstdio>
 #include <cstring>
+#include "funcioneGlobales.h"
 #include "clsFecha.h"
 class clsCliente
 {

@@ -1,5 +1,6 @@
 #ifndef FUNCIONESCELULARES_H
 #define FUNCIONESCELULARES_H
+#include <iomanip>
 #include "funcionesMarca.h"
 #include "funcioneGlobales.h"
 

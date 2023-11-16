@@ -1,6 +1,7 @@
 #ifndef CLSCELULAR_H
 #define CLSCELULAR_H
-
+#include <iomanip>
+#include "funcioneGlobales.h"
 #include "clsFecha.h"
 #include <cstring>
 #include "clsMarca.h"

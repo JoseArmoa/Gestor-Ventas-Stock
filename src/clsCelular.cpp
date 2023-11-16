@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 using namespace std;
 #include "clsCelular.h"
 
@@ -35,19 +36,17 @@ using namespace std;
 	void clsCelular::cargar(const char *n,const char *m){
 		if(n==nullptr){
             cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-            cin.ignore(); // Limpia el buffer de entrada.
-            cin.getline(modelo, 30);
+            cargarCadena(modelo,30);
 		}else{
             strcpy(modelo,n);
 		}
 
 		cout << "INGRESE EL NOMBRE (HASTA 30 CARACTERES): ";
-		cin.getline(nombre, 30);
+		cargarCadena(nombre,30);
 
 		if(m==nullptr){
             cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-            cin.ignore(); // Limpia el buffer de entrada.
-            cin.getline(Marca_celu, 30);
+            cargarCadena(Marca_celu,30);
 		}else{
             strcpy(Marca_celu,m);
 		}
@@ -69,20 +68,26 @@ using namespace std;
 	}
 	void clsCelular::mostrar() {
 		if (getEstado()) {
-			cout << "MODELO: " << modelo << endl;
-			cout << "NOMBRE: " << nombre << endl;
-			cout << "FECHA DE LANZAMIENTO: ";
-			anioLanzamiento.Mostrar();
-			cout << "MARCA: " << Marca_celu << endl;
-			cout << "PRECIO: " << precio << endl;
-			cout << "STOCK: " << stock << endl;
+			cout << left;
+            cout << setw(7)<< modelo;
+			cout << setw(15)<< nombre;
+			cout <<right;
+			cout << setw(2)<< anioLanzamiento.getDia() << "/";
+            cout << setw(2)<< anioLanzamiento.getMes() << "/";
+            cout <<left;
+            cout << setw(5)<< anioLanzamiento.getAnio()<<"   ";
+            cout << setw(10)<< Marca_celu;
+			cout << setw(7)<<precio<<"   ";
+			cout << setw(5)<<stock<<endl;
 		}
 	}
 
 	void clsCelular::mostrarMenos() {
 		if (getEstado()){
-			cout << modelo <<"     " << nombre << "    $" << precio << endl;
-
+			cout << left;
+            cout << setw(7)<< modelo;
+			cout << setw(15)<< nombre;
+            cout << setw(7)<<precio<<endl;
 
 		}
 	}

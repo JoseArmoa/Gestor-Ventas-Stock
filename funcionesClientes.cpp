@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
 #include "clsCliente.h"
 #include "rlutil.h"
@@ -49,10 +49,16 @@ bool agregarCliente(int dni = -1){
 void listarClientes(){
 	ArchivoCliente archi("clientes.dat");
 	int cant=archi.contarRegistros();
+	cout<<left;
+    cout<<setw(10)<<"DNI";
+    cout<<setw(10)<<"NOMBRE";
+    cout<<setw(12)<<"APELLIDO";
+    cout<<setw(13)<<"TELEFONO";
+    cout<<setw(15)<<"FECHA NAC."<<endl;
+    cout<<"-------------------------------------------------------"<<endl;
 	for(int i=0;i<cant;i++){
 		clsCliente reg=archi.leer(i);
 		reg.Mostrar();
-		cout << "\n";
 	}
 }
 

@@ -47,12 +47,11 @@ void clsCliente::Cargar(int d=-1){
             dni=d;
         }
         cout<<"NOMBRE: ";
-        cin.ignore();
-        cin.getline(nombre, 30);
+        cargarCadena(nombre,30);
         cout<<"APELLIDO: ";
-        cin.getline(apellido, 30);
+        cargarCadena(apellido,30);
         cout<<"TELEFONO: ";
-        cin.getline(telefono, 30);
+        cargarCadena(telefono,30);
         cout<<"FECHA DE NACIMIENTO: "<<endl;
         while(!fechaNacimiento.Cargar()){
             cout<<"FECHA INCORRECTA"<<endl;
@@ -64,14 +63,15 @@ void clsCliente::Cargar(int d=-1){
 
 void clsCliente::Mostrar(){
         if(estado){
-            cout<<"------------"<<endl;
-            cout<<"DNI: "<<dni<<endl;
-            cout<<"NOMBRE: "<<nombre<<endl;
-            cout<<"APELLIDO: "<<apellido<<endl;
-            cout<<"TELEFONO: "<<telefono<<endl;
-            cout<<"FECHA: ";
-            fechaNacimiento.Mostrar();
-            cout<<"------------"<<endl;
+            cout<<left;
+            cout<<setw(10)<<dni;
+            cout<<setw(10)<<nombre;
+            cout<<setw(12)<<apellido;
+            cout<<setw(13)<<telefono;
+            cout<<right;
+            cout<<setw(2)<<fechaNacimiento.getDia()<<"/";
+            cout<<setw(2)<<fechaNacimiento.getMes()<<"/";
+            cout<<setw(4)<<fechaNacimiento.getAnio()<<endl;
         }
 }
 void clsCliente::mostrarMenos(){

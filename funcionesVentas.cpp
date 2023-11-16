@@ -100,8 +100,7 @@ bool cargarVentas(){
             case 65:case 97:///CASO A PARA AGREGA PRODUCTO A LA VENTA
                 if(bandera){
                   std::cout<<"MODELO: ";
-                  std::cin.ignore();
-                  std::cin.getline(mod,30);
+                  cargarCadena(mod,30);
                   pos = archiCelular.buscarCelular(mod);
                   if(pos != -1){//verifica que el modelo exista en el archivo
                     rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
@@ -117,8 +116,7 @@ bool cargarVentas(){
                   }
                 }else{
                     std::cout<<"MODELO: ";
-                    std::cin.ignore();
-                    std::cin.getline(mod,30);
+                    cargarCadena(mod,30);
                     int pos = archiCelular.buscarCelular(mod);
                     if(pos != -1){
                       rCelular = archiCelular.Leer(pos);
@@ -157,8 +155,7 @@ bool cargarVentas(){
                 break;
             case 69: case 101:
                 std::cout<<"MODELO: ";
-                std::cin.ignore();
-                std::cin.getline(mod,30);
+                cargarCadena(mod,30);
                 pos = archiCelular.buscarCelular(mod);
                 if(pos != -1){
                 rCelular = archiCelular.Leer(pos);
