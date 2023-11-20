@@ -40,6 +40,14 @@ void punto_1() {
     cout << "INGRESE EL NUMERO ENTERO: ";
     cin >> num;
     bool estado=false;
+	cout << left;
+	cout << setw(7)  << "MODELO";
+	cout << setw(7) << "NOMBRE";
+	cout << setw(18) << "         FECHA LANZ.";
+	cout << setw(6)  << "  MARCA";
+	cout << setw(7)  << "     PRECIO";
+	cout << setw(6) << "    STOCK" << endl;
+	cout<<"-------------------------------------------------------------"<<endl;
     for (int i = 0; i < tam; i++) {
         clsCelular reg = Archi.Leer(i);
         if (reg.getStock() <= num) {
@@ -60,11 +68,17 @@ void punto_3(){
 	bool estado=false;
 	cout<<"INGRESE EL DNI DEL CLIENTE: ";
 	cin >> dni;
+	system("cls");
 	for (int i=0;i<pos_reg;i++){
 		clsVentas reg = archi_venta.Leer(i);
 		if (reg.getDniCliente()==dni){
+			if (!estado){
+				cout<<"-------------------------------------------------------------"<<endl;
+			}
+			cout <<"\n";
 			estado=true;
 			reg.Mostrar();
+			cout<<"-------------------------------------------------------------"<<endl;
 		}
 	}
 	if (!estado){
@@ -187,6 +201,7 @@ void menuReporte() {
         cout << "Selecciona una opción: ";
 
         opcion=rlutil::getkey();
+        system("cls");
         switch(opcion){
     case 49: //si se apreta 1
             punto_1();
@@ -198,7 +213,7 @@ void menuReporte() {
             punto_3();
         	break;
     case 52://si se apreta 4
-             punto_4();
+			punto_4();
         	break;
     case 53://si se apreta 5
             punto_5();

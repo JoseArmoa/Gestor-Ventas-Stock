@@ -77,7 +77,7 @@ bool cargarVentas(){
     }else{
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
         std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
-        std::cout<<"A: AGREGAR   Q: CANCELAR"<<std::endl;
+        std::cout<<"Y: AGREGAR   Q: CANCELAR"<<std::endl;
         op = rlutil::getkey();
         system("cls");
         if(op==89 || op == 121){
@@ -91,7 +91,10 @@ bool cargarVentas(){
                 std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
                 op = 81;
             }
+        }else {
+			return false;
         }
+
     }
     while(true){
             op = rlutil::getkey();

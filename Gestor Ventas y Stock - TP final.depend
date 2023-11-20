@@ -643,20 +643,23 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1699907885 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.cpp
 	<iostream>
+	<iomanip>
 	"clsCliente.h"
 	"rlutil.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscliente.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscliente.h
+	<iomanip>
 	<iostream>
 	<cstdio>
 	<cstring>
+	"funcioneGlobales.h"
 	"clsFecha.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsfecha.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsfecha.h
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\rlutil.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -670,23 +673,26 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesglobales.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesglobales.cpp
 	"funcioneGlobales.h"
 	"rlutil.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcioneglobales.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcioneglobales.h
 	<iostream>
 	"clsCelular.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscelular.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clscelular.h
+	<iomanip>
+	"funcioneGlobales.h"
 	"clsFecha.h"
 	<cstring>
 	"clsMarca.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsmarca.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsmarca.h
 	<cstring>
+	"funcioneGlobales.h"
 
-1699905700 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\main.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\main.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -701,86 +707,92 @@
 	"Configuracion.h"
 	"funcionesClientes.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsventas.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\clsventas.h
 	<iostream>
 	<cstring>
 	"clsFecha.h"
 	"clsCelular.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.h
 	<iostream>
+	"funcioneGlobales.h"
 	"clsCelular.h"
 	"clsVentas.h"
 	"clsCliente.h"
 	"funcionesClientes.h"
 
-1699907776 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesclientes.h
 
-1699907283 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionescelulares.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionescelulares.h
+	<iomanip>
 	"funcionesMarca.h"
+	"funcioneGlobales.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\reportes.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\reportes.h
 	<cstring>
 	"clsCelular.h"
 	"clsVentas.h"
 	"clsCliente.h"
 
-1699902066 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\configuracion.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\configuracion.h
 	"clsCelular.h"
 	"clsCliente.h"
 	"clsVentas.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscelular.cpp
+1700102116 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscelular.cpp
 	<iostream>
 	<cstdlib>
+	<iomanip>
 	"clsCelular.h"
 
-1699903909 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscliente.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clscliente.cpp
 	"clsCliente.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsfecha.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsfecha.cpp
 	<iostream>
 	<ctime>
 	"clsFecha.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsmarca.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsmarca.cpp
 	<iostream>
 	<cstdlib>
 	"clsMarca.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsventas.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\clsventas.cpp
 	"clsVentas.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\configuracion.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\configuracion.cpp
 	<iostream>
 	<cstdlib>
 	"Configuracion.h"
 	"rlutil.h"
 
-1699907458 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionescelulares.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionescelulares.cpp
 	<iostream>
 	<cstdlib>
 	"funcionesCelulares.h"
 	"clsCelular.h"
 	"rlutil.h"
 
-1699902066 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\reportes.cpp
+1700102278 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\reportes.cpp
 	<iostream>
 	<cstdlib>
 	"Reportes.h"
 	"rlutil.h"
 
-1699907710 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.cpp
+1700100946 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\funcionesventas.cpp
 	"funcionesVentas.h"
 	"rlutil.h"
 
-1699906268 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionesmarca.h
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcionesmarca.h
 	"clsMarca.h"
+	"funcioneGlobales.h"
 
-1699906923 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionesmarca.cpp
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\src\funcionesmarca.cpp
 	<iostream>
 	<cstdlib>
 	"funcionesMarca.h"
+	"rlutil.h"
 
 1700096926 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\funcionesmarca.h
 	"clsMarca.h"
@@ -795,4 +807,163 @@
 1699493146 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\funcioneglobales.h
 	<iostream>
 	"clsCelular.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock\include\funcioneglobales.h
+	<iostream>
+	"clsCelular.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcionesclientes.cpp
+	<iostream>
+	<iomanip>
+	"clsCliente.h"
+	"rlutil.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\clscliente.h
+	<iomanip>
+	<iostream>
+	<cstdio>
+	<cstring>
+	"funcioneGlobales.h"
+	"clsFecha.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\funcioneglobales.h
+	<iostream>
+	"clsCelular.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\clscelular.h
+	<iomanip>
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	<cstring>
+	"clsMarca.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\clsfecha.h
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\clsmarca.h
+	<cstring>
+	"funcioneGlobales.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcionesglobales.cpp
+	"funcioneGlobales.h"
+	"rlutil.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcioneglobales.h
+	<iostream>
+	"clsCelular.h"
+
+1700100946 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcionesventas.cpp
+	"funcionesVentas.h"
+	"rlutil.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcionesventas.h
+	<iostream>
+	"funcioneGlobales.h"
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+	"funcionesClientes.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\clsventas.h
+	<iostream>
+	<cstring>
+	"clsFecha.h"
+	"clsCelular.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\funcionesclientes.h
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<vector>
+	"rlutil.h"
+	"funcioneGlobales.h"
+	"clsFecha.h"
+	"clsVentas.h"
+	"funcionesVentas.h"
+	"funcionesCelulares.h"
+	"Reportes.h"
+	"Configuracion.h"
+	"funcionesClientes.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\funcionescelulares.h
+	<iomanip>
+	"funcionesMarca.h"
+	"funcioneGlobales.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\funcionesmarca.h
+	"clsMarca.h"
+	"funcioneGlobales.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\reportes.h
+	<cstring>
+	"clsCelular.h"
+	"clsVentas.h"
+	"clsCliente.h"
+
+1700102033 c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\include\configuracion.h
+	"clsCelular.h"
+	"clsCliente.h"
+	"clsVentas.h"
+
+1700102116 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\clscelular.cpp
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	"clsCelular.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\clscliente.cpp
+	"clsCliente.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\clsfecha.cpp
+	<iostream>
+	<ctime>
+	"clsFecha.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\clsmarca.cpp
+	<iostream>
+	<cstdlib>
+	"clsMarca.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\clsventas.cpp
+	"clsVentas.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\funcionescelulares.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesCelulares.h"
+	"clsCelular.h"
+	"rlutil.h"
+
+1700102033 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\funcionesmarca.cpp
+	<iostream>
+	<cstdlib>
+	"funcionesMarca.h"
+	"rlutil.h"
+
+1700521800 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\reportes.cpp
+	<iostream>
+	<cstdlib>
+	"Reportes.h"
+	"rlutil.h"
+
+1700499929 source:c:\users\user\downloads\modelo de segundo parcial\gestor-ventas-stock - copia\src\configuracion.cpp
+	<iostream>
+	<cstdlib>
+	"Configuracion.h"
+	"rlutil.h"
 

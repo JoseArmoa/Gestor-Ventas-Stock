@@ -45,7 +45,7 @@ using namespace std;
 		cargarCadena(nombre,30);
 
 		if(m==nullptr){
-            cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
+            cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
             cargarCadena(Marca_celu,30);
 		}else{
             strcpy(Marca_celu,m);

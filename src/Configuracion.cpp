@@ -45,10 +45,15 @@ bool borrarTodo(){
     return false;
 }
 void ValoresInicio(){
+
+	///
 	int resultado_1 = system("copy marcasValoresInicio.dat marcas.dat");
 	int resultado_2 = system("copy clientesValoresInicio.dat clientes.dat");
 	int resultado_3 = system("copy celularesValoresInicio.dat celulares.dat");
-	if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 ) {
+	int resultado_4 = system("copy vendidosValoresInicio.dat vendidos.dat");
+	int resultado_5 = system("copy ventasValoresInicio.dat ventas.dat");
+
+	if (resultado_1 == 0 && resultado_2 == 0 && resultado_3 == 0 && resultado_4 == 0 && resultado_5 == 0 ) {
         cout << "ARCHIVOS RESTAURADOS EXITOSAMENTE." << endl;
     } else {
         cout << "ERROR AL RESTAURAR LOS ARCHIVOS." << endl;
