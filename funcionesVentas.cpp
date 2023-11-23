@@ -74,6 +74,19 @@ bool cargarVentas(){
     encontro = archiCLiente.leerDni(dni);
     if(encontro > -1){
         rCliente = archiCLiente.leer(encontro);
+        if(!rCliente.getEstado()){
+            std::cout<<"DNI CORRESPONDE A CLIENTE DADO DE BAJA"<<std::endl;
+            std::cout<<"DESEA DARLO DE ALTA?"<<std::endl<<std::endl;
+            std::cout<<"Y: AGREGAR   Q: CANCELAR"<<std::endl;
+            op = rlutil::getkey();
+            system("cls");
+            if(op==89 || op == 121){
+                rCliente.setEstado(true);
+                archiCLiente.modificarRegistro(encontro,rCliente);
+            }else{
+                return false;
+            }
+        }
     }else{
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
         std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
@@ -84,21 +97,18 @@ bool cargarVentas(){
             if(agregarCliente(dni)){
                  std::cout<<"CLIENTE AGREGADO"<<std::endl;
                  rCliente = archiCLiente.leer(archiCLiente.leerDni(dni));
-                 op = 78;
                  system("pause");
                  system("cls");
             }else{
                 std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
-                op = 81;
             }
         }else {
 			return false;
         }
 
     }
+    op = 66;
     while(true){
-            op = rlutil::getkey();
-            system("cls");
             switch(op){
             case 65:case 97:///CASO A PARA AGREGA PRODUCTO A LA VENTA
                 if(bandera){
@@ -107,15 +117,17 @@ bool cargarVentas(){
                   pos = archiCelular.buscarCelular(mod);
                   if(pos != -1){//verifica que el modelo exista en el archivo
                     rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
-                    if(rCelular.getDisponibilidad()){
+                    if(rCelular.getDisponibilidad() && rCelular.getEstado()){
                         total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
                         v.agregar(rCelular);//agregamos el registro al vector dinamico.
                         bandera = false;
                     }else{
                         std::cout<<"PRODUCTO SIN STOCK O NO DISPONIBLE"<<std::endl;
+                        system("pause");
                     }
                   }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
+                    system("pause");
                   }
                 }else{
                     std::cout<<"MODELO: ";
@@ -123,37 +135,44 @@ bool cargarVentas(){
                     int pos = archiCelular.buscarCelular(mod);
                     if(pos != -1){
                       rCelular = archiCelular.Leer(pos);
-                      if(rCelular.getDisponibilidad()){
+                      if(rCelular.getDisponibilidad()&& rCelular.getEstado()){
                         total += rCelular.getPrecio();
                         tam++;//incrementamos la variable que contiene la cantidad de registros.
                         v.aumentar(tam);//incrementamos el vector dinamico
                         v.agregar(rCelular);//agregamos el nuevo registro(la funcion siempre va a carga en la ultima posicion disponible)
                       }else{
                         std::cout<<"PRODUCTO SIN STOCK O NO DISPONIBLE"<<std::endl;
+                        system("pause");
                       }
                     }else{
                     std::cout<<"MODELO INCORRECTO"<<std::endl;
+                    system("pause");
                     }
             }
                 break;
             case 89: case 121:
-                cantRegistros= archiVentas.contarRegistros();
-                if(cantRegistros == -1){
-                    rVentas.setCodVenta(1);
-                    rVentas.setDniCliente(rCliente.getDNI());
-                    rVentas.setCantidad(tam);
-                    rVentas.setTotal(total);
-                    guardarVectorArchivo(v,tam,1);
-                    archiVentas.Cargar(rVentas);
-                    return true;
+                if(!bandera){
+                    cantRegistros= archiVentas.contarRegistros();
+                    if(cantRegistros == -1){
+                        rVentas.setCodVenta(1);
+                        rVentas.setDniCliente(rCliente.getDNI());
+                        rVentas.setCantidad(tam);
+                        rVentas.setTotal(total);
+                        guardarVectorArchivo(v,tam,1);
+                        archiVentas.Cargar(rVentas);
+                        return true;
+                    }else{
+                        rVentas.setCodVenta(cantRegistros+1);
+                        rVentas.setDniCliente(rCliente.getDNI());
+                        rVentas.setCantidad(tam);
+                        rVentas.setTotal(total);
+                        guardarVectorArchivo(v,tam,cantRegistros+1);
+                        archiVentas.Cargar(rVentas);
+                        return true;
+                    }
                 }else{
-                    rVentas.setCodVenta(cantRegistros+1);
-                    rVentas.setDniCliente(rCliente.getDNI());
-                    rVentas.setCantidad(tam);
-                    rVentas.setTotal(total);
-                    guardarVectorArchivo(v,tam,cantRegistros+1);
-                    archiVentas.Cargar(rVentas);
-                    return true;
+                    std::cout<<"NO SE AGREGO NINGUN PRODUCTO"<<std::endl;
+                    system("pause");
                 }
                 break;
             case 69: case 101:
@@ -183,6 +202,8 @@ bool cargarVentas(){
         std::cout<<"TOTAL: $"<<total<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Y:CONFIRMAR VENTA  A:AGREGAR PRODUCTO  E:ELIMINAR PRODUCTO Q:CANCELAR VENTA"<<std::endl;
+        op = rlutil::getkey();
+        system("cls");
     }
 }
 void listarVentas(){

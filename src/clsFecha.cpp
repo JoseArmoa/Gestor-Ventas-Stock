@@ -151,7 +151,9 @@ void Fecha::setMes(int x){
     }
 }
 void Fecha::setAnio(int x){
-    if(x > 1900){
+    Fecha hoy;
+
+    if((hoy.getAnio()- x) >= 18){
         anio=x;
     }else{
     anio = -1;

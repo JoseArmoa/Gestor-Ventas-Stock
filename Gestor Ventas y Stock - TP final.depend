@@ -46,7 +46,7 @@
 	"clsCliente.h"
 	"funcionesClientes.h"
 
-1700097029 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
+1700749384 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesventas.cpp
 	"funcionesVentas.h"
 	"rlutil.h"
 
@@ -251,7 +251,7 @@
 	"funcionesMarca.h"
 	"funcioneGlobales.h"
 
-1700097225 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscelular.cpp
+1700693286 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscelular.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
@@ -285,7 +285,7 @@
 	<cstring>
 	"clsMarca.h"
 
-1700097333 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscliente.cpp
+1700748460 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clscliente.cpp
 	"clsCliente.h"
 
 1700097363 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\clscliente.h
@@ -437,7 +437,7 @@
 	"clsCliente.h"
 	"clsVentas.h"
 
-1700096242 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesclientes.cpp
+1700750181 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesclientes.cpp
 	<iostream>
 	<iomanip>
 	"clsCliente.h"
@@ -456,7 +456,7 @@
 
 1699915282 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\funcionesclientes.h
 
-1699925848 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\configuracion.cpp
+1700693286 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\configuracion.cpp
 	<iostream>
 	<cstdlib>
 	"Configuracion.h"
@@ -464,7 +464,7 @@
 
 1699290773 c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\include\configuración.h
 
-1699925924 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\reportes.cpp
+1700693286 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\reportes.cpp
 	<iostream>
 	<cstdlib>
 	"Reportes.h"
@@ -478,7 +478,7 @@
 1699368411 c:\users\user\downloads\tp\gestor-ventas-stock\include\clsmarca.h
 	<cstring>
 
-1700096456 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsmarca.cpp
+1700097422 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\clsmarca.cpp
 	<iostream>
 	<cstdlib>
 	"clsMarca.h"
@@ -798,7 +798,7 @@
 	"clsMarca.h"
 	"funcioneGlobales.h"
 
-1700096888 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\funcionesmarca.cpp
+1700745750 source:c:\users\josel\onedrive\escritorio\ejercicios en code\laboratorio ii\gestor-venta-y-stock-tp final\src\funcionesmarca.cpp
 	<iostream>
 	<cstdlib>
 	"funcionesMarca.h"

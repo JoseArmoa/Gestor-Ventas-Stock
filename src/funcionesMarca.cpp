@@ -109,15 +109,30 @@ void bajar_marca(){
 	}
 	clsMarca reg=archi.Leer(pos);
 	if (reg.getEstado()==false){
-		cout << "LA MARCA YA ESTA DADA BAJA"<<endl;
+		cout << "LA MARCA YA ESTA DADA DE BAJA"<<endl;
 		return;
 	}
 	reg.setEstado(false);
 	if (archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		clsCelular rCelular;
+        ArchivosCelular archiCel("Celulares.dat");
+
+        int cant=archiCel.contarRegistros();
+
+        for(int i=0; i<cant; i++){
+            rCelular = archiCel.Leer(i);
+            if(strcmp(rCelular.getMarca(), marca)==0){
+                rCelular.setEstado(false);
+                archiCel.modificar_registro(i,rCelular);
+            }
+        }
 	} else {
 		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}
+
+
+
 }
 void Alta_marca(){
 	ArchivoMarca archi("marcas.dat");
@@ -137,6 +152,19 @@ void Alta_marca(){
 	reg.setEstado(true);
 	if (archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		clsCelular rCelular;
+        ArchivosCelular archiCel("Celulares.dat");
+
+        int cant=archiCel.contarRegistros();
+
+        for(int i=0; i<cant; i++){
+            rCelular = archiCel.Leer(i);
+            if(strcmp(rCelular.getMarca(), marca)==0 && rCelular.getEstado() == false){
+                rCelular.setEstado(true);
+                archiCel.modificar_registro(i,rCelular);
+            }
+        }
+
 	} else {
 		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
 	}

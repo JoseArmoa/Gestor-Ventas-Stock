@@ -120,28 +120,43 @@ bool bajaCliente(){
 	int pos = archi.leerDni(dni);
 	if(pos > -1){
         r = archi.leer(pos);
-	}
-	if(r.getEstado()){
-        r.setEstado(false);
-        return archi.modificarRegistro(pos,r);
-	}else{
-        cout<<"EL REGISTRO YA ESTA DADO DE BAJA";
+        if(r.getEstado()){
+            r.Mostrar();
+            cout<<"desea eliminarlo?"<<endl<<endl;
+            cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;
+            int op = rlutil::getkey();
+            system("cls");
+            if(op==89 || op == 121){
+                r.setEstado(false);
+                return archi.modificarRegistro(pos,r);
+            }
+        }else{
+            cout<<"EL REGISTRO YA ESTA DADO DE BAJA";
+        }
 	}
 	return false;
 }
 
 bool altaCliente(){
-	clsCliente r;
 	ArchivoCliente archi ("clientes.dat");
 	int dni;
 	cout << "INTRODUZCA EL NUMERO DE DOCUMENTO: ";
 	cin >> dni;
 	int pos = archi.leerDni(dni);
 	if(pos > -1){
+        clsCliente r;
         r = archi.leer(pos);
+        cout<<r.getNombre()<<" "<<r.getApellido()<<endl;
+        cout<<"desea volver a dar de alta?"<<endl<<endl;
+        cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;
+        int op = rlutil::getkey();
+        system("cls");
+        if(op==89 || op == 121){
+        r.setEstado(true);
+        return archi.modificarRegistro(pos,r);
+        }
 	}
-	r.setEstado(true);
-	return archi.modificarRegistro(pos,r);
+	return false;
 }
 
 void menuClientes(){
@@ -152,8 +167,9 @@ void menuClientes(){
         cout << "-------------------------------"<<endl;
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
-		cout << "3. BAJAR CLIENTE" << endl;
-		cout << "4. MODIFICAR TELEFONO DE CLIENTE" << endl;
+		cout << "3. BAJA CLIENTE" << endl;
+		cout << "4. ALTA CLIENTE" << endl;
+		cout << "5. MODIFICAR TELEFONO DE CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
 		cout << "ELIJA UNA OPCION: ";
