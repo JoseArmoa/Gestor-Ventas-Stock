@@ -39,9 +39,8 @@ void clsCliente::Cargar(int d=-1){
 
         cout<<"------AGREGAR CLIENTE------"<<endl;
         if(d==-1){
-
-        cout<<"DNI: ";
-        cin>>dni;
+			cout<<"DNI: ";
+			cin>>dni;
         }
         else {
             dni=d;
@@ -54,7 +53,7 @@ void clsCliente::Cargar(int d=-1){
         cargarCadena(telefono,30);
         cout<<"FECHA DE NACIMIENTO: "<<endl;
         while(!fechaNacimiento.Cargar()){
-            cout<<"FECHA INCORRECTA"<<endl;
+            cout<<"FECHA INCORRECTA O MENOR DE EDAD"<<endl;
             cout<<"VUELVA A INGRESAR"<<endl;
         }
         estado=true;

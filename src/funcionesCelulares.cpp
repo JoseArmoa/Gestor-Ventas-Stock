@@ -97,17 +97,47 @@ bool Agregar_celular() {
     ArchivoMarca archi_marca("marcas.dat");
     clsCelular reg;
     char mod[30], marca[30];
+
     cout << "MODELO: ";
-    cargarCadena(mod,30);
+    cargarCadena(mod, 30);
+
     int pos = archi.buscarCelular(mod);
+
     if (pos >= 0) {
         reg = archi.Leer(pos);
+        int pos_marca = archi_marca.buscarMarca(reg.getMarca());
+
+        clsMarca marca_reg = archi_marca.Leer(pos_marca);
+
+        // Verificar si la marca está dada de baja
+        if (!marca_reg.getEstado()) {
+            cout << "MARCA DADA DE BAJA" << endl;
+            cout << "PRESIONE 'Y' PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+            int op = rlutil::getkey();
+            if (op == 89 || op == 121) {
+                marca_reg.setEstado(true);
+                archi_marca.modificar_registro(pos_marca, marca_reg);
+                int cant=archi.contarRegistros();
+
+				for(int i=0; i<cant; i++){
+					clsCelular rCelular = archi.Leer(i);
+					if(strcmp(rCelular.getMarca(), marca)==0 && rCelular.getEstado() == false){
+						rCelular.setEstado(true);
+						archi.modificar_registro(i,rCelular);
+					}
+				}
+				return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Verificar si el celular está dado de baja
         if (reg.getEstado()) {
             cout << "MODELO EXISTENTE" << endl;
-            return false;
         } else {
             cout << "MODELO CORRESPONDE A REGISTRO DADO DE BAJA" << endl;
-            cout << "PRESIONE Y PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+            cout << "PRESIONE 'Y' PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
             int op = rlutil::getkey();
             if (op == 89 || op == 121) {
                 reg.setEstado(true);
@@ -117,18 +147,21 @@ bool Agregar_celular() {
                 return false;
             }
         }
+        return false;
     }
 
     cout << "MARCA: ";
-    cin.getline(marca, 30);
-    int pos_m = archi_marca.buscarMarca(marca);
-    if (pos_m < 0) {
+    cargarCadena(marca, 30);
+
+    int pos_marca = archi_marca.buscarMarca(marca);
+
+    if (pos_marca < 0) {
         cout << "¿QUIERE ESTA MARCA EN EL ARCHIVO MARCA 'marcas.dat'?" << endl;
         cout << "PRESIONE A PARA AGREGAR O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
         int op = rlutil::getkey();
-        if (op == 65|| op == 97) {
-            clsMarca mar(marca);
-            if (archi_marca.Cargar(mar)) {
+        if (op == 65 || op == 97) {
+            clsMarca nueva_marca(marca);
+            if (archi_marca.Cargar(nueva_marca)) {
                 cout << "MARCA CARGADA" << endl;
             } else {
                 cout << "ERROR AL CARGAR LA MARCA" << endl;
@@ -139,24 +172,63 @@ bool Agregar_celular() {
             return false;
         }
     }
+
+    int pos_marca_reg = archi_marca.buscarMarca(marca);
+    clsMarca marca_reg = archi_marca.Leer(pos_marca_reg);
+
+    // Verificar si la marca está dada de baja
+    if (!marca_reg.getEstado()) {
+        cout << "MARCA DADA DE BAJA" << endl;
+        cout << "PRESIONE 'Y' PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+        int op = rlutil::getkey();
+        if (op == 89 || op == 121) {
+            marca_reg.setEstado(true);
+			archi_marca.modificar_registro(pos_marca, marca_reg);
+			int cant=archi.contarRegistros();
+
+			for(int i=0; i<cant; i++){
+				clsCelular rCelular = archi.Leer(i);
+				if(strcmp(rCelular.getMarca(), marca)==0 && rCelular.getEstado() == false){
+					rCelular.setEstado(true);
+					archi.modificar_registro(i,rCelular);
+				}
+			}
+        } else {
+            return false;
+        }
+    }
+
     reg.cargar(mod, marca);
     archi.Cargar(reg);
     return true;
 }
 
+
 void Reponer_Stock(){
-	ArchivosCelular archi("celulares.dat");
+	ArchivosCelular archi ("celulares.dat");
+	ArchivoMarca arc ("marcas.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cargarCadena(modelo,30);
 	int pos;
 	clsCelular reg;
+
 	pos = archi.buscarCelular(modelo);
 	if (pos < 0) {
 		cout << "EL CELULAR NO EXISTE" << endl;
 		return;
 	}
 	reg = archi.Leer(pos);
+	int po = arc.buscarMarca(reg.getMarca());
+	clsMarca mar = arc.Leer(po);
+	if (mar.getEstado()==false){
+		cout << "MARCA DADA DE BAJA"<<endl;
+		return;
+	}
+	if (reg.getEstado()==false){
+		cout << "CELULAR DADO DE BAJA"<<endl;
+		return;
+	}
 	int stock_nuevo;
 	cout<<"INGRESE EL NUEVO STOCK A REPONER: ";
 	cin>>stock_nuevo;
@@ -170,6 +242,7 @@ void Reponer_Stock(){
 }
 void Modificar_precio(){
 	ArchivosCelular archi("celulares.dat");
+	ArchivoMarca arc ("marcas.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cargarCadena(modelo,30);
@@ -180,6 +253,15 @@ void Modificar_precio(){
 		return;
 	}
 	reg = archi.Leer(pos);
+	int po = arc.buscarMarca(reg.getMarca());
+	clsMarca mar = arc.Leer(po);
+	if (mar.getEstado()==false){
+		cout << "MARCA DADA DE BAJA"<<endl;
+		return;
+	}
+	if (reg.getEstado()==false){
+		cout << "CELULAR DADO DE BAJA"<<endl;
+	}
 	float _precio;
 	cout<<"INGRESE EL NUEVO PRECIO: "<<endl;
 	cin>>_precio;
@@ -192,6 +274,7 @@ void Modificar_precio(){
 }
 void Baja_celular(){
 	ArchivosCelular archi("celulares.dat");
+	ArchivoMarca arc ("marcas.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cargarCadena(modelo,30);
@@ -202,6 +285,12 @@ void Baja_celular(){
 		return;
 	}
 	reg = archi.Leer(pos);
+	int po = arc.buscarMarca(reg.getMarca());
+	clsMarca mar = arc.Leer(po);
+	if (mar.getEstado()==false){
+		cout << "MARCA DADA DE BAJA"<<endl;
+		return;
+	}
 	if (!reg.getEstado()){
 		cout << "EL CELULAR YA ESTA DADO BAJA"<<endl;
 		return;
@@ -233,6 +322,7 @@ void Listar_celular(){
 }
 void Alta_celular(){
 	ArchivosCelular archi("celulares.dat");
+	ArchivoMarca arc ("marcas.dat");
 	char modelo[30];
 	cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
 	cargarCadena(modelo,30);
@@ -243,6 +333,12 @@ void Alta_celular(){
 		return;
 	}
 	reg = archi.Leer(pos);
+	int po = arc.buscarMarca(reg.getMarca());
+	clsMarca mar = arc.Leer(po);
+	if (mar.getEstado()==false){
+		cout << "MARCA DADA DE BAJA"<<endl;
+		return;
+	}
 	if (reg.getEstado()==true){
 		cout << "EL CELULAR YA ESTA DADO ALTA"<<endl;
 		return;

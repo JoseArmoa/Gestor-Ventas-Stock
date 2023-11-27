@@ -131,7 +131,7 @@ bool bajaCliente(){
                 return archi.modificarRegistro(pos,r);
             }
         }else{
-            cout<<"EL REGISTRO YA ESTA DADO DE BAJA";
+            cout<<"EL REGISTRO YA ESTA DADO DE BAJA"<<endl;
         }
 	}
 	return false;
@@ -143,9 +143,14 @@ bool altaCliente(){
 	cout << "INTRODUZCA EL NUMERO DE DOCUMENTO: ";
 	cin >> dni;
 	int pos = archi.leerDni(dni);
+
 	if(pos > -1){
         clsCliente r;
         r = archi.leer(pos);
+        if (r.getEstado()){
+			cout<<"EL REGISTRO YA ESTA DADO DE ALTA"<<endl;
+			return false;
+        }
         cout<<r.getNombre()<<" "<<r.getApellido()<<endl;
         cout<<"desea volver a dar de alta?"<<endl<<endl;
         cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;

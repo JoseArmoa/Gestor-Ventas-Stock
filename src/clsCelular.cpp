@@ -21,10 +21,18 @@ using namespace std;
     }
 
     void clsCelular::setPrecio(float p){
+        while (p<=0){
+			cout << "PRECIO INCORRECTO, DEBE SER MAYOR A CERO: ";
+			cin >> p;
+        }
         precio=p;
     }
 
     void clsCelular::setStock(int s){
+        while (s<0){
+			cout << "PRECIO INCORRECTO, DEBE SER MAYOR IGUAL A CERO: ";
+			cin >> s;
+        }
         stock=s;
     }
     void clsCelular::setEstado(bool e){
@@ -33,39 +41,46 @@ using namespace std;
     void clsCelular::setDisponibilidad(bool e){
 		Disponibilidad=e;
     }
-	void clsCelular::cargar(const char *n,const char *m){
-		if(n==nullptr){
-            cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-            cargarCadena(modelo,30);
-		}else{
-            strcpy(modelo,n);
+	void clsCelular::cargar(const char *n, const char *m) {
+		if (n == nullptr) {
+			cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
+			cargarCadena(modelo, 30);
+		} else {
+			strcpy(modelo, n);
 		}
 
 		cout << "INGRESE EL NOMBRE (HASTA 30 CARACTERES): ";
-		cargarCadena(nombre,30);
+		cargarCadena(nombre, 30);
 
-		if(m==nullptr){
-            cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
-            cargarCadena(Marca_celu,30);
-		}else{
-            strcpy(Marca_celu,m);
+		if (m == nullptr) {
+			cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
+			cargarCadena(Marca_celu, 30);
+		} else {
+			strcpy(Marca_celu, m);
 		}
 
-
-		cout<<"FECHA LANZAMIENTO: "<<endl;
+		cout << "FECHA LANZAMIENTO: " << endl;
 		anioLanzamiento.Cargar();
 
+		float p;  // Agregada la declaración de la variable p
 		cout << "INGRESE EL PRECIO: ";
-		cin >> precio;
-        int s;
+		cin >> p;
+		setPrecio(p);
+
+		int s;
 		cout << "INGRESE LA CANTIDAD EN STOCK: ";
 		cin >> s;
 		setStock(s);
-        if(s > 0){
-            setDisponibilidad(true);
-        }else setDisponibilidad(false);
+
+		if (s > 0) {
+			setDisponibilidad(true);
+		} else {
+			setDisponibilidad(false);
+		}
+
 		setEstado(true);
 	}
+
 	void clsCelular::mostrar() {
 		if (getEstado()) {
 			cout << left;
