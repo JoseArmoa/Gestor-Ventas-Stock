@@ -21,10 +21,18 @@ using namespace std;
     }
 
     void clsCelular::setPrecio(float p){
+        while(p<=0){
+			std::cout << "NUMERO DE PRECIO INCORRECTO, SOLO NUMEROS MAYORES A 0: "<<std::endl;
+			std::cin >> p;
+        }
         precio=p;
     }
 
     void clsCelular::setStock(int s){
+        while(s<0){
+			std::cout << "NUMERO DE STOCK INCORRECTO, SOLO NUMEROS POSITIVOS O CERO: "<<std::endl;
+			std::cin >> s;
+        }
         stock=s;
     }
     void clsCelular::setEstado(bool e){
@@ -54,9 +62,10 @@ using namespace std;
 
 		cout<<"FECHA LANZAMIENTO: "<<endl;
 		anioLanzamiento.Cargar();
-
+		int p;
 		cout << "INGRESE EL PRECIO: ";
-		cin >> precio;
+		cin >> p;
+		setPrecio(p);
         int s;
 		cout << "INGRESE LA CANTIDAD EN STOCK: ";
 		cin >> s;

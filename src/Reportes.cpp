@@ -50,7 +50,7 @@ void punto_1() {
 	cout<<"-------------------------------------------------------------"<<endl;
     for (int i = 0; i < tam; i++) {
         clsCelular reg = Archi.Leer(i);
-        if (reg.getStock() <= num) {
+        if (reg.getStock() <= num && reg.getEstado()) {
             estado = true;
             reg.mostrar();
             cout << endl;
@@ -71,7 +71,7 @@ void punto_3(){
 	system("cls");
 	for (int i=0;i<pos_reg;i++){
 		clsVentas reg = archi_venta.Leer(i);
-		if (reg.getDniCliente()==dni){
+		if (reg.getDniCliente()==dni && reg.getEstado()){
 			if (!estado){
 				cout<<"-------------------------------------------------------------"<<endl;
 			}
@@ -170,7 +170,7 @@ void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si
         if(dia <= hoy && rVentas.getEstado()){
             for(int i=0;i<tam;i++){
                 rVentas = archiVentas.Leer(i);
-                if(rVentas.getFecha() == dia){
+                if(rVentas.getFecha() == dia && rVentas.getEstado()){
                     totalFacturado += rVentas.getTotal();
                 }
             }

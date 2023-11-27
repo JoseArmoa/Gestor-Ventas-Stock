@@ -18,11 +18,12 @@ class Fecha{
         int getMes();
         int getAnio();
 
-        bool operator==(Fecha f);
-        bool operator<(Fecha f);
-        bool operator>(Fecha f);
-        bool operator<=(Fecha f);
-        bool operator>=(Fecha f);
+        bool operator==(Fecha &f);
+        bool operator<(Fecha &f);
+        bool operator>(Fecha &f);
+        bool operator<=(Fecha &f);
+        bool operator>=(Fecha &f);
+        int  operator-(Fecha &f);
 
 };
 #endif // CLSFECHA_H_INCLUDED

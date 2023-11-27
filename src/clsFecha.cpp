@@ -151,12 +151,8 @@ void Fecha::setMes(int x){
     }
 }
 void Fecha::setAnio(int x){
-    Fecha hoy;
-
-    if((hoy.getAnio()- x) >= 18){
-        anio=x;
-    }else{
-    anio = -1;
+    if(x > 1900){
+        anio = x;
     }
 }
 
@@ -164,35 +160,48 @@ int Fecha::getDia(){return dia;}
 int Fecha::getMes(){return mes;}
 int Fecha::getAnio(){return anio;}
 
-bool Fecha::operator==(Fecha f){
+bool Fecha::operator==(Fecha &f){
     if(dia == f.getDia() && mes == f.getMes() && anio == f.getAnio()) return true;
     return false;
 }
-bool Fecha::operator<(Fecha f){
+bool Fecha::operator<(Fecha &f){
     if(anio < f.getAnio()) return true;
     else if(anio == f.getAnio() && mes < f.getMes())return true;
     else if(anio == f.getAnio() && mes == f.getMes() && dia < f.getDia())return true;
     return false;
 }
-bool Fecha::operator>(Fecha f){
+bool Fecha::operator>(Fecha &f){
     if(anio > f.getAnio()) return true;
     else if(anio == f.getAnio() && mes > f.getMes())return true;
     else if(anio == f.getAnio() && mes == f.getMes() && dia > f.getDia())return true;
     return false;
 }
-bool Fecha::operator<=(Fecha f){
+bool Fecha::operator<=(Fecha &f){
     if(dia == f.getDia() && mes == f.getMes() && anio == f.getAnio()) return true;
     if(anio < f.getAnio()) return true;
     else if(anio == f.getAnio() && mes < f.getMes())return true;
     else if(anio == f.getAnio() && mes == f.getMes() && dia < f.getDia())return true;
     return false;
 }
-bool Fecha::operator>=(Fecha f){
+bool Fecha::operator>=(Fecha &f){
     if(dia == f.getDia() && mes == f.getMes() && anio == f.getAnio()) return true;
     if(anio > f.getAnio()) return true;
     else if(anio == f.getAnio() && mes > f.getMes())return true;
     else if(anio == f.getAnio() && mes == f.getMes() && dia > f.getDia())return true;
     return false;
+}
+int  Fecha::operator-(Fecha &f){
+    int edad = 0;
+    if(this->anio < f.getAnio()){
+        if(this->mes <= f.getMes()){
+            if(this->dia <= f.getDia()){
+                edad = f.getAnio() - this->anio ;
+            }
+        }else{
+            edad = (f.getAnio()-this->anio)-1;
+        }
+    }
+    return edad;
 }
 
 

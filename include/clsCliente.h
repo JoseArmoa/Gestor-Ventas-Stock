@@ -40,7 +40,7 @@ public:
     Fecha getFecha();
     bool getEstado();
     ///Metodos Principales
-    void Cargar(int);
+    bool Cargar(int);
     void Mostrar();
     void mostrarMenos();
 };

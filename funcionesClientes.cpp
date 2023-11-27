@@ -36,15 +36,18 @@ bool agregarCliente(int dni = -1){
                 }
             }
         }else{
-        r.Cargar(dni);
-        archiCliente.Cargar(r);
-        return true;
+            if(r.Cargar(dni)){
+            archiCliente.Cargar(r);
+            return true;
+            }
         }
     }else{
-        r.Cargar(dni);
-        archiCliente.Cargar(r);
-        return true;
+        if(r.Cargar(dni)){
+            archiCliente.Cargar(r);
+            return true;
+        }
     }
+    return false;
 }
 void listarClientes(){
 	ArchivoCliente archi("clientes.dat");

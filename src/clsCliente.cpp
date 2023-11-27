@@ -35,7 +35,7 @@ Fecha clsCliente::getFecha(){return fechaNacimiento;}
 bool clsCliente::getEstado(){return estado;}
 
 ///Metodos Principales
-void clsCliente::Cargar(int d=-1){
+bool clsCliente::Cargar(int d=-1){
 
         cout<<"------AGREGAR CLIENTE------"<<endl;
         if(d==-1){
@@ -53,12 +53,21 @@ void clsCliente::Cargar(int d=-1){
         cout<<"TELEFONO: ";
         cargarCadena(telefono,30);
         cout<<"FECHA DE NACIMIENTO: "<<endl;
-        while(!fechaNacimiento.Cargar()){
+        Fecha nac;
+        while(!nac.Cargar()){
             cout<<"FECHA INCORRECTA"<<endl;
             cout<<"VUELVA A INGRESAR"<<endl;
         }
-        estado=true;
 
+        Fecha hoy;
+        int edad = nac - hoy;
+        if(edad< 18){
+            cout<<"DEBE SER MAYOR DE 18 AÑOS PARA COMPRAR"<<endl;
+            return false;
+        }
+        setFechaNacimiento(nac);
+        estado = true;
+        return true;
 }
 
 void clsCliente::Mostrar(){

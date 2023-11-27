@@ -101,6 +101,7 @@ bool cargarVentas(){
                  system("cls");
             }else{
                 std::cout<<"ERROR AL CARGAR CLIENTE"<<std::endl;
+                return false;
             }
         }else {
 			return false;
@@ -179,12 +180,18 @@ bool cargarVentas(){
                 std::cout<<"MODELO: ";
                 cargarCadena(mod,30);
                 pos = archiCelular.buscarCelular(mod);
-                if(pos != -1){
+                if(pos >= 0){
                 rCelular = archiCelular.Leer(pos);
                     if(v.eliminar(mod)){//La funcion eliminar busca dentro del vector dinamico el modelo pasado como parametro, si lo encuentra lo elimina y modifica su tamaño, si no no hace nada.
                         total -= rCelular.getPrecio();//descuenta el precio del registro eliminado.
                         tam--;
+                    }else{
+                        std::cout<<"MODELO INCORRECTO"<<std::endl;
+                        system("pause");
                     }
+                }else{
+                    std::cout<<"MODELO INCORRECTO"<<std::endl;
+                    system("pause");
                 }
                 break;
             case 81: case 113:
