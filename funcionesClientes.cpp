@@ -124,7 +124,7 @@ bool bajaCliente(){
 	if(pos > -1){
         r = archi.leer(pos);
         if(r.getEstado()){
-            r.Mostrar();
+            cout<<r.getNombre()<<" "<<r.getApellido()<<endl;
             cout<<"desea eliminarlo?"<<endl<<endl;
             cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;
             int op = rlutil::getkey();

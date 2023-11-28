@@ -58,9 +58,33 @@ void Agregar_marca() {
 		clsMarca mar = Archi.Leer(po);
 		if (mar.getEstado()==false){
 			cout << "MARCA DADA DE BAJA"<<endl;
+            cout << "PRESIONE 'Y' PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+            int op = rlutil::getkey();
+            if (op == 89 || op == 121) {
+                mar.setEstado(true);
+                Archi.modificar_registro(pos, mar);
+                clsCelular rCelular;
+				ArchivosCelular archiCel("Celulares.dat");
+				int cant=archiCel.contarRegistros();
+
+				for(int i=0; i<cant; i++){
+					rCelular = archiCel.Leer(i);
+					if(strcmp(rCelular.getMarca(), marca)==0){
+						rCelular.setEstado(false);
+						archiCel.modificar_registro(i,rCelular);
+					}
+				}
+				cout << "MARCA DADA DE ALTA" << endl;
+				return;
+
+            } else {
+            	cout << "NO DIO DE ALTA LA MARCA" << endl;
+                return ;
+            }
+
 			return;
 		} else {
-			cout << "MARCA REPETIDA, SE CANCELARÁ LA OPERACIÓN" << endl;
+			cout << "MARCA REPETIDA, SE CANCELARA LA OPERACIÓN" << endl;
 			return;
 		}
     }
@@ -123,28 +147,31 @@ void bajar_marca(){
 		cout << "LA MARCA YA ESTA DADA DE BAJA"<<endl;
 		return;
 	}
+	cout << "PRESIONE 'Y' PARA DAR DE BAJA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+	int op = rlutil::getkey();
+	if (op == 89 || op == 121) {
+		reg.setEstado(false);
+		if (archi.modificar_registro(pos,reg)){
+			cout<<"EL ARCHIVO FUE DADO DE BAJA CON ÉXITO"<<endl;
+			clsCelular rCelular;
+			ArchivosCelular archiCel("Celulares.dat");
 
-	reg.setEstado(false);
-	if (archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
-		clsCelular rCelular;
-        ArchivosCelular archiCel("Celulares.dat");
+			int cant=archiCel.contarRegistros();
 
-        int cant=archiCel.contarRegistros();
-
-        for(int i=0; i<cant; i++){
-            rCelular = archiCel.Leer(i);
-            if(strcmp(rCelular.getMarca(), marca)==0){
-                rCelular.setEstado(false);
-                archiCel.modificar_registro(i,rCelular);
-            }
-        }
+			for(int i=0; i<cant; i++){
+				rCelular = archiCel.Leer(i);
+				if(strcmp(rCelular.getMarca(), marca)==0){
+					rCelular.setEstado(false);
+					archiCel.modificar_registro(i,rCelular);
+				}
+			}
+		} else {
+			cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
+		}
 	} else {
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout << "NO DIO BAJA LA MARCA" << endl;
+		return ;
 	}
-
-
-
 }
 void Alta_marca(){
 	ArchivoMarca archi("marcas.dat");
@@ -161,23 +188,30 @@ void Alta_marca(){
 		cout << "LA MARCA YA ESTA DADA ALTA"<<endl;
 		return;
 	}
-	reg.setEstado(true);
-	if (archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
-		clsCelular rCelular;
-        ArchivosCelular archiCel("Celulares.dat");
+	///
+	cout << "PRESIONE 'Y' PARA DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+	int op = rlutil::getkey();
+	if (op == 89 || op == 121) {
+		reg.setEstado(true);
+		if (archi.modificar_registro(pos,reg)){
+			cout<<"EL ARCHIVO FUE DADO DE ALTA CON ÉXITO"<<endl;
+			clsCelular rCelular;
+			ArchivosCelular archiCel("Celulares.dat");
 
-        int cant=archiCel.contarRegistros();
+			int cant=archiCel.contarRegistros();
 
-        for(int i=0; i<cant; i++){
-            rCelular = archiCel.Leer(i);
-            if(strcmp(rCelular.getMarca(), marca)==0 && rCelular.getEstado() == false){
-                rCelular.setEstado(true);
-                archiCel.modificar_registro(i,rCelular);
-            }
-        }
-
+			for(int i=0; i<cant; i++){
+				rCelular = archiCel.Leer(i);
+				if(strcmp(rCelular.getMarca(), marca)==0){
+					rCelular.setEstado(true);
+					archiCel.modificar_registro(i,rCelular);
+				}
+			}
+		} else {
+			cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		}
 	} else {
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout << "NO DIO ALTA A LA MARCA" << endl;
+		return ;
 	}
 }

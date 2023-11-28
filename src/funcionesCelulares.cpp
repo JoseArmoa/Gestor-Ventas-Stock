@@ -297,9 +297,9 @@ void Baja_celular(){
 	}
 	reg.setEstado(false);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		cout<<"EL CELULAR FUE DADO DE BAJA CON ÉXITO"<<endl;
 	} else{
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout<<"ERROR, EL CELULAR NO PUDO SER DADO DE BAJA CON ÉXITO"<<endl;
 	}
 }
 void Listar_celular(){
@@ -345,9 +345,9 @@ void Alta_celular(){
 	}
 	reg.setEstado(true);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		cout<<"EL ARCHIVO FUE DADO DE ALTA CON EXITO"<<endl;
 	} else{
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER DADO DE ALTA CON EXITO"<<endl;
 	}
 }
 

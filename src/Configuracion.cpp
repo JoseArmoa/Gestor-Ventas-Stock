@@ -16,7 +16,6 @@ void Guardar() {
     } else {
         cout << "ERROR AL COPIAR LOS ARCHIVOS." << endl;
     }
-    system("pause");
 }
 
 void Restaurar() {
@@ -31,7 +30,6 @@ void Restaurar() {
     } else {
         cout << "ERROR AL RESTAURAR LOS ARCHIVOS." << endl;
     }
-    system("pause");
 }
 bool borrarTodo(){
     ArchivoCelularVendido archiVendido("vendidos.dat");
