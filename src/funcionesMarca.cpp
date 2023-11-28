@@ -54,8 +54,15 @@ void Agregar_marca() {
     cargarCadena(marca,30);
     int pos = Archi.buscarMarca(marca);
     if (pos >= 0) {
-        cout << "MARCA REPETIDA, SE CANCELARÁ LA OPERACIÓN" << endl;
-        return;
+        int po = Archi.buscarMarca(marca);
+		clsMarca mar = Archi.Leer(po);
+		if (mar.getEstado()==false){
+			cout << "MARCA DADA DE BAJA"<<endl;
+			return;
+		} else {
+			cout << "MARCA REPETIDA, SE CANCELARÁ LA OPERACIÓN" << endl;
+			return;
+		}
     }
     clsMarca reg(marca);
     if (Archi.Cargar(reg)) {
@@ -87,6 +94,10 @@ void Modificar_marca(){
 		return;
 	}
 	clsMarca reg=archi.Leer(pos);
+	if (reg.getEstado()==false){
+		cout << "LA MARCA ESTA DADA DE BAJA"<<endl;
+		return;
+	}
 	char marca_[30];
 	cout<< "INGRESE EL NUEVO NOMBRE DE LA MARCA (HASTA 30 CARACTERES): "<<endl;
 	cargarCadena(marca_,30);
@@ -112,6 +123,7 @@ void bajar_marca(){
 		cout << "LA MARCA YA ESTA DADA DE BAJA"<<endl;
 		return;
 	}
+
 	reg.setEstado(false);
 	if (archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;

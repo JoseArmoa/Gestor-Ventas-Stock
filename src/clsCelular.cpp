@@ -41,40 +41,55 @@ using namespace std;
     void clsCelular::setDisponibilidad(bool e){
 		Disponibilidad=e;
     }
-	void clsCelular::cargar(const char *n,const char *m){
-		if(n==nullptr){
-            cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
-            cargarCadena(modelo,30);
-		}else{
-            strcpy(modelo,n);
+	void clsCelular::cargar(const char *n, const char *m) {
+		if (n == nullptr) {
+			cout << "INGRESE EL MODELO (HASTA 30 CARACTERES): ";
+			cargarCadena(modelo, 30);
+		} else {
+			strcpy(modelo, n);
 		}
 
 		cout << "INGRESE EL NOMBRE (HASTA 30 CARACTERES): ";
-		cargarCadena(nombre,30);
+		cargarCadena(nombre, 30);
 
-		if(m==nullptr){
-            cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
-            cargarCadena(Marca_celu,30);
-		}else{
-            strcpy(Marca_celu,m);
+		if (m == nullptr) {
+			cout << "INGRESE LA MARCA (HASTA 30 CARACTERES): ";
+			cargarCadena(Marca_celu, 30);
+		} else {
+			strcpy(Marca_celu, m);
 		}
 
-
-		cout<<"FECHA LANZAMIENTO: "<<endl;
-		anioLanzamiento.Cargar();
-		int p;
+		cout << "FECHA LANZAMIENTO: " << endl;
+		Fecha hoy, lanzamiento;
+		while(!lanzamiento.Cargar()){
+            cout<<"FECHA INCORRECTA"<<endl;
+            cout<<"VUELVA A INGRESAR"<<endl;
+		}
+		while(lanzamiento > hoy){
+            cout<<"FECHA INCORRECTA"<<endl;
+            cout<<"VUELVA A INGRESAR"<<endl;
+            lanzamiento.Cargar();
+		}
+		setAnioLanzamiento(lanzamiento);
+		float p;  // Agregada la declaración de la variable p
 		cout << "INGRESE EL PRECIO: ";
 		cin >> p;
 		setPrecio(p);
-        int s;
+
+		int s;
 		cout << "INGRESE LA CANTIDAD EN STOCK: ";
 		cin >> s;
 		setStock(s);
-        if(s > 0){
-            setDisponibilidad(true);
-        }else setDisponibilidad(false);
+
+		if (s > 0) {
+			setDisponibilidad(true);
+		} else {
+			setDisponibilidad(false);
+		}
+
 		setEstado(true);
 	}
+
 	void clsCelular::mostrar() {
 		if (getEstado()) {
 			cout << left;
@@ -353,7 +368,7 @@ celularVendido ArchivoCelularVendido::LeerIndividual(int cod,const char *m, int 
     fseek(p,0,0);
     for(int i=0;i<tam;i++){
         if(fread(&r,sizeof(celularVendido),1,p)){
-            if(r.getCodVenta() == cod && strcmp(r.getModelo(),m)==0){
+            if(r.getCodVenta() == cod && strcmp(r.getModelo(),m)==0 && r.getEstado()){
                 fclose(p);
                 pos=i;
                 return r;

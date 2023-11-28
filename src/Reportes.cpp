@@ -50,7 +50,7 @@ void punto_1() {
 	cout<<"-------------------------------------------------------------"<<endl;
     for (int i = 0; i < tam; i++) {
         clsCelular reg = Archi.Leer(i);
-        if (reg.getStock() <= num && reg.getEstado()) {
+        if (reg.getStock() <num && reg.getEstado()) {
             estado = true;
             reg.mostrar();
             cout << endl;
@@ -141,8 +141,10 @@ void punto_4(){
     int pos;
     for(int i=0; i<archiCelVendido.contarRegistros(); i++){
         r = archiCelVendido.Leer(i);
+        if(r.getEstado()){
         pos=r1.buscarCelular(r.getModelo());
         vecContador[pos]++;
+        }
     }
 
     int mayor=vecContador[0]; //guarda la cantidad de veces q se vendio un celular
@@ -155,7 +157,6 @@ void punto_4(){
     }
     delete [] vecContador;
     rCelular=r1.Leer(posMayor);
-    cin.ignore();
     cout<<"EL MODELO MAS VENDIDO ES EL "<<rCelular.getModelo();
     cout<<" CON "<<mayor<<" VENTAS."<<endl;
 }
@@ -188,7 +189,7 @@ void menuReporte() {
     rlutil::setConsoleTitle("REPORTES");
     int opcion;
     system("cls");
-    do {
+    while(true){
         cout << "MENU REPORTES" << endl;
         cout << "----------------------------"<<endl;
         cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
@@ -199,9 +200,8 @@ void menuReporte() {
         cout << "0. Salir" << endl;
         cout << "----------------------------"<<endl;
         cout << "Selecciona una opción: ";
-
         opcion=rlutil::getkey();
-        system("cls");
+       system("cls");
         switch(opcion){
     case 49: //si se apreta 1
             punto_1();
@@ -222,10 +222,9 @@ void menuReporte() {
         return;
     default: std::cout<<"OPCION INVALIDA. "<<std::endl;
             break;
-
         }
-        system("pause");
-        system("cls");
-    } while (true);
+       system("pause");
+       system("cls");
+    }
 }
 

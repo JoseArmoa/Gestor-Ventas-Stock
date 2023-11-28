@@ -39,9 +39,8 @@ bool clsCliente::Cargar(int d=-1){
 
         cout<<"------AGREGAR CLIENTE------"<<endl;
         if(d==-1){
-
-        cout<<"DNI: ";
-        cin>>dni;
+			cout<<"DNI: ";
+			cin>>dni;
         }
         else {
             dni=d;
@@ -56,7 +55,6 @@ bool clsCliente::Cargar(int d=-1){
         Fecha nac;
         while(!nac.Cargar()){
             cout<<"FECHA INCORRECTA"<<endl;
-            cout<<"VUELVA A INGRESAR"<<endl;
         }
 
         Fecha hoy;
