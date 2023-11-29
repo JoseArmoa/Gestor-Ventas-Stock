@@ -8,7 +8,7 @@ void menuMarca(){
 	int op;
     while(true){
         system("cls");
-        cout << "MENU MARCA:" << endl;
+        cout << "MENÚ MARCA:" << endl;
         cout << "-------------------------------"<<endl;
 		cout << "1. AGREGAR MARCAS" << endl;
 		cout << "2. LISTAR MARCAS" << endl;
@@ -17,7 +17,7 @@ void menuMarca(){
 		cout << "5. DAR ALTA MARCA" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "ELIJA UNA OPCION: ";
+		cout << "ELIJA UNA OPCIÓN: ";
 		op =rlutil::getkey();
 		system("cls");
 		switch(op){
@@ -39,7 +39,7 @@ void menuMarca(){
 			case 48:
 				return;
 			default:
-			    cout<<"OPCION INVALIDA"<<endl;
+			    cout<<"OPCIÓN INVALIDA"<<endl;
 				break;
 		}
 		system("pause");
@@ -127,9 +127,9 @@ void Modificar_marca(){
 	cargarCadena(marca_,30);
 	reg.setMarca(marca_);
 	if (archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON ÉXITO"<<endl;
 	} else {
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
 	}
 }
 void bajar_marca(){
@@ -139,12 +139,12 @@ void bajar_marca(){
 	cargarCadena(marca,30);
 	int pos=archi.buscarMarca(marca);
 	if (pos < 0) {
-		cout << "LA MARCA NO EXISTE" << endl;
+		cout << "LA MARCA NO ÉXISTE" << endl;
 		return;
 	}
 	clsMarca reg=archi.Leer(pos);
 	if (reg.getEstado()==false){
-		cout << "LA MARCA YA ESTA DADA DE BAJA"<<endl;
+		cout << "LA MARCA YA ESTÁ DADA DE BAJA"<<endl;
 		return;
 	}
 	cout << "PRESIONE 'Y' PARA DAR DE BAJA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
@@ -208,7 +208,7 @@ void Alta_marca(){
 				}
 			}
 		} else {
-			cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+			cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
 		}
 	} else {
 		cout << "NO DIO ALTA A LA MARCA" << endl;

@@ -62,7 +62,7 @@ void menuConfiguracion() {
     int opcion;
     do {
         system("cls");
-        cout << "MENU CONFIGURACION" << endl;
+        cout << "MENÚ CONFIGURACION" << endl;
 		cout << "---------------------------------"<<endl;
         cout << "1. CREAR COPIA" << endl;
         cout << "2. RESTAURAR COPIA" << endl;
@@ -70,7 +70,7 @@ void menuConfiguracion() {
         cout << "4. BORRAR TODO" << endl;
         cout << "---------------------------------"<<endl;
         cout << "0. SALIR" << endl;
-        cout << "Ingrese su opcion: ";
+        cout << "INGRESE SU OPCIÓN: ";
         opcion=rlutil::getkey();
 		system("cls");
         switch(opcion){
@@ -92,7 +92,7 @@ void menuConfiguracion() {
                 break;
             case 48://si se apreta 0
         return;
-            default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+            default: std::cout<<"OPCIÓN INVALIDA. "<<std::endl;
             break;
 
         }

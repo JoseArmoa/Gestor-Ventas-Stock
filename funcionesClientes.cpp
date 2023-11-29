@@ -24,7 +24,7 @@ bool agregarCliente(int dni = -1){
                 return false;
             }else{
                 cout << "DNI CORRESPONDE A CLIENTE DADO DE BAJA" << endl;
-                cout << "PRESIONE Y PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+                cout << "PRESIONE 'Y' PARA VOLVER A DAR DE ALTA O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
                 int op;
                 op = rlutil::getkey();
                 if (op == 89 || op == 121) {
@@ -97,16 +97,16 @@ void Modificar_cliente(){
             cout<<endl;
             reg.setTelefono(telefono);
             if(archi.modificarRegistro(pos,reg)){
-            cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+            cout<<"EL ARCHIVO FUE MODIFICADO CON ÉXITO"<<endl;
             } else{
-            cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+            cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
             }
         }
         else if(c==81 || c==113){
             return;
         }
         else{
-            cout<<"OPCION NO VALIDA. "<<endl;
+            cout<<"OPCIÓN NO VALIDA. "<<endl;
         }
 	}else{
         cout<<"DNI CORRESPONDE A CLIENTE DADO DE BAJA"<<endl;
@@ -118,14 +118,14 @@ bool bajaCliente(){
 	clsCliente r;
 	ArchivoCliente archi ("clientes.dat");
 	int dni;
-	cout << "INTRODUZCA EL NUMERO DE DOCUMENTO: ";
+	cout << "INTRODUZCA EL NÚMERO DE DOCUMENTO: ";
 	cin >> dni;
 	int pos = archi.leerDni(dni);
 	if(pos > -1){
         r = archi.leer(pos);
         if(r.getEstado()){
             cout<<r.getNombre()<<" "<<r.getApellido()<<endl;
-            cout<<"desea eliminarlo?"<<endl<<endl;
+            cout<<"¿DESEA ELIMINARLO?"<<endl<<endl;
             cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;
             int op = rlutil::getkey();
             system("cls");
@@ -134,7 +134,7 @@ bool bajaCliente(){
                 return archi.modificarRegistro(pos,r);
             }
         }else{
-            cout<<"EL REGISTRO YA ESTA DADO DE BAJA"<<endl;
+            cout<<"EL REGISTRO YA ESTÁ DADO DE BAJA"<<endl;
         }
 	}
 	return false;
@@ -155,7 +155,7 @@ bool altaCliente(){
 			return false;
         }
         cout<<r.getNombre()<<" "<<r.getApellido()<<endl;
-        cout<<"desea volver a dar de alta?"<<endl<<endl;
+        cout<<"¿DESEA VOLVER A DAR DE ALTA?"<<endl<<endl;
         cout<<"Y: CONFIRMAR   CUALQUIER OTRA TECLA: CANCELAR"<<endl;
         int op = rlutil::getkey();
         system("cls");
@@ -171,7 +171,7 @@ void menuClientes(){
 	rlutil::setConsoleTitle("CLIENTES");
 	int op;
     while(true){
-        cout << "MENU CLIENTE:" << endl;
+        cout << "MENÚ CLIENTE:" << endl;
         cout << "-------------------------------"<<endl;
 		cout << "1. AGREGAR CLIENTE" << endl;
 		cout << "2. LISTAR CLIENTE" << endl;
@@ -180,7 +180,7 @@ void menuClientes(){
 		cout << "5. MODIFICAR TELEFONO DE CLIENTE" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "ELIJA UNA OPCION: ";
+		cout << "ELIJA UNA OPCIÓN: ";
 		op=rlutil::getkey();
 		system("cls");
         switch(op){
@@ -214,7 +214,7 @@ void menuClientes(){
 
     case 48://si se apreta 0
         return;
-    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+    default: std::cout<<"OPCIÓN INVALIDA. "<<std::endl;
             break;
 
         }

@@ -157,7 +157,7 @@ void punto_4(){
     }
     delete [] vecContador;
     rCelular=r1.Leer(posMayor);
-    cout<<"EL MODELO MAS VENDIDO ES EL "<<rCelular.getModelo();
+    cout<<"EL MODELO MÁS VENDIDO ES EL "<<rCelular.getModelo();
     cout<<" CON "<<mayor<<" VENTAS."<<endl;
 }
 void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si no se facturo nada.
@@ -190,16 +190,16 @@ void menuReporte() {
     int opcion;
     system("cls");
     while(true){
-        cout << "MENU REPORTES" << endl;
+        cout << "MENÚ REPORTES" << endl;
         cout << "----------------------------"<<endl;
         cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR O IGUAL A ESE NUMERO" << endl;
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "4. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;
         cout << "5. FACTURADO POR DIA" << endl;
-        cout << "0. Salir" << endl;
+        cout << "0. SALIR" << endl;
         cout << "----------------------------"<<endl;
-        cout << "Selecciona una opción: ";
+        cout << "SELECCIONA UNA OPCIÓN: ";
         opcion=rlutil::getkey();
        system("cls");
         switch(opcion){
@@ -220,7 +220,7 @@ void menuReporte() {
 		break;
     case 48://si se apreta 0
         return;
-    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+    default: std::cout<<"OPCIÓN INVALIDA. "<<std::endl;
             break;
         }
        system("pause");

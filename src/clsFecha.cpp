@@ -26,7 +26,7 @@ Fecha::Fecha(int d, int m, int a)
     std::cout<<"MES: ";
     std::cin>>m;
     setMes(m);
-    std::cout<<"ANIO: ";
+    std::cout<<"AÑO: ";
     std::cin>>a;
     setAnio(a);
     setDia(d,m,a);

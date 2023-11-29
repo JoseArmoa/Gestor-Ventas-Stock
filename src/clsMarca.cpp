@@ -1,7 +1,11 @@
 #include <iostream>
 #include <cstdlib>
+#include <cctype>
+#include <cstring>
 using namespace std;
 #include "clsMarca.h"
+#include "funcioneGlobales.h"
+
 clsMarca::clsMarca(const char* m) {
     strcpy(Marca, m);
     estado = true;
@@ -36,8 +40,26 @@ void clsMarca::mostrar() {
 }
 void clsMarca::cargar() {
     cout << "INGRESE LA MARCA: ";
-    cargarCadena(Marca,30);
+    cargarCadena(Marca, 30);
+
+    // Verifica si la cadena está completamente en blanco
+    while ( esCadenaEnBlanco(Marca)) {
+        cout << "LA MARCA NO PUEDE IR SIN NADA" << endl;
+        cout << "INGRESE LA MARCA: ";
+        cargarCadena(Marca, 30);
+    }
+
     setEstado(true);
+}
+bool esCadenaEnBlanco(const char* cadena) {
+    // Verifica si la cadena está completamente en blanco
+    size_t longitud = strlen(cadena);
+    for (size_t i = 0; i < longitud; ++i) {
+        if (!std::isspace(static_cast<unsigned char>(cadena[i]))) {
+            return false;
+        }
+    }
+    return true;
 }
 
 

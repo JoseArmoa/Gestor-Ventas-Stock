@@ -22,7 +22,7 @@ using namespace std;
 
     void clsCelular::setPrecio(float p){
         while(p<=0){
-			std::cout << "NUMERO DE PRECIO INCORRECTO, SOLO NUMEROS MAYORES A 0: "<<std::endl;
+			std::cout << "NÚMERO DE PRECIO INCORRECTO, SOLO NÚMEROS MAYORES A 0: "<<std::endl;
 			std::cin >> p;
         }
         precio=p;
@@ -30,7 +30,7 @@ using namespace std;
 
     void clsCelular::setStock(int s){
         while(s<0){
-			std::cout << "NUMERO DE STOCK INCORRECTO, SOLO NUMEROS POSITIVOS O CERO: "<<std::endl;
+			std::cout << "NÚMERO DE STOCK INCORRECTO, SOLO NÚMEROS POSITIVOS O CERO: "<<std::endl;
 			std::cin >> s;
         }
         stock=s;
@@ -257,6 +257,26 @@ using namespace std;
             return false;
         }
     }
+    ///
+    void vectorDinamicoCelular::reponerStock() {
+		ArchivosCelular archi("celulares.dat");
+		int a=0;
+		for (int i = 0; i < tam; i++) {
+			if (vectorCelular[i].getEstado()){
+				int pos = archi.buscarCelular(vectorCelular[i].getModelo());
+				clsCelular reg=archi.Leer(pos);
+				reg.setStock(reg.getStock()+1);
+				reg.setDisponibilidad(true);
+				if (archi.modificar_registro(pos, reg)){
+					vectorCelular[i].mostrar();
+					a++;
+					cout<<a<<endl;;
+				}
+			}
+		}
+	}
+
+    ///
 
 void vectorDinamicoCelular::mostrar(){
     for(int i=0;i<tam;i++){

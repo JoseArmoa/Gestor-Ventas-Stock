@@ -1,5 +1,9 @@
 #include "funcioneGlobales.h"
 #include "rlutil.h"
+#include <cctype>
+#include <cstring>
+
+
 
 void cargarCadena(char *palabra, int tamano){
 
@@ -27,16 +31,18 @@ void cargarCadena(char *palabra, int tamano){
 
 void menuPrincipal() {
 
-	std::cout << "MENU PRINCIPAL" << std::endl;
+	std::cout << "MENÚ PRINCIPAL" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
 	std::cout << "1. VENTAS" << std::endl;
 	std::cout << "2. CLIENTES" << std::endl;
 	std::cout << "3. STOCK CELULARES" << std::endl;
 	std::cout << "4. REPORTES" << std::endl;
-	std::cout << "5. CONFIGURACION" << std::endl;
+	std::cout << "5. CONFIGURACIÓN" << std::endl;
 	std::cout << "0. SALIR" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
-	std::cout << "INGRESE UNA OPCION: ";
+	std::cout << "INGRESE UNA OPCIÓN: ";
 }
+
+
 
 

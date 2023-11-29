@@ -31,18 +31,18 @@ void menuVentas(){
 
     case 48://si se apreta 0
         return;
-    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+    default: std::cout<<"OPCIÓN INVALIDA. "<<std::endl;
             break;
         case 52:
             if(modificarFecha()){
                 std::cout<<"FECHA MODIFICADA"<<std::endl;
             }else{
-                std::cout<<"NO SE MODIFICO FECHA"<<std::endl;
+                std::cout<<"NO SE MODIFICÓ FECHA"<<std::endl;
             }
             break;
         case 53:
             if(devolucion()){
-                std::cout<<"DEVOLUCION EXITOSA"<<std::endl;
+                std::cout<<"DEVOLUCIÓN EXITOSA"<<std::endl;
             }else{
                 std::cout<<"NO PUDO CARGARSE DEVOLUCION"<<std::endl;
             }
@@ -89,7 +89,7 @@ bool cargarVentas(){
         }
     }else{
         std::cout<<"CLIENTE NO EXISTE"<<std::endl;
-        std::cout<<"desea agregarlo?"<<std::endl<<std::endl;
+        std::cout<<"¿DESEA AGREGARLO?"<<std::endl<<std::endl;
         std::cout<<"Y: AGREGAR   Q: CANCELAR"<<std::endl;
         op = rlutil::getkey();
         system("cls");
@@ -119,7 +119,9 @@ bool cargarVentas(){
                   if(pos != -1){//verifica que el modelo exista en el archivo
                     rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
                     if(rCelular.getDisponibilidad() && rCelular.getEstado()){
-
+						///
+						descontarStock(rCelular);
+						///
                         total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
                         v.agregar(rCelular);//agregamos el registro al vector dinamico.
                         bandera = false;
@@ -138,6 +140,9 @@ bool cargarVentas(){
                     if(pos != -1){
                       rCelular = archiCelular.Leer(pos);
                       if(rCelular.getDisponibilidad()&& rCelular.getEstado()){
+						///
+						descontarStock(rCelular);
+						///
                         total += rCelular.getPrecio();
                         tam++;//incrementamos la variable que contiene la cantidad de registros.
                         v.aumentar(tam);//incrementamos el vector dinamico
@@ -184,8 +189,8 @@ bool cargarVentas(){
                 if(pos >= 0){
                 rCelular = archiCelular.Leer(pos);
                     if(v.eliminar(mod)){//La funcion eliminar busca dentro del vector dinamico el modelo pasado como parametro, si lo encuentra lo elimina y modifica su tamaño, si no no hace nada.
+                        aumentarStock(rCelular);
                         total -= rCelular.getPrecio();//descuenta el precio del registro eliminado.
-
                         tam--;
                         if (tam==0){
 							bandera=true;
@@ -200,6 +205,9 @@ bool cargarVentas(){
                 }
                 break;
             case 81: case 113:
+                /// liberar stock al cancelar venta
+                v.reponerStock();
+                ///
                 return false;
                 break;
             default: std::cout<<"OPCION INVALIDA. "<<std::endl;
@@ -233,7 +241,7 @@ void guardarVectorArchivo(vectorDinamicoCelular &v,int tam, int c){
     celularVendido r;
     for(int i=0;i<tam;i++){
         rCelular = v[i];
-        descontarStock(rCelular);
+        ///descontarStock(rCelular);
         r.cargar(c,rCelular);
         archi.cargar(r);
     }
@@ -249,6 +257,11 @@ void descontarStock(clsCelular &r){
         archiCelular.modificar_registro(pos,r);
     }
 }
+void aumentarStock(clsCelular &r){
+    ArchivosCelular archiCelular("celulares.dat");
+    int pos = archiCelular.buscarCelular(r.getModelo());
+    r.setStock(r.getStock()+1);
+}
 bool eliminarVenta(){
     clsVentas rVentas;
     ArchivosVentas aVentas("ventas.dat");
@@ -261,7 +274,7 @@ bool eliminarVenta(){
         if(rVentas.getEstado()){
             rVentas.Mostrar();
             std::cout<<std::endl;
-            std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+            std::cout<<"¿DESEA ELIMINAR ESTA VENTA?"<<std::endl;
             std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
             int op = rlutil::getkey();
             if (op == 89 || op == 121){
@@ -271,11 +284,11 @@ bool eliminarVenta(){
             }
             return false;
             }else{
-                std::cout<<"EL CODIGO PERTENECE A UN REGISTRO DADO DE BAJA"<<std::endl;
+                std::cout<<"EL CÓDIGO PERTENECE A UN REGISTRO DADO DE BAJA"<<std::endl;
                 return false;
             }
         }
-    std::cout<<"CODIGO VENTA INCORRECTO"<<std::endl;
+    std::cout<<"CÓDIGO VENTA INCORRECTO"<<std::endl;
     return false;
     system("cls");
 }
@@ -350,8 +363,7 @@ bool devolucion(){
 							clsCelular reg_c;
 							pos_c = aCel.buscarCelular(rCelularVendido.getModelo());
 							reg_c = aCel.Leer(pos_c);
-							reg_c.setStock(reg_c.getStock()+1);
-							aCel.modificar_registro(pos_c,reg_c);
+							aumentarStock(reg_c);
 							break;
 						}
 					}
@@ -375,8 +387,7 @@ bool devolucion(){
                 clsCelular reg_c;
                 pos_c = aCel.buscarCelular(rCelularVendido.getModelo());
                 reg_c = aCel.Leer(pos_c);
-                reg_c.setStock(reg_c.getStock()+1);
-                aCel.modificar_registro(pos_c,reg_c);
+                aumentarStock(reg_c);
 				///
 				rCelularVendido.setEstado(false);
                 aCelularVendido.modificar(pos,rCelularVendido);
@@ -401,7 +412,7 @@ bool devolucion(){
     return false;
 }
 void mostrarMenuVentas(){
-    std::cout<<"MENU VENTAS"<<std::endl;
+    std::cout<<"MENÚ VENTAS"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
     std::cout<<"1. VENTA NUEVA"<<std::endl;
     std::cout<<"2. LISTAR VENTAS"<<std::endl;
@@ -410,5 +421,5 @@ void mostrarMenuVentas(){
     std::cout<<"5. DEVOLVER TELEFONO"<<std::endl;
     std::cout<<"0. VOLVER"<<std::endl;
     std::cout<<"---------------------------------"<<std::endl;
-    std::cout<<"Ingrese una opcion."<<std::endl;
+    std::cout<<"INGRESE UNA OPCIÓN:"<<std::endl;
 }

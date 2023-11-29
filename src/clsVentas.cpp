@@ -82,7 +82,7 @@ clsVentas ArchivosVentas::Leer(int pos){
         fclose(p);
         return reg;
     }
-bool ArchivosVentas::Modificar(int pos,clsVentas r){
+	bool ArchivosVentas::Modificar(int pos,clsVentas r){
         FILE *p;
         p=fopen(nombreArchivo, "rb+");
         if(p==NULL) return false;

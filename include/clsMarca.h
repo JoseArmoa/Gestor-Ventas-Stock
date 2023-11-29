@@ -53,6 +53,7 @@ public:
     bool borrar();
 };
 
+bool esCadenaEnBlanco(const char*);
 
 #endif // CLSMARCA_H
 

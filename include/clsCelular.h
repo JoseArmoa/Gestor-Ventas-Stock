@@ -102,6 +102,7 @@ public:
     bool agregar(clsCelular r);
     void aumentar(int t);
     bool eliminar(const char *n);
+    void reponerStock();
     void mostrar();
     const clsCelular& operator[](int);
 

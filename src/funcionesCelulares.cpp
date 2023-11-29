@@ -11,13 +11,13 @@ void menuStocCelulares(){
 	int op;
     while(true){
         system("cls");
-        cout << "MENU STOCK CELULARES:" << endl;
+        cout << "MENÚ STOCK CELULARES:" << endl;
         cout << "-------------------------------"<<endl;
 		cout << "1. MENU CELULAR" << endl;
 		cout << "2. MENU MARCA" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "ELIJA UNA OPCION: ";
+		cout << "ELIJA UNA OPCIÓN: ";
 		op = rlutil::getkey();
 		system("cls");
 		switch(op){
@@ -30,7 +30,7 @@ void menuStocCelulares(){
 			case 48:
 				return;
 			default:
-			    cout<<"OPCION INVALIDA"<<endl;
+			    cout<<"OPCIÓN INVALIDA"<<endl;
 				break;
 		}
 
@@ -50,7 +50,7 @@ void MenuCelulares(){
 		cout << "6. ALTA CELULAR" << endl;
 		cout << "0. VOLVER" << endl;
 		cout << "-------------------------------"<<endl;
-		cout << "ELIJA UNA OPCION: ";
+		cout << "ELIJA UNA OPCIÓN: ";
 		op=rlutil::getkey();
 		system("cls");
         switch(op){
@@ -84,7 +84,7 @@ void MenuCelulares(){
             break;
     case 48://si se apreta 0
         return;
-    default: std::cout<<"OPCION INVALIDA. "<<std::endl;
+    default: std::cout<<"OPCIÓN INVALIDA. "<<std::endl;
             break;
 
         }
@@ -157,7 +157,7 @@ bool Agregar_celular() {
 
     if (pos_marca < 0) {
         cout << "¿QUIERE ESTA MARCA EN EL ARCHIVO MARCA 'marcas.dat'?" << endl;
-        cout << "PRESIONE A PARA AGREGAR O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+        cout << "PRESIONE 'A' PARA AGREGAR O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
         int op = rlutil::getkey();
         if (op == 65 || op == 97) {
             clsMarca nueva_marca(marca);
@@ -267,9 +267,9 @@ void Modificar_precio(){
 	cin>>_precio;
 	reg.setPrecio(_precio);
 	if(archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
+		cout<<"EL ARCHIVO FUE MODIFICADO CON ÉXITO"<<endl;
 	} else{
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON EXITO"<<endl;
+		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
 	}
 }
 void Baja_celular(){

@@ -16,7 +16,7 @@ using namespace std;
 
 
 int main(){
-    rlutil::setConsoleTitle("MENU PRINCIPAL");
+    rlutil::setConsoleTitle("MENÚ PRINCIPAL");
     rlutil::hidecursor();
     system("color 80");
     setlocale(LC_ALL, "");
@@ -48,7 +48,7 @@ int main(){
 			break;
     case 48://si se apreta 0
         return 0;
-    default: cout<<"OPCION INVALIDA. "<<endl;
+    default: cout<<"OPCIÓN INVALIDA. "<<endl;
             break;
 
         }
