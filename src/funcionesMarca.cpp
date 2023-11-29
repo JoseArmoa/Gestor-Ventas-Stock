@@ -122,16 +122,36 @@ void Modificar_marca(){
 		cout << "LA MARCA ESTA DADA DE BAJA"<<endl;
 		return;
 	}
-	char marca_[30];
-	cout<< "INGRESE EL NUEVO NOMBRE DE LA MARCA (HASTA 30 CARACTERES): "<<endl;
-	cargarCadena(marca_,30);
-	reg.setMarca(marca_);
-	if (archi.modificar_registro(pos,reg)){
-		cout<<"EL ARCHIVO FUE MODIFICADO CON ÉXITO"<<endl;
+
+	cout << "PRESIONE 'Y' PARA MODIFICAR EL NOMBRE O CUALQUIER OTRA TECLA PARA CANCELAR" << endl;
+	int op = rlutil::getkey();
+	if (op == 89 || op == 121) {
+		char marca_[30];
+		cout<< "INGRESE EL NUEVO NOMBRE DE LA MARCA (HASTA 30 CARACTERES): "<<endl;
+		cargarCadena(marca_,30);
+		ArchivosCelular archiCel("Celulares.dat");
+
+		int cant=archiCel.contarRegistros();
+
+		for(int i=0; i<cant; i++){
+			clsCelular rCelular = archiCel.Leer(i);
+			if(strcmp(rCelular.getMarca(), marca)==0){
+				rCelular.setMarca(marca_);
+				archiCel.modificar_registro(i,rCelular);
+			}
+		}
+		reg.setMarca(marca_);
+		if (archi.modificar_registro(pos,reg)){
+			cout<<"EL ARCHIVO FUE MODIFICADO CON ÉXITO"<<endl;
+		} else {
+			cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
+		}
 	} else {
-		cout<<"ERROR, EL ARCHIVO NO PUDO SER MODIFICADO CON ÉXITO"<<endl;
+		cout << "NO MODIFICO LA MARCA"<<endl;
+		return;
 	}
 }
+
 void bajar_marca(){
 	ArchivoMarca archi("marcas.dat");
     char marca[30];

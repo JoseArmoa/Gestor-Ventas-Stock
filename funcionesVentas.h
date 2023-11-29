@@ -13,6 +13,7 @@ void mostrarMenuVentas();
 void guardarVectorArchivo(vectorDinamicoCelular &,int,int);
 void descontarStock(clsCelular &);
 void aumentarStock(clsCelular &);
+void poner_disponibilidad(clsCelular &);
 bool eliminarVenta();
 bool modificarFecha();
 bool devolucion();

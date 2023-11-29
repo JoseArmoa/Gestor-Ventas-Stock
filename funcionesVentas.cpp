@@ -261,10 +261,23 @@ void aumentarStock(clsCelular &r){
     ArchivosCelular archiCelular("celulares.dat");
     int pos = archiCelular.buscarCelular(r.getModelo());
     r.setStock(r.getStock()+1);
+    r.setDisponibilidad(true);
+	archiCelular.modificar_registro(pos,r);
+}
+void poner_disponibilidad(clsCelular &r){
+	ArchivosCelular archiCelular("celulares.dat");
+    int pos = archiCelular.buscarCelular(r.getModelo());
+    if(r.getStock()==0){
+        r.setDisponibilidad(false);
+        archiCelular.modificar_registro(pos,r);
+    }else{
+        archiCelular.modificar_registro(pos,r);
+    }
 }
 bool eliminarVenta(){
     clsVentas rVentas;
     ArchivosVentas aVentas("ventas.dat");
+    ArchivosCelular aCel ("celulares.dat");
     int cod;
     int tam = aVentas.contarRegistros();
     std::cout<<"INGRESE CODIGO DE VENTA: ";
@@ -278,6 +291,17 @@ bool eliminarVenta(){
             std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
             int op = rlutil::getkey();
             if (op == 89 || op == 121){
+				clsCelular reg_c;
+				ArchivoCelularVendido aCelularVendido("vendidos.dat");
+				int con = aCelularVendido.contarRegistros();
+				for (int i=0;i<con;i++){
+					celularVendido reg=aCelularVendido.Leer(i);
+					if (reg.getEstado() == true && reg.getCodVenta() == cod){
+						int pos_c = aCel.buscarCelular(reg.getModelo());
+						reg_c = aCel.Leer(pos_c);
+						poner_disponibilidad(reg_c);
+					}
+				}
                 rVentas.setEstado(false);
                 if(aVentas.Modificar(cod-1,rVentas)) return true;
                 return false;
@@ -355,13 +379,13 @@ bool devolucion(){
                 int op = rlutil::getkey();
                 if (op == 89 || op == 121){
 					///
+					clsCelular reg_c;
 					ArchivoCelularVendido aCelularVendido("vendidos.dat");
-					cant_v=aCelularVendido.contarRegistros();
-					for (int i=0;i<cant_v;i++){
-						celularVendido rCelularVendido= aCelularVendido.Leer(i);
-						if (rCelularVendido.getEstado()){
-							clsCelular reg_c;
-							pos_c = aCel.buscarCelular(rCelularVendido.getModelo());
+					int con = aCelularVendido.contarRegistros();
+					for (int i=0;i<con;i++){
+						celularVendido reg=aCelularVendido.Leer(i);
+						if (reg.getEstado() == true && reg.getCodVenta() == cod){
+							int pos_c = aCel.buscarCelular(reg.getModelo());
 							reg_c = aCel.Leer(pos_c);
 							aumentarStock(reg_c);
 							break;
@@ -371,7 +395,7 @@ bool devolucion(){
                     rVentas.setEstado(false);
                     aVentas.Modificar(cod-1,rVentas);
                     return true;
-                }else{
+				} else{
                     return false;
                 }
             }else{

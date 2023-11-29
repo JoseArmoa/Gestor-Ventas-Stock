@@ -268,9 +268,7 @@ using namespace std;
 				reg.setStock(reg.getStock()+1);
 				reg.setDisponibilidad(true);
 				if (archi.modificar_registro(pos, reg)){
-					vectorCelular[i].mostrar();
-					a++;
-					cout<<a<<endl;;
+
 				}
 			}
 		}
@@ -397,7 +395,9 @@ celularVendido ArchivoCelularVendido::LeerIndividual(int cod,const char *m, int 
     fclose(p);
     return r;
 }
+///
 
+///
 int ArchivoCelularVendido::contarRegistros(){
         FILE *p;
         p = fopen(nombreArchivo,"rb");

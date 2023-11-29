@@ -234,6 +234,7 @@ void Reponer_Stock(){
 	cin>>stock_nuevo;
 	stock_nuevo+=reg.getStock();
 	reg.setStock(stock_nuevo);
+	reg.setDisponibilidad(true);
 	if(archi.modificar_registro(pos,reg)){
 		cout<<"EL ARCHIVO FUE MODIFICADO CON EXITO"<<endl;
 	} else{
