@@ -193,6 +193,7 @@ bool cargarVentas(){
                         total -= rCelular.getPrecio();//descuenta el precio del registro eliminado.
                         tam--;
                         if (tam==0){
+                            tam = 1;
 							bandera=true;
                         }
                     }else{
@@ -206,7 +207,7 @@ bool cargarVentas(){
                 break;
             case 81: case 113:
                 /// liberar stock al cancelar venta
-                v.reponerStock();
+                devolverStock(v,tam);
                 ///
                 return false;
                 break;
@@ -241,7 +242,6 @@ void guardarVectorArchivo(vectorDinamicoCelular &v,int tam, int c){
     celularVendido r;
     for(int i=0;i<tam;i++){
         rCelular = v[i];
-        ///descontarStock(rCelular);
         r.cargar(c,rCelular);
         archi.cargar(r);
     }
@@ -260,17 +260,10 @@ void descontarStock(clsCelular &r){
 void aumentarStock(clsCelular &r){
     ArchivosCelular archiCelular("celulares.dat");
     int pos = archiCelular.buscarCelular(r.getModelo());
+    r = archiCelular.Leer(pos);
     r.setStock(r.getStock()+1);
-    r.setDisponibilidad(true);
-	archiCelular.modificar_registro(pos,r);
-}
-void poner_disponibilidad(clsCelular &r){
-	ArchivosCelular archiCelular("celulares.dat");
-    int pos = archiCelular.buscarCelular(r.getModelo());
-    if(r.getStock()==0){
-        r.setDisponibilidad(false);
-        archiCelular.modificar_registro(pos,r);
-    }else{
+    if(r.getStock()>0){
+        r.setDisponibilidad(true);
         archiCelular.modificar_registro(pos,r);
     }
 }
@@ -296,10 +289,12 @@ bool eliminarVenta(){
 				int con = aCelularVendido.contarRegistros();
 				for (int i=0;i<con;i++){
 					celularVendido reg=aCelularVendido.Leer(i);
-					if (reg.getEstado() == true && reg.getCodVenta() == cod){
+					if (reg.getEstado() && reg.getCodVenta() == cod){
 						int pos_c = aCel.buscarCelular(reg.getModelo());
 						reg_c = aCel.Leer(pos_c);
-						poner_disponibilidad(reg_c);
+						aumentarStock(reg_c);
+						reg.setEstado(false);
+						aCelularVendido.modificar(i,reg);
 					}
 				}
                 rVentas.setEstado(false);
@@ -316,12 +311,21 @@ bool eliminarVenta(){
     return false;
     system("cls");
 }
+void devolverStock(vectorDinamicoCelular &v, int t){
+    ArchivosCelular aCelular("celulares.dat");
+    clsCelular rCelular;
+    for(int i=0;i<t;i++){
+        rCelular = v[i];
+        aumentarStock(rCelular);
+    }
+}
 bool modificarFecha(){
     Fecha hoy, nueva;
     ArchivosVentas aVentas("ventas.dat");
     clsVentas rVentas;
     int tam = aVentas.contarRegistros();
     int cod;
+    std::cin.ignore();
     std::cout<<"INGRESE CODIGO DE VENTA: ";
     std::cin>>cod;
     if(cod <= tam && cod > 0){
@@ -363,10 +367,9 @@ bool devolucion(){
     clsVentas rVentas;
     char mod[30];
     int pos_c;
-    int cant_v;
     int tam = aVentas.contarRegistros();
     int cod;
-    std::cout<<"INGRESE CODIGO DE VENTA ";
+    std::cout<<"INGRESE CODIGO DE VENTA: ";
     std::cin>>cod;
     if(cod > 0 && cod <= tam){
         rVentas = aVentas.Leer(cod-1);
@@ -384,11 +387,12 @@ bool devolucion(){
 					int con = aCelularVendido.contarRegistros();
 					for (int i=0;i<con;i++){
 						celularVendido reg=aCelularVendido.Leer(i);
-						if (reg.getEstado() == true && reg.getCodVenta() == cod){
+						if (reg.getEstado()&& reg.getCodVenta() == cod){
 							int pos_c = aCel.buscarCelular(reg.getModelo());
 							reg_c = aCel.Leer(pos_c);
 							aumentarStock(reg_c);
-							break;
+							reg.setEstado(false);
+							aCelularVendido.modificar(i,reg);
 						}
 					}
 					///
@@ -401,7 +405,7 @@ bool devolucion(){
             }else{
                 rVentas.Mostrar();
                 std::cout<<std::endl;
-                std::cout<<"INGRESE MODELO A ELIMINAR ";
+                std::cout<<"INGRESE MODELO A DEVOLVER: ";
                 cargarCadena(mod,30);
                 ArchivoCelularVendido aCelularVendido("vendidos.dat");
                 int pos;

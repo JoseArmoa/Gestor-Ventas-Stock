@@ -180,6 +180,8 @@ void punto_5(){//Dada una fecha, mostrar el total facturado ese dia, informar si
             }else{
                 cout<<"NO SE REGISTRA FACTURACION"<<endl;
             }
+        }else{
+            cout<<"FECHA INVALIDA"<<endl;
         }
     }else{
         cout<<"FECHA INVALIDA"<<endl;

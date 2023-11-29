@@ -231,7 +231,12 @@ using namespace std;
                 encontro=true;
             }
         }
-        if(encontro){
+        if(tam == 1){
+            clsCelular r;
+            vectorCelular[0] = r;
+            inicio--;
+        }else{
+            if(encontro){
             clsCelular *aux;
             aux = new clsCelular[tam];
             if(aux==NULL)return false;
@@ -252,29 +257,12 @@ using namespace std;
             delete aux;
             inicio--;
             return true;
-        }else{
-            cout<<"MODELO INCORRECTO"<<endl;
-            return false;
+            }else{
+                cout<<"MODELO INCORRECTO"<<endl;
+                return false;
+            }
         }
     }
-    ///
-    void vectorDinamicoCelular::reponerStock() {
-		ArchivosCelular archi("celulares.dat");
-		int a=0;
-		for (int i = 0; i < tam; i++) {
-			if (vectorCelular[i].getEstado()){
-				int pos = archi.buscarCelular(vectorCelular[i].getModelo());
-				clsCelular reg=archi.Leer(pos);
-				reg.setStock(reg.getStock()+1);
-				reg.setDisponibilidad(true);
-				if (archi.modificar_registro(pos, reg)){
-
-				}
-			}
-		}
-	}
-
-    ///
 
 void vectorDinamicoCelular::mostrar(){
     for(int i=0;i<tam;i++){
