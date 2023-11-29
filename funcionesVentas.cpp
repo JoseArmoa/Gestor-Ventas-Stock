@@ -119,6 +119,7 @@ bool cargarVentas(){
                   if(pos != -1){//verifica que el modelo exista en el archivo
                     rCelular = archiCelular.Leer(pos);//lee el registro en la posicion.
                     if(rCelular.getDisponibilidad() && rCelular.getEstado()){
+
                         total += rCelular.getPrecio();//sumamos el precio del producto en el acumulador.
                         v.agregar(rCelular);//agregamos el registro al vector dinamico.
                         bandera = false;
@@ -184,7 +185,11 @@ bool cargarVentas(){
                 rCelular = archiCelular.Leer(pos);
                     if(v.eliminar(mod)){//La funcion eliminar busca dentro del vector dinamico el modelo pasado como parametro, si lo encuentra lo elimina y modifica su tamaño, si no no hace nada.
                         total -= rCelular.getPrecio();//descuenta el precio del registro eliminado.
+
                         tam--;
+                        if (tam==0){
+							bandera=true;
+                        }
                     }else{
                         std::cout<<"MODELO INCORRECTO"<<std::endl;
                         system("pause");
@@ -275,7 +280,7 @@ bool eliminarVenta(){
     system("cls");
 }
 bool modificarFecha(){
-    Fecha nueva;
+    Fecha hoy, nueva;
     ArchivosVentas aVentas("ventas.dat");
     clsVentas rVentas;
     int tam = aVentas.contarRegistros();
@@ -292,7 +297,17 @@ bool modificarFecha(){
             int op = rlutil::getkey();
             if (op == 89 || op == 121){
                 std::cout<<"INGRESE FECHA NUEVA: "<<std::endl;
-                nueva.Cargar();
+                ///
+				while(!nueva.Cargar()){
+					std::cout<<"FECHA INCORRECTA"<<std::endl;
+					std::cout<<"VUELVA A INGRESAR"<<std::endl;
+				}
+				while(nueva > hoy){
+					std::cout<<"FECHA INCORRECTA"<<std::endl;
+					std::cout<<"VUELVA A INGRESAR"<<std::endl;
+					nueva.Cargar();
+				}
+                ///
                 rVentas.setFecha(nueva);
                 if(aVentas.Modificar(cod-1,rVentas)) return true;
                 return false;
@@ -307,8 +322,11 @@ bool modificarFecha(){
 }
 bool devolucion(){
     ArchivosVentas aVentas("ventas.dat");
+    ArchivosCelular aCel ("celulares.dat");
     clsVentas rVentas;
     char mod[30];
+    int pos_c;
+    int cant_v;
     int tam = aVentas.contarRegistros();
     int cod;
     std::cout<<"INGRESE CODIGO DE VENTA ";
@@ -319,10 +337,25 @@ bool devolucion(){
             if(rVentas.getCantidad()==1){
                 rVentas.Mostrar();
                 std::cout<<std::endl;
-                std::cout<<"DESEA ELIMINAR ESTA VENTA?"<<std::endl;
+                std::cout<<"¿DESEA ELIMINAR ESTA VENTA?"<<std::endl;
                 std::cout<<"Y: CONFIRMAR  CUALQUIE TECLA: CANCELAR"<<std::endl;
                 int op = rlutil::getkey();
                 if (op == 89 || op == 121){
+					///
+					ArchivoCelularVendido aCelularVendido("vendidos.dat");
+					cant_v=aCelularVendido.contarRegistros();
+					for (int i=0;i<cant_v;i++){
+						celularVendido rCelularVendido= aCelularVendido.Leer(i);
+						if (rCelularVendido.getEstado()){
+							clsCelular reg_c;
+							pos_c = aCel.buscarCelular(rCelularVendido.getModelo());
+							reg_c = aCel.Leer(pos_c);
+							reg_c.setStock(reg_c.getStock()+1);
+							aCel.modificar_registro(pos_c,reg_c);
+							break;
+						}
+					}
+					///
                     rVentas.setEstado(false);
                     aVentas.Modificar(cod-1,rVentas);
                     return true;
@@ -333,13 +366,19 @@ bool devolucion(){
                 rVentas.Mostrar();
                 std::cout<<std::endl;
                 std::cout<<"INGRESE MODELO A ELIMINAR ";
-                std::cin.ignore();
-                std::cin.getline(mod,30);
+                cargarCadena(mod,30);
                 ArchivoCelularVendido aCelularVendido("vendidos.dat");
                 int pos;
                 celularVendido rCelularVendido;
                 rCelularVendido = aCelularVendido.LeerIndividual(cod,mod,pos);
-                rCelularVendido.setEstado(false);
+                ///
+                clsCelular reg_c;
+                pos_c = aCel.buscarCelular(rCelularVendido.getModelo());
+                reg_c = aCel.Leer(pos_c);
+                reg_c.setStock(reg_c.getStock()+1);
+                aCel.modificar_registro(pos_c,reg_c);
+				///
+				rCelularVendido.setEstado(false);
                 aCelularVendido.modificar(pos,rCelularVendido);
                 rVentas.setCantidad(rVentas.getCantidad()-1);
                 if(rVentas.getCantidad()== 0){

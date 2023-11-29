@@ -50,7 +50,7 @@ void punto_1() {
 	cout<<"-------------------------------------------------------------"<<endl;
     for (int i = 0; i < tam; i++) {
         clsCelular reg = Archi.Leer(i);
-        if (reg.getStock() <num && reg.getEstado()) {
+        if (reg.getStock() <= num && reg.getEstado()) {
             estado = true;
             reg.mostrar();
             cout << endl;
@@ -105,7 +105,7 @@ void punto_2(){
                 }
             }
             if(totalFacturado > 0){
-                cout<<"TOTAL FACTURA EN EL PERIODO INGRESADO: $"<<totalFacturado<<endl;
+                cout<<"TOTAL FACTURADO EN EL PERIODO INGRESADO: $"<<totalFacturado<<endl;
             }else{
                 cout<<"NO SE REGISTRA FACTURACION"<<totalFacturado<<endl;
             }
@@ -192,7 +192,7 @@ void menuReporte() {
     while(true){
         cout << "MENU REPORTES" << endl;
         cout << "----------------------------"<<endl;
-        cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR A ESE NUMERO" << endl;
+        cout << "1. DADO UN NUMERO ENTERO, DEVOLVER PRODUCTOS CON STOCK INFERIOR O IGUAL A ESE NUMERO" << endl;
         cout << "2. MOSTRAR TOTAL FACTURADO POR PERIODO" << endl;//Recibe 2 fechas y muestra el total facturado en ese periodo.
         cout << "3. MOSTRAR CELULARES QUE COMPRO UN CLIENTE" << endl;
         cout << "4. MOSTRAR MODELO CELULAR MAYOR SE VENDE" << endl;

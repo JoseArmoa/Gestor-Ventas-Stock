@@ -34,6 +34,7 @@ using namespace std;
 			std::cin >> s;
         }
         stock=s;
+
     }
     void clsCelular::setEstado(bool e){
 		estado=e;
@@ -80,13 +81,11 @@ using namespace std;
 		cout << "INGRESE LA CANTIDAD EN STOCK: ";
 		cin >> s;
 		setStock(s);
-
 		if (s > 0) {
 			setDisponibilidad(true);
 		} else {
 			setDisponibilidad(false);
 		}
-
 		setEstado(true);
 	}
 
